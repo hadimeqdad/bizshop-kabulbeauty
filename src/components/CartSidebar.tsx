@@ -1,0 +1,85 @@
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { useCart } from "@/lib/cart";
+import { useLang } from "@/lib/i18n";
+import { Button } from "@/components/ui/button";
+import { Minus, Plus, Trash2, ShoppingBag, MessageCircle } from "lucide-react";
+
+const CartSidebar = () => {
+  const { items, open, setOpen, update, remove, total, count, clear } = useCart();
+  const { t, lang, dir } = useLang();
+
+  const buildWaMessage = () => {
+    const lines = items.map(i => `• ${i.product.name[lang]} × ${i.qty} = ${(i.product.price * i.qty).toLocaleString()} ${t("afn")}`);
+    const header = lang === "fa" ? "سلام بیزشاپ، می‌خواهم سفارش بدهم:" : "Hi BizShop, I'd like to order:";
+    const footer = `${t("total")}: ${total.toLocaleString()} ${t("afn")}`;
+    return encodeURIComponent([header, "", ...lines, "", footer].join("\n"));
+  };
+
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetContent side={dir === "rtl" ? "left" : "right"} className="w-full sm:max-w-md flex flex-col bg-background">
+        <SheetHeader>
+          <SheetTitle className="font-display text-2xl text-primary flex items-center gap-2">
+            <ShoppingBag className="w-5 h-5" /> {t("cart")} {count > 0 && <span className="text-sm text-muted-foreground">({count})</span>}
+          </SheetTitle>
+        </SheetHeader>
+
+        {items.length === 0 ? (
+          <div className="flex-1 grid place-items-center text-center">
+            <div>
+              <div className="w-20 h-20 rounded-full gradient-rose mx-auto grid place-items-center mb-4 opacity-70">
+                <ShoppingBag className="w-8 h-8 text-burgundy-deep" />
+              </div>
+              <p className="text-muted-foreground">{t("cart_empty")}</p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="flex-1 overflow-y-auto -mx-6 px-6 divide-y divide-border/60">
+              {items.map(i => (
+                <div key={i.product.id} className="py-4 flex gap-3">
+                  <div
+                    className="w-16 h-16 rounded-sm shrink-0 grid place-items-center"
+                    style={{ background: `linear-gradient(135deg, hsl(36 40% 97%), hsl(${i.product.shade} / 0.4))` }}
+                  >
+                    <div className="w-9 h-9 rounded-full" style={{ background: `hsl(${i.product.shade})` }} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-display text-base text-primary truncate">{i.product.name[lang]}</h4>
+                    <p className="text-xs text-muted-foreground">{i.product.price.toLocaleString()} {t("afn")}</p>
+                    <div className="mt-2 flex items-center gap-2">
+                      <Button size="icon" variant="outline" className="h-7 w-7" onClick={() => update(i.product.id, i.qty - 1)}>
+                        <Minus className="w-3 h-3" />
+                      </Button>
+                      <span className="text-sm w-6 text-center">{i.qty}</span>
+                      <Button size="icon" variant="outline" className="h-7 w-7" onClick={() => update(i.product.id, i.qty + 1)}>
+                        <Plus className="w-3 h-3" />
+                      </Button>
+                      <Button size="icon" variant="ghost" className="h-7 w-7 ml-auto rtl:ml-0 rtl:mr-auto text-muted-foreground hover:text-destructive" onClick={() => remove(i.product.id)}>
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-border pt-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm uppercase tracking-widest text-muted-foreground">{t("total")}</span>
+                <span className="font-display text-2xl text-primary">{total.toLocaleString()} {t("afn")}</span>
+              </div>
+              <Button asChild size="lg" className="w-full gap-2" style={{ background: "linear-gradient(135deg,#25D366,#128C7E)" }}>
+                <a href={`https://wa.me/message/64F75TYQX77KI1?text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={() => clear()}>
+                  <MessageCircle className="w-5 h-5" /> {t("checkout_wa")}
+                </a>
+              </Button>
+            </div>
+          </>
+        )}
+      </SheetContent>
+    </Sheet>
+  );
+};
+
+export default CartSidebar;
