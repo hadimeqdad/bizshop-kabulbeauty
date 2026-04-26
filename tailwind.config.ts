@@ -8,8 +8,8 @@ export default {
     container: { center: true, padding: "1.5rem", screens: { "2xl": "1400px" } },
     extend: {
       fontFamily: {
-        display: ['"DM Serif Display"', '"Vazirmatn"', 'serif'],
-        sans: ['"Fira Sans"', '"Vazirmatn"', 'sans-serif'],
+        display: ['"Playfair Display"', '"Vazirmatn"', 'serif'],
+        sans: ['"Manrope"', '"Vazirmatn"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -24,9 +24,9 @@ export default {
         accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
         popover: { DEFAULT: "hsl(var(--popover))", foreground: "hsl(var(--popover-foreground))" },
         card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
-        rosegold: { DEFAULT: "hsl(var(--rose-gold))", deep: "hsl(var(--rose-gold-deep))" },
-        burgundy: { DEFAULT: "hsl(var(--burgundy))", deep: "hsl(var(--burgundy-deep))" },
-        cream: "hsl(var(--cream))",
+        green: { DEFAULT: "hsl(var(--green))", deep: "hsl(var(--green-deep))", bright: "hsl(var(--green-bright))" },
+        gold: { DEFAULT: "hsl(var(--gold))", soft: "hsl(var(--gold-soft))" },
+        ink: "hsl(var(--ink))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
