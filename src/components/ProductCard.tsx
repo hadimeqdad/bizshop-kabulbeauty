@@ -17,29 +17,40 @@ const ProductCard = ({ product }: { product: Product }) => {
   };
 
   return (
-    <article className="group flex flex-col">
+    <article className="group flex flex-col bg-card border border-border rounded-md overflow-hidden hover:shadow-soft transition-smooth">
       <div
-        className="relative aspect-square overflow-hidden bg-muted border border-border/60 rounded-sm"
-        style={{ background: `linear-gradient(135deg, hsl(36 40% 97%) 0%, hsl(${product.shade} / 0.35) 100%)` }}
+        className="relative aspect-square overflow-hidden"
+        style={{ background: `linear-gradient(135deg, hsl(var(--background)) 0%, hsl(${product.shade} / 0.18) 100%)` }}
       >
-        {/* Product visual placeholder — elegant tinted disc */}
         <div className="absolute inset-0 grid place-items-center transition-smooth group-hover:scale-105">
-          <div
-            className="w-2/3 h-2/3 rounded-full shadow-elegant"
-            style={{ background: `radial-gradient(circle at 30% 30%, hsl(${product.shade} / 0.95), hsl(${product.shade} / 0.7) 60%, hsl(${product.shade} / 0.4))` }}
-          />
+          {/* Stylized bottle/jar silhouette */}
+          <div className="relative w-1/2 h-3/4">
+            <div
+              className="absolute top-[12%] left-1/2 -translate-x-1/2 w-1/3 h-[12%] rounded-t-sm"
+              style={{ background: `hsl(${product.shade} / 0.85)` }}
+            />
+            <div
+              className="absolute top-[24%] left-0 right-0 bottom-0 rounded-md shadow-elegant"
+              style={{ background: `linear-gradient(160deg, hsl(${product.shade}) 0%, hsl(${product.shade} / 0.7) 100%)` }}
+            >
+              <div className="absolute inset-x-3 top-1/3 bottom-1/4 bg-background/85 rounded-sm grid place-items-center">
+                <span className="font-display text-[10px] tracking-widest text-foreground/60 uppercase">{product.brand}</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="absolute top-3 right-3 rtl:right-auto rtl:left-3 text-[10px] uppercase tracking-widest text-primary/70 bg-background/80 backdrop-blur px-2 py-0.5 rounded-full">
+        <div className="absolute top-3 right-3 rtl:right-auto rtl:left-3 text-[10px] uppercase tracking-widest text-primary bg-background/90 backdrop-blur px-2 py-0.5 rounded-full border border-border">
           {t(`cat_${product.category}` as any)}
         </div>
       </div>
-      <div className="pt-3 flex flex-col gap-1">
-        <h3 className="font-display text-lg leading-tight text-primary line-clamp-1">
+      <div className="p-3 md:p-4 flex flex-col gap-1 flex-1">
+        <span className="text-[10px] uppercase tracking-widest text-accent font-medium">{product.brand}</span>
+        <h3 className="font-display text-base md:text-lg leading-snug text-primary line-clamp-2 min-h-[2.5rem]">
           {product.name[lang]}
         </h3>
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-foreground">
-            {product.price.toLocaleString()} <span className="text-xs text-muted-foreground">{t("afn")}</span>
+        <div className="flex items-center justify-between mt-auto pt-2">
+          <span className="text-sm font-semibold text-foreground">
+            {product.price.toLocaleString()} <span className="text-[10px] text-muted-foreground font-normal">{t("afn")}</span>
           </span>
           <Button
             size="sm"

@@ -1,89 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fira+Sans:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* BizShop design system — rose gold, cream, deep burgundy */
+/* BizShop — health & wellness — green, black, gold */
 @layer base {
   :root {
-    --background: 36 40% 97%;            /* cream white #fdf8f3 */
-    --foreground: 345 55% 18%;           /* deep burgundy text */
+    --background: 60 20% 98%;            /* clean off-white */
+    --foreground: 150 25% 10%;           /* near-black with green undertone */
 
     --card: 0 0% 100%;
-    --card-foreground: 345 55% 18%;
+    --card-foreground: 150 25% 10%;
 
-    --popover: 36 40% 97%;
-    --popover-foreground: 345 55% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 25% 10%;
 
-    /* Deep burgundy as primary */
-    --primary: 345 55% 23%;              /* #5c1a2e */
-    --primary-foreground: 36 40% 97%;
+    /* Deep forest green primary */
+    --primary: 150 55% 18%;              /* #145236 */
+    --primary-foreground: 60 20% 98%;
 
-    /* Rose gold as secondary/accent */
-    --secondary: 18 56% 80%;             /* #e8c5b0 */
-    --secondary-foreground: 345 55% 18%;
+    /* Soft sage as secondary */
+    --secondary: 140 25% 92%;
+    --secondary-foreground: 150 55% 18%;
 
-    --muted: 30 30% 93%;
-    --muted-foreground: 345 15% 38%;
+    --muted: 60 15% 95%;
+    --muted-foreground: 150 10% 38%;
 
-    --accent: 350 35% 57%;               /* #b76e79 rose */
-    --accent-foreground: 36 40% 97%;
+    /* Warm gold accent */
+    --accent: 42 65% 48%;                /* #c89a2a */
+    --accent-foreground: 150 25% 10%;
 
-    --rose-gold: 18 56% 75%;
-    --rose-gold-deep: 14 40% 60%;
-    --burgundy: 345 55% 23%;
-    --burgundy-deep: 345 60% 14%;
-    --cream: 36 40% 97%;
+    --green: 150 55% 18%;
+    --green-deep: 150 60% 10%;
+    --green-bright: 145 50% 38%;
+    --gold: 42 65% 48%;
+    --gold-soft: 42 70% 75%;
+    --ink: 150 25% 8%;
 
     --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 18 30% 88%;
-    --input: 18 30% 88%;
-    --ring: 345 55% 23%;
+    --border: 60 10% 88%;
+    --input: 60 10% 88%;
+    --ring: 150 55% 18%;
 
-    --radius: 0.25rem;
+    --radius: 0.375rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(36 40% 97%) 0%, hsl(18 56% 90%) 60%, hsl(18 56% 80%) 100%);
-    --gradient-rose: linear-gradient(135deg, hsl(18 56% 85%), hsl(350 35% 70%));
-    --gradient-burgundy: linear-gradient(135deg, hsl(345 55% 23%), hsl(345 60% 14%));
-    --gradient-overlay: linear-gradient(90deg, hsl(36 40% 97% / 0.95) 0%, hsl(36 40% 97% / 0.6) 50%, transparent 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(150 60% 10%) 0%, hsl(150 55% 18%) 60%, hsl(145 50% 25%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(42 70% 60%), hsl(42 65% 42%));
+    --gradient-green: linear-gradient(135deg, hsl(150 55% 18%), hsl(150 60% 10%));
+    --gradient-overlay: linear-gradient(90deg, hsl(150 60% 10% / 0.92) 0%, hsl(150 60% 10% / 0.55) 55%, transparent 100%);
 
-    --shadow-soft: 0 4px 24px -8px hsl(345 55% 23% / 0.15);
-    --shadow-elegant: 0 20px 60px -20px hsl(345 55% 23% / 0.25);
-    --shadow-rose: 0 10px 40px -10px hsl(18 56% 60% / 0.4);
+    --shadow-soft: 0 4px 24px -8px hsl(150 60% 10% / 0.18);
+    --shadow-elegant: 0 20px 60px -20px hsl(150 60% 10% / 0.35);
+    --shadow-gold: 0 10px 30px -10px hsl(42 65% 48% / 0.45);
 
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 36 40% 97%;
-    --sidebar-foreground: 345 55% 18%;
-    --sidebar-primary: 345 55% 23%;
-    --sidebar-primary-foreground: 36 40% 97%;
-    --sidebar-accent: 18 56% 90%;
-    --sidebar-accent-foreground: 345 55% 18%;
-    --sidebar-border: 18 30% 88%;
-    --sidebar-ring: 345 55% 23%;
+    --sidebar-background: 60 20% 98%;
+    --sidebar-foreground: 150 25% 10%;
+    --sidebar-primary: 150 55% 18%;
+    --sidebar-primary-foreground: 60 20% 98%;
+    --sidebar-accent: 140 25% 92%;
+    --sidebar-accent-foreground: 150 55% 18%;
+    --sidebar-border: 60 10% 88%;
+    --sidebar-ring: 150 55% 18%;
   }
 
   .dark {
-    --background: 345 30% 8%;
-    --foreground: 36 40% 95%;
-    --card: 345 30% 10%;
-    --card-foreground: 36 40% 95%;
-    --popover: 345 30% 10%;
-    --popover-foreground: 36 40% 95%;
-    --primary: 18 56% 75%;
-    --primary-foreground: 345 55% 14%;
-    --secondary: 345 30% 18%;
-    --secondary-foreground: 36 40% 95%;
-    --muted: 345 30% 14%;
-    --muted-foreground: 36 20% 70%;
-    --accent: 350 35% 57%;
-    --accent-foreground: 36 40% 97%;
-    --border: 345 30% 18%;
-    --input: 345 30% 18%;
-    --ring: 18 56% 75%;
+    --background: 150 30% 6%;
+    --foreground: 60 20% 96%;
+    --card: 150 30% 9%;
+    --card-foreground: 60 20% 96%;
+    --popover: 150 30% 9%;
+    --popover-foreground: 60 20% 96%;
+    --primary: 42 65% 55%;
+    --primary-foreground: 150 30% 6%;
+    --secondary: 150 30% 14%;
+    --secondary-foreground: 60 20% 96%;
+    --muted: 150 30% 12%;
+    --muted-foreground: 60 15% 70%;
+    --accent: 42 65% 55%;
+    --accent-foreground: 150 30% 6%;
+    --border: 150 30% 16%;
+    --input: 150 30% 16%;
+    --ring: 42 65% 55%;
   }
 }
 
@@ -92,14 +94,13 @@
   html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Fira Sans', 'Vazirmatn', sans-serif;
-    font-feature-settings: 'kern', 'liga';
+    font-family: 'Manrope', 'Vazirmatn', sans-serif;
+    font-feature-settings: 'kern', 'liga', 'cv11';
   }
   h1, h2, h3, h4, h5 {
-    font-family: 'DM Serif Display', 'Vazirmatn', serif;
+    font-family: 'Playfair Display', 'Vazirmatn', serif;
     @apply tracking-tight;
   }
-  /* RTL gets Vazirmatn for both heading and body for proper Persian shaping */
   [dir="rtl"] body,
   [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5 {
     font-family: 'Vazirmatn', sans-serif;
@@ -107,19 +108,21 @@
 }
 
 @layer utilities {
-  .font-display { font-family: 'DM Serif Display', 'Vazirmatn', serif; }
+  .font-display { font-family: 'Playfair Display', 'Vazirmatn', serif; }
   .text-balance { text-wrap: balance; }
   .gradient-hero { background: var(--gradient-hero); }
-  .gradient-rose { background: var(--gradient-rose); }
-  .gradient-burgundy { background: var(--gradient-burgundy); }
+  .gradient-gold { background: var(--gradient-gold); }
+  .gradient-green { background: var(--gradient-green); }
   .gradient-overlay { background: var(--gradient-overlay); }
   [dir="rtl"] .gradient-overlay {
-    background: linear-gradient(270deg, hsl(36 40% 97% / 0.95) 0%, hsl(36 40% 97% / 0.6) 50%, transparent 100%);
+    background: linear-gradient(270deg, hsl(150 60% 10% / 0.92) 0%, hsl(150 60% 10% / 0.55) 55%, transparent 100%);
   }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
-  .shadow-rose { box-shadow: var(--shadow-rose); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
   .transition-smooth { transition: var(--transition-smooth); }
+  .text-gold { color: hsl(var(--gold)); }
+  .bg-ink { background: hsl(var(--ink)); }
 }
 
 @keyframes fade-up {
