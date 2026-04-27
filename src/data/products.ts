@@ -1,3 +1,5 @@
+import hairFriendImg from "@/assets/product-hair-friend.jpg";
+
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
 
@@ -8,6 +10,8 @@ export interface Product {
   brand: Brand;
   price: number; // AFN
   shade: string; // hsl tint for placeholder
+  image?: string;
+  details?: { fa: string; en: string };
 }
 
 // Tints by category — green/gold palette
