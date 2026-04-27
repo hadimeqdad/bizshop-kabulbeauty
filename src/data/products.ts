@@ -1,4 +1,5 @@
 import hairFriendImg from "@/assets/product-hair-friend.jpg";
+import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -227,5 +228,92 @@ export const products: Product[] = [
     shade: "150 45% 45%",
     image: hairFriendImg,
     details: { fa: hairFriendDetailsFa, en: hairFriendDetailsEn },
+  },
+  {
+    id: seed.length + 2,
+    name: { en: "Luxury Coin All-in-One Skin Serum", fa: "سیروم مغذی لاکچری کوین" },
+    category: "cosmetics",
+    brand: "Dr.Biz",
+    price: 1900,
+    shade: "210 70% 50%",
+    image: luxuryCoinImg,
+    details: {
+      fa: `🌿 معرفی محصول
+
+سیروم مغذی لاکچری کوین دکتر بیز یک محصول تخصصی مراقبت از پوست است که برای آبرسانی عمیق، تغذیه پوست و افزایش شفافیت و درخشندگی پوست ساخته شده است.
+
+این سیروم با ترکیبات مغذی و فرمول پیشرفته، به بازسازی پوست کمک کرده و ظاهر پوست را جوان‌تر و سالم‌تر نشان می‌دهد.
+
+✨ ویژگی‌ها و مزایا
+✔ آبرسانی عمیق پوست
+✔ کمک به روشن شدن و شفافیت پوست
+✔ تغذیه کامل سلول‌های پوستی
+✔ کاهش خشکی و زبری پوست
+✔ کمک به جوان‌سازی پوست
+✔ ایجاد نرمی و لطافت طبیعی
+
+🌸 مناسب برای چه کسانی است؟
+✔ پوست خشک و کم‌آب
+✔ پوست خسته و کدر
+✔ افرادی که دنبال پوست شاداب‌تر هستند
+✔ مناسب برای خانم‌ها و آقایان
+
+🌱 طرز استفاده
+• روی پوست تمیز استفاده شود
+• چند قطره روی صورت یا پوست بزنید
+• به آرامی ماساژ داده شود
+• روزانه ۱ تا ۲ بار استفاده گردد
+
+⏱️ زمان مشاهده نتیجه
+• چند روز اول: نرمی و آبرسانی محسوس
+• ۲ تا ۳ هفته: روشن‌تر شدن پوست
+• استفاده مداوم: بهبود بافت و شادابی پوست
+
+⚠️ نکات مهم
+• استفاده منظم برای نتیجه بهتر ضروری است
+• روی پوست تمیز استفاده شود
+• در کنار مراقبت روزانه اثرگذاری بیشتر دارد
+
+💎 جمع‌بندی
+سیروم لاکچری کوین دکتر بیز یک انتخاب مناسب برای کسانی است که می‌خواهند پوستی نرم، شفاف، جوان و سالم داشته باشند.`,
+      en: `🌿 Product Introduction
+
+Dr.Biz Luxury Coin Nourishing Serum is a specialized skincare product designed for deep hydration, skin nourishment, and enhanced clarity and radiance.
+
+With a nutrient-rich advanced formula, it helps regenerate the skin and gives it a younger, healthier appearance.
+
+✨ Features & Benefits
+✔ Deep skin hydration
+✔ Helps brighten and clarify skin
+✔ Full nourishment of skin cells
+✔ Reduces dryness and roughness
+✔ Supports skin rejuvenation
+✔ Creates natural softness and smoothness
+
+🌸 Who Is It For?
+✔ Dry and dehydrated skin
+✔ Tired and dull skin
+✔ Anyone seeking fresher, more vibrant skin
+✔ Suitable for both women and men
+
+🌱 How to Use
+• Apply on clean skin
+• Place a few drops on the face
+• Massage gently
+• Use 1–2 times daily
+
+⏱️ Expected Results
+• First days: noticeable softness and hydration
+• 2–3 weeks: brighter skin tone
+• Continued use: improved texture and radiance
+
+⚠️ Important Notes
+• Regular use is essential for best results
+• Apply on clean skin
+• Works best alongside daily skincare routine
+
+💎 Summary
+Dr.Biz Luxury Coin Serum is an ideal choice for those who want soft, clear, youthful, and healthy skin.`,
+    },
   },
 ];
