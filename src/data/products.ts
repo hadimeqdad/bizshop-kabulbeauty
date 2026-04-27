@@ -3,6 +3,7 @@ import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
 import claySoapImg from "@/assets/product-clay-soap.jpg";
+import stressReliefImg from "@/assets/product-stress-relief.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -580,6 +581,89 @@ It is ideal for deep cleansing, oil control, and helping skin look clearer.
 
 💚 Summary
 Dr.Biz Clay Soap is a natural and effective choice for anyone who wants cleaner, clearer, and healthier skin.`,
+    },
+  },
+  {
+    id: 1000,
+    name: { fa: "مفرح استرس دکتر بیز", en: "Dr.Biz Stress Relief" },
+    brand: "Dr.Biz",
+    category: "food",
+    price: 450,
+    shade: "25 90% 55%",
+    image: stressReliefImg,
+    details: {
+      fa: `🌱 معرفی محصول
+مفرح استرس دکتر بیز یک محصول گیاهی و طبیعی است که برای کمک به کاهش استرس، اضطراب و ایجاد آرامش ذهنی طراحی شده است.
+
+این محصول با ترکیبات گیاهی مؤثر، به بهبود حالت روحی کمک کرده و احساس آرامش و تعادل را در بدن افزایش می‌دهد.
+
+✨ ویژگی‌ها و مزایا
+✔ کمک به کاهش استرس و اضطراب
+✔ ایجاد آرامش ذهنی و جسمی
+✔ کمک به بهبود کیفیت خواب
+✔ افزایش تمرکز و آرامش فکری
+✔ کمک به تعادل حالت روحی
+✔ محصول طبیعی و گیاهی
+
+👥 مناسب برای چه کسانی است؟
+✔ افرادی که استرس کاری یا روزمره دارند
+✔ کسانی که خواب نامنظم دارند
+✔ افراد دارای اضطراب و نگرانی
+✔ مناسب برای زندگی پرمشغله
+
+🌿 طرز استفاده
+• طبق دستور روی بسته استفاده شود
+• معمولاً روزانه ۱ تا ۲ بار
+• بهتر است بعد از غذا مصرف گردد
+
+⏱️ زمان مشاهده نتیجه
+• چند روز اول: احساس آرامش نسبی
+• ۱ تا ۲ هفته: کاهش استرس و تنش
+• استفاده مداوم: بهبود حالت روحی و خواب
+
+⚠️ نکات مهم
+• مصرف منظم برای نتیجه بهتر ضروری است
+• همراه با سبک زندگی سالم اثرگذاری بیشتر دارد
+• در صورت حساسیت خاص با مشوره استفاده شود
+
+💚 جمع‌بندی
+مفرح استرس دکتر بیز یک انتخاب مناسب برای کسانی است که می‌خواهند آرامش بیشتر، استرس کمتر و زندگی متعادل‌تر داشته باشند.`,
+      en: `🌱 Product Introduction
+Dr.Biz Stress Relief is a natural herbal product designed to help reduce stress, anxiety and bring mental calm.
+
+With effective herbal ingredients, it helps improve mood and increase the feeling of calm and balance in the body.
+
+✨ Features & Benefits
+✔ Helps reduce stress and anxiety
+✔ Brings mental and physical calm
+✔ Helps improve sleep quality
+✔ Boosts focus and mental relaxation
+✔ Helps balance mood
+✔ Natural and herbal product
+
+👥 Who Is It For?
+✔ People with work or daily stress
+✔ Those with irregular sleep
+✔ People with anxiety and worry
+✔ Suitable for busy lifestyles
+
+🌿 How to Use
+• Use according to package instructions
+• Typically 1–2 times daily
+• Best taken after meals
+
+⏱️ Expected Results
+• First days: noticeable calming feeling
+• 1–2 weeks: reduced stress and tension
+• Continued use: improved mood and sleep
+
+⚠️ Important Notes
+• Regular use is essential for best results
+• Works better alongside a healthy lifestyle
+• Consult a specialist in case of allergies
+
+💚 Summary
+Dr.Biz Stress Relief is a great choice for those who want more calm, less stress, and a more balanced life.`,
     },
   },
 ];
