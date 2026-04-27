@@ -135,11 +135,97 @@ const seed: Array<{ en: string; fa: string; cat: Category; brand: Brand; price: 
   { en: "Flax Seeds Ground 300g", fa: "دانه کتان آسیاب شده ۳۰۰g", cat: "food", brand: "Dynamin", price: 280 },
 ];
 
-export const products: Product[] = seed.map((s, i) => ({
-  id: i + 1,
-  name: { en: s.en, fa: s.fa },
-  category: s.cat,
-  brand: s.brand,
-  price: s.price,
-  shade: tint(s.cat, i),
-}));
+const hairFriendDetailsFa = `🌿 معرفی محصول
+
+تونیک هیرفرند داکتر بیز یک محصول مراقبتی تخصصی برای مو و پوست سر است که برای تقویت ریشه مو، کاهش ریزش مو و کمک به رشد طبیعی موها ساخته شده است.
+
+این تونیک با ترکیبات گیاهی و فرمول پیشرفته، به سلامت پوست سر کمک کرده و شرایط بهتر برای رشد مو فراهم می‌سازد.
+
+✨ ویژگی‌ها و فواید
+✔ کمک به کاهش ریزش مو
+✔ تقویت ریشه و فولیکول مو
+✔ کمک به رشد دوباره موهای ضعیف
+✔ بهبود گردش خون در پوست سر
+✔ کاهش شوره و خارش سر
+✔ افزایش ضخامت و استحکام مو
+
+🌱 طرز استفاده
+• روی پوست سر تمیز استفاده شود
+• مقدار مناسب روی ریشه مو اسپری گردد
+• به آرامی ماساژ داده شود
+• نیاز به شستشو ندارد
+• روزانه یا طبق هدایت استفاده شود
+
+⏱️ زمان مشاهده نتیجه
+• هفته‌های اول: کاهش خارش و چربی
+• ۲ تا ۴ هفته: کاهش ریزش مو
+• ۱ تا ۳ ماه: تقویت و رشد موهای جدید
+
+👨‍⚕️ مناسب برای چه کسانی است؟
+✔ افرادی که ریزش مو دارند
+✔ موهای ضعیف و نازک
+✔ کسانی که شوره یا خارش سر دارند
+✔ قابل استفاده برای خانم‌ها و آقایان
+
+⚠️ نکات مهم
+• نتیجه به مرور زمان دیده می‌شود
+• استفاده منظم بسیار مهم است
+• همراه با تغذیه سالم نتیجه بهتر می‌دهد`;
+
+const hairFriendDetailsEn = `🌿 Product Introduction
+
+Dr.Biz Hair Friend Tonic is a specialized hair and scalp care product designed to strengthen hair roots, reduce hair fall, and support natural hair growth.
+
+With a herbal-based advanced formula, it improves scalp health and creates better conditions for hair growth.
+
+✨ Features & Benefits
+✔ Helps reduce hair fall
+✔ Strengthens hair roots and follicles
+✔ Supports regrowth of weak hair
+✔ Improves scalp blood circulation
+✔ Reduces dandruff and itching
+✔ Increases hair thickness and strength
+
+🌱 How to Use
+• Apply on a clean scalp
+• Spray a suitable amount on hair roots
+• Massage gently
+• No rinsing required
+• Use daily or as directed
+
+⏱️ Expected Results
+• First weeks: less itching and oiliness
+• 2–4 weeks: reduced hair fall
+• 1–3 months: stronger growth of new hair
+
+👨‍⚕️ Who Is It For?
+✔ People experiencing hair loss
+✔ Weak and thin hair
+✔ Those with dandruff or scalp itching
+✔ Suitable for both women and men
+
+⚠️ Important Notes
+• Results appear gradually
+• Regular use is essential
+• Healthy nutrition enhances results`;
+
+export const products: Product[] = [
+  ...seed.map((s, i) => ({
+    id: i + 1,
+    name: { en: s.en, fa: s.fa },
+    category: s.cat,
+    brand: s.brand,
+    price: s.price,
+    shade: tint(s.cat, i),
+  })),
+  {
+    id: seed.length + 1,
+    name: { en: "Hair Friend Hair Tonic 300ml", fa: "تونیک مو هیرفرند ۳۰۰ml" },
+    category: "healthcare",
+    brand: "Dr.Biz",
+    price: 850,
+    shade: "150 45% 45%",
+    image: hairFriendImg,
+    details: { fa: hairFriendDetailsFa, en: hairFriendDetailsEn },
+  },
+];
