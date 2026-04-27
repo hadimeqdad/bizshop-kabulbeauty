@@ -1,5 +1,6 @@
 import hairFriendImg from "@/assets/product-hair-friend.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
+import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -314,6 +315,93 @@ With a nutrient-rich advanced formula, it helps regenerate the skin and gives it
 
 💎 Summary
 Dr.Biz Luxury Coin Serum is an ideal choice for those who want soft, clear, youthful, and healthy skin.`,
+    },
+  },
+  {
+    id: seed.length + 3,
+    name: { en: "Fumaria Blood Purifier Herbal Tea", fa: "دمنوش شاهتره مصفی خون" },
+    category: "food",
+    brand: "Dr.Biz",
+    price: 1400,
+    shade: "45 70% 50%",
+    image: fumariaTeaImg,
+    details: {
+      fa: `🌱 معرفی محصول
+
+دمنوش شاهتره مصفی خون دکتر بیز یک نوشیدنی گیاهی طبیعی است که برای پاکسازی بدن و کمک به تصفیه خون طراحی شده است.
+
+این دمنوش با استفاده از گیاه شاهتره، به بهبود عملکرد کبد و سیستم داخلی بدن کمک کرده و باعث احساس سبکی و سلامت بیشتر می‌شود.
+
+✨ ویژگی‌ها و مزایا
+✔ کمک به تصفیه و پاکسازی خون
+✔ حمایت از عملکرد سالم کبد
+✔ کمک به کاهش جوش و مشکلات پوستی ناشی از خون کثیف
+✔ کمک به بهبود هضم و گوارش
+✔ کمک به احساس سبکی بدن
+✔ کاملاً گیاهی و طبیعی
+
+🌿 مناسب برای چه کسانی است؟
+✔ افرادی که دچار جوش و لک پوستی هستند
+✔ کسانی که احساس خستگی و سنگینی بدن دارند
+✔ افرادی که به پاکسازی بدن اهمیت می‌دهند
+✔ مناسب برای استفاده روزانه
+
+☕ طرز استفاده
+• یک ساشه دمنوش را در آب جوش قرار دهید
+• ۵ تا ۱۰ دقیقه صبر کنید
+• روزانه ۱ تا ۲ بار مصرف شود
+• بهتر است بعد از غذا یا طبق توصیه استفاده گردد
+
+⏱️ زمان مشاهده نتیجه
+• چند روز اول: احساس سبک شدن بدن
+• ۲ تا ۳ هفته: بهبود وضعیت پوست و گوارش
+• استفاده منظم: کمک به پاکسازی بهتر بدن
+
+⚠️ نکات مهم
+• مصرف منظم برای نتیجه بهتر ضروری است
+• در کنار تغذیه سالم اثرگذاری بیشتر دارد
+• برای افراد خاص (باردار/بیماری خاص) با مشوره استفاده شود
+
+💚 جمع‌بندی
+دمنوش شاهتره دکتر بیز یک انتخاب طبیعی و مناسب برای کسانی است که می‌خواهند بدن سالم‌تر، خون پاک‌تر و پوست شفاف‌تر داشته باشند.`,
+      en: `🌱 Product Introduction
+
+Dr.Biz Fumaria Blood Purifier Herbal Tea is a natural herbal drink designed for body detox and helping purify the blood.
+
+Made with Fumaria (Shahtareh) herb, it supports liver function and the body's internal systems, leaving you feeling lighter and healthier.
+
+✨ Features & Benefits
+✔ Helps purify and cleanse the blood
+✔ Supports healthy liver function
+✔ Helps reduce acne and skin problems caused by impure blood
+✔ Supports better digestion
+✔ Promotes a feeling of lightness
+✔ 100% herbal and natural
+
+🌿 Who Is It For?
+✔ People with acne or skin blemishes
+✔ Those feeling tired and heavy
+✔ Anyone focused on body detox
+✔ Suitable for daily use
+
+☕ How to Use
+• Place one sachet in boiling water
+• Steep for 5–10 minutes
+• Drink 1–2 times daily
+• Best taken after meals or as advised
+
+⏱️ Expected Results
+• First days: feeling of lightness
+• 2–3 weeks: improved skin and digestion
+• Continued use: better overall body cleanse
+
+⚠️ Important Notes
+• Regular use is essential for best results
+• Works best alongside a healthy diet
+• Pregnant women or those with conditions should consult before use
+
+💚 Summary
+Dr.Biz Fumaria Herbal Tea is a natural choice for anyone seeking a healthier body, purer blood, and clearer skin.`,
     },
   },
 ];
