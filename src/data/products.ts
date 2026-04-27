@@ -493,4 +493,93 @@ In addition to its delicious taste, it's a great choice for a healthy lifestyle.
 Dr.Biz Supreme Coffee is an excellent choice for those who want more energy, better focus, and a healthier alternative to regular coffee.`,
     },
   },
+  {
+    id: 999,
+    name: { en: "Dr.Biz Clay Soap 100g", fa: "صابون خاک رس دکتر بیز ۱۰۰ گرم" },
+    category: "healthcare",
+    brand: "Dr.Biz",
+    price: 130,
+    shade: "25 65% 45%",
+    image: claySoapImg,
+    details: {
+      fa: `🌿 معرفی محصول
+
+صابون خاک رس دکتر بیز یک صابون طبیعی و مراقبتی برای پوست است که با استفاده از خاک رس طبیعی و ترکیبات گیاهی ساخته شده است.
+
+این صابون برای پاکسازی عمیق پوست، کنترل چربی و کمک به شفافیت پوست بسیار مناسب می‌باشد.
+
+✨ ویژگی‌ها و مزایا
+✔ پاکسازی عمیق پوست از آلودگی‌ها
+✔ کمک به کوچک شدن منافذ باز پوست
+✔ کنترل چربی اضافی پوست
+✔ کمک به رفع جوش و لک‌های پوستی
+✔ ایجاد نرمی و شفافیت پوست
+✔ مناسب برای استفاده روزانه
+
+🌸 مناسب برای چه کسانی است؟
+✔ پوست‌های چرب و مختلط
+✔ افرادی که جوش و آکنه دارند
+✔ کسانی که پوست کدر و خسته دارند
+✔ مناسب برای خانم‌ها و آقایان
+
+🧼 طرز استفاده
+• صورت یا بدن را با آب مرطوب کنید
+• صابون را به آرامی روی پوست ماساژ دهید
+• ۱ تا ۲ دقیقه صبر کنید
+• سپس با آب بشویید
+• روزانه ۱ تا ۲ بار استفاده شود
+
+⏱️ زمان مشاهده نتیجه
+• چند روز اول: احساس تمیزی و سبکی پوست
+• ۱ تا ۲ هفته: کاهش چربی و جوش‌ها
+• استفاده مداوم: شفافیت و بهبود بافت پوست
+
+⚠️ نکات مهم
+• از تماس مستقیم با چشم جلوگیری شود
+• استفاده منظم برای نتیجه بهتر ضروری است
+• بعد از شستشو از مرطوب‌کننده استفاده شود
+
+💚 جمع‌بندی
+صابون خاک رس دکتر بیز یک انتخاب طبیعی و مؤثر برای کسانی است که می‌خواهند پوستی پاک، شفاف و سالم‌تر داشته باشند.`,
+      en: `🌿 Product Introduction
+
+Dr.Biz Clay Soap is a natural skincare soap made with natural clay and herbal ingredients.
+
+It is ideal for deep cleansing, oil control, and helping skin look clearer.
+
+✨ Features & Benefits
+✔ Deep cleanses skin from impurities
+✔ Helps minimize open pores
+✔ Controls excess oil
+✔ Helps clear acne and skin blemishes
+✔ Creates softness and clarity
+✔ Suitable for daily use
+
+🌸 Who Is It For?
+✔ Oily and combination skin
+✔ People with acne and breakouts
+✔ Those with dull and tired skin
+✔ Suitable for both women and men
+
+🧼 How to Use
+• Wet face or body with water
+• Gently massage the soap onto the skin
+• Wait 1–2 minutes
+• Rinse with water
+• Use 1–2 times daily
+
+⏱️ Expected Results
+• First days: clean and refreshed skin feeling
+• 1–2 weeks: reduced oil and breakouts
+• Continued use: clearer skin and improved texture
+
+⚠️ Important Notes
+• Avoid direct eye contact
+• Regular use is essential for best results
+• Apply moisturizer after washing
+
+💚 Summary
+Dr.Biz Clay Soap is a natural and effective choice for anyone who wants cleaner, clearer, and healthier skin.`,
+    },
+  },
 ];
