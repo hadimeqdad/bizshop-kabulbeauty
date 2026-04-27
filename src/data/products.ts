@@ -1,6 +1,7 @@
 import hairFriendImg from "@/assets/product-hair-friend.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
+import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -402,6 +403,93 @@ Made with Fumaria (Shahtareh) herb, it supports liver function and the body's in
 
 💚 Summary
 Dr.Biz Fumaria Herbal Tea is a natural choice for anyone seeking a healthier body, purer blood, and clearer skin.`,
+    },
+  },
+  {
+    id: seed.length + 4,
+    name: { en: "Dr.Biz Supreme Instant Coffee", fa: "قهوه فوری سوپریم دکتر بیز" },
+    category: "medicinal",
+    brand: "Dr.Biz",
+    price: 1350,
+    shade: "30 70% 45%",
+    image: supremeCoffeeImg,
+    details: {
+      fa: `🌿 معرفی محصول
+
+قهوه سوپریم دکتر بیز یک نوشیدنی سالم و انرژی‌بخش است که با ترکیب قهوه و عصاره‌های گیاهی (مانند گانودرما) تهیه شده و برای افزایش انرژی، تمرکز و بهبود حالت عمومی بدن طراحی شده است.
+
+این قهوه علاوه بر طعم خوش‌مزه، یک انتخاب مناسب برای سبک زندگی سالم نیز می‌باشد.
+
+✨ ویژگی‌ها و مزایا
+✔ افزایش انرژی و رفع خستگی
+✔ کمک به افزایش تمرکز و هوشیاری
+✔ مناسب برای شروع روز پرانرژی
+✔ کمک به بهبود حالت عمومی بدن
+✔ دارای ترکیبات گیاهی و طبیعی
+✔ طعم خوش‌مزه و متفاوت از قهوه عادی
+
+👥 مناسب برای چه کسانی است؟
+✔ افرادی که کار زیاد و خستگی دارند
+✔ دانشجویان و کارمندان
+✔ کسانی که نیاز به تمرکز بالا دارند
+✔ علاقه‌مندان به قهوه سالم و خاص
+
+☕ طرز استفاده
+• یک ساشه را در یک فنجان آب داغ حل کنید
+• خوب هم بزنید
+• روزانه ۱ تا ۲ بار استفاده شود
+• بهترین زمان: صبح یا قبل از کار
+
+⏱️ زمان مشاهده اثر
+• دقایق اول: افزایش انرژی
+• استفاده روزانه: بهبود تمرکز و کاهش خستگی
+• مصرف مداوم: کمک به بهبود سبک زندگی
+
+⚠️ نکات مهم
+• در مصرف زیاده‌روی نشود
+• برای افراد حساس به کافین با احتیاط استفاده شود
+• همراه با تغذیه سالم اثر بهتر دارد
+
+💚 جمع‌بندی
+قهوه سوپریم دکتر بیز یک انتخاب عالی برای کسانی است که می‌خواهند انرژی بیشتر، تمرکز بهتر و یک نوشیدنی سالم‌تر نسبت به قهوه معمولی داشته باشند.`,
+      en: `🌿 Product Introduction
+
+Dr.Biz Supreme Coffee is a healthy, energizing drink made by combining coffee with herbal extracts (such as Ganoderma) — designed to boost energy, focus, and overall wellbeing.
+
+In addition to its delicious taste, it's a great choice for a healthy lifestyle.
+
+✨ Features & Benefits
+✔ Boosts energy and relieves fatigue
+✔ Helps improve focus and alertness
+✔ Perfect for an energetic start to the day
+✔ Supports overall body wellbeing
+✔ Contains natural herbal ingredients
+✔ Delicious taste, different from regular coffee
+
+👥 Who Is It For?
+✔ People with heavy workload or fatigue
+✔ Students and office workers
+✔ Anyone needing high concentration
+✔ Lovers of healthy, premium coffee
+
+☕ How to Use
+• Dissolve one sachet in a cup of hot water
+• Stir well
+• Drink 1–2 times daily
+• Best time: morning or before work
+
+⏱️ Expected Results
+• First minutes: energy boost
+• Daily use: improved focus and less fatigue
+• Continued use: healthier lifestyle support
+
+⚠️ Important Notes
+• Do not overconsume
+• Use with caution if sensitive to caffeine
+• Works best alongside a healthy diet
+
+💚 Summary
+Dr.Biz Supreme Coffee is an excellent choice for those who want more energy, better focus, and a healthier alternative to regular coffee.`,
     },
   },
 ];
