@@ -2,6 +2,7 @@ import hairFriendImg from "@/assets/product-hair-friend.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
+import claySoapImg from "@/assets/product-clay-soap.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -79,7 +80,7 @@ const seed: Array<{ en: string; fa: string; cat: Category; brand: Brand; price: 
   { en: "Blood Pressure Monitor", fa: "فشارسنج دیجیتال", cat: "healthcare", brand: "Dynamin", price: 2480 },
   { en: "Face Mask Pack 50", fa: "ماسک صورت بسته ۵۰", cat: "healthcare", brand: "Setin", price: 380 },
   { en: "Cotton Swabs 200", fa: "گوش‌پاک‌کن ۲۰۰", cat: "healthcare", brand: "Setin", price: 90 },
-  { en: "Feminine Care Pads", fa: "پد بهداشتی بانوان", cat: "healthcare", brand: "Setin", price: 180 },
+  
   { en: "Lip Balm Honey", fa: "بالم لب عسل", cat: "healthcare", brand: "Biene Star", price: 120 },
   { en: "Nasal Saline Spray", fa: "اسپری بینی سالین", cat: "healthcare", brand: "Dr.Biz", price: 220 },
 
