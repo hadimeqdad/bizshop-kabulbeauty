@@ -35,30 +35,8 @@ const tint = (cat: Category, i: number) => TINTS[cat][i % TINTS[cat].length];
 
 // Generate 100 products: 25 per category, distributed across brands
 const seed: Array<{ en: string; fa: string; cat: Category; brand: Brand; price: number }> = [
-  // ---------- Medicinal (25) ----------
-  { en: "Vitamin C 1000mg Tablets", fa: "قرص ویتامین سی ۱۰۰۰ میلی‌گرم", cat: "medicinal", brand: "Dr.Biz", price: 480 },
-  { en: "Multivitamin Complex", fa: "مولتی‌ویتامین کامل", cat: "medicinal", brand: "Dr.Biz", price: 680 },
-  { en: "Omega-3 Fish Oil", fa: "روغن ماهی امگا ۳", cat: "medicinal", brand: "Dynamin", price: 920 },
-  { en: "Vitamin D3 5000 IU", fa: "ویتامین د۳ ۵۰۰۰ واحد", cat: "medicinal", brand: "Dr.Biz", price: 540 },
-  { en: "Calcium + Magnesium", fa: "کلسیم و منیزیم", cat: "medicinal", brand: "Setin", price: 460 },
-  { en: "Iron Plus Folic Acid", fa: "آهن و فولیک اسید", cat: "medicinal", brand: "Setin", price: 380 },
-  { en: "Zinc Immune Support", fa: "زینک تقویت ایمنی", cat: "medicinal", brand: "Dynamin", price: 420 },
-  { en: "Probiotic 50 Billion", fa: "پروبیوتیک ۵۰ میلیارد", cat: "medicinal", brand: "Biene Star", price: 1180 },
-  { en: "Coenzyme Q10", fa: "کوآنزیم کیو ۱۰", cat: "medicinal", brand: "Dynamin", price: 1280 },
-  { en: "Cough Relief Syrup", fa: "شربت ضد سرفه", cat: "medicinal", brand: "Dr.Biz", price: 280 },
-  { en: "Pain Relief Gel", fa: "ژل ضد درد", cat: "medicinal", brand: "Setin", price: 320 },
-  { en: "Cold & Flu Tablets", fa: "قرص سرماخوردگی و آنفولانزا", cat: "medicinal", brand: "Dr.Biz", price: 240 },
-  { en: "Echinacea Immunity", fa: "اچیناسه تقویت ایمنی", cat: "medicinal", brand: "Biene Star", price: 720 },
-  { en: "Ginseng Energy Caps", fa: "کپسول جینسینگ انرژی", cat: "medicinal", brand: "Biene Star", price: 880 },
-  { en: "Turmeric Curcumin", fa: "زردچوبه کورکومین", cat: "medicinal", brand: "Dynamin", price: 640 },
-  { en: "Melatonin Sleep Aid", fa: "ملاتونین کمک خواب", cat: "medicinal", brand: "Dynamin", price: 580 },
-  { en: "Glucosamine Joint Care", fa: "گلوکوزامین مراقبت مفاصل", cat: "medicinal", brand: "Setin", price: 980 },
-  { en: "B-Complex Energy", fa: "بی کمپلکس انرژی", cat: "medicinal", brand: "Dr.Biz", price: 520 },
-  { en: "Vitamin E 400 IU", fa: "ویتامین ای ۴۰۰", cat: "medicinal", brand: "Dr.Biz", price: 460 },
-  { en: "Magnesium Glycinate", fa: "منیزیم گلیسینات", cat: "medicinal", brand: "Dynamin", price: 740 },
-  { en: "Royal Jelly Capsules", fa: "کپسول ژل رویال", cat: "medicinal", brand: "Biene Star", price: 1480 },
-  { en: "Spirulina Greens", fa: "اسپیرولینا گیاهی", cat: "medicinal", brand: "Biene Star", price: 820 },
-  
+  // ---------- Medicinal: only coffee products (appended below) ----------
+
 
   // ---------- Healthcare (25) ----------
   { en: "Antibacterial Hand Soap", fa: "صابون ضدباکتری دست", cat: "healthcare", brand: "Setin", price: 140 },
