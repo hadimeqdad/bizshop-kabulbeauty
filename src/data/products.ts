@@ -4,6 +4,7 @@ import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
 import claySoapImg from "@/assets/product-clay-soap.jpg";
 import stressReliefImg from "@/assets/product-stress-relief.jpg";
+import coffeeLatteImg from "@/assets/product-coffee-latte.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -56,7 +57,6 @@ const seed: Array<{ en: string; fa: string; cat: Category; brand: Brand; price: 
   { en: "Spirulina Greens", fa: "اسپیرولینا گیاهی", cat: "medicinal", brand: "Biene Star", price: 820 },
   { en: "Antacid Chewables", fa: "قرص جویدنی ضد اسید", cat: "medicinal", brand: "Setin", price: 180 },
   { en: "Allergy Relief Tabs", fa: "قرص ضد حساسیت", cat: "medicinal", brand: "Setin", price: 260 },
-  { en: "Children's Vitamin Drops", fa: "قطره ویتامین کودکان", cat: "medicinal", brand: "Dr.Biz", price: 380 },
 
   // ---------- Healthcare (25) ----------
   { en: "Antibacterial Hand Soap", fa: "صابون ضدباکتری دست", cat: "healthcare", brand: "Setin", price: 140 },
@@ -664,6 +664,91 @@ With effective herbal ingredients, it helps improve mood and increase the feelin
 
 💚 Summary
 Dr.Biz Stress Relief is a great choice for those who want more calm, less stress, and a more balanced life.`,
+    },
+  },
+  {
+    id: 1001,
+    name: { fa: "قهوه لاته دکتر بیز", en: "Dr.Biz Coffee Latte" },
+    brand: "Dr.Biz",
+    category: "medicinal",
+    price: 1350,
+    shade: "30 60% 45%",
+    image: coffeeLatteImg,
+    details: {
+      fa: `🌿 معرفی محصول
+قهوه لاته دکتر بیز یک نوشیدنی خوش‌طعم و ملایم است که از ترکیب قهوه با شیر و ترکیبات گیاهی تهیه شده و برای کسانی که به دنبال یک قهوه نرم، خوش‌مزه و انرژی‌بخش هستند، انتخاب بسیار مناسب می‌باشد.
+
+این محصول علاوه بر طعم عالی، به افزایش انرژی و ایجاد حس آرامش در طول روز کمک می‌کند.
+
+✨ ویژگی‌ها و مزایا
+✔ طعم نرم و ملایم (مناسب برای همه)
+✔ افزایش انرژی و رفع خستگی
+✔ کمک به تمرکز در کارهای روزانه
+✔ مناسب برای شروع یک روز خوب
+✔ ترکیب قهوه با شیر برای طعم بهتر
+✔ قابل استفاده در هر زمان
+
+👥 مناسب برای چه کسانی است؟
+✔ کسانی که قهوه تلخ را دوست ندارند
+✔ افرادی که دنبال انرژی ملایم هستند
+✔ دانشجویان و کارمندان
+✔ علاقه‌مندان به نوشیدنی‌های گرم و خوش‌طعم
+
+☕ طرز استفاده
+• یک ساشه را در یک فنجان آب داغ حل کنید
+• خوب هم بزنید تا کاملاً مخلوط شود
+• روزانه ۱ تا ۲ بار استفاده شود
+• بهترین زمان: صبح یا هنگام خستگی
+
+⏱️ زمان مشاهده اثر
+• دقایق اول: افزایش انرژی
+• استفاده روزانه: بهبود تمرکز و کاهش خستگی
+• مصرف مداوم: کمک به داشتن روزی فعال‌تر
+
+⚠️ نکات مهم
+• در مصرف زیاده‌روی نشود
+• برای افراد حساس به کافین با احتیاط استفاده شود
+• همراه با سبک زندگی سالم نتیجه بهتر دارد
+
+💚 جمع‌بندی
+قهوه لاته دکتر بیز یک انتخاب عالی برای کسانی است که می‌خواهند یک قهوه خوش‌طعم، ملایم و در عین حال انرژی‌بخش داشته باشند.`,
+      en: `🌿 Product Introduction
+Dr.Biz Coffee Latte is a delicious and mild drink made from coffee blended with milk and herbal ingredients — a perfect choice for those looking for a smooth, tasty and energizing coffee.
+
+Beyond its great taste, it helps boost energy and bring a sense of calm throughout the day.
+
+✨ Features & Benefits
+✔ Smooth and mild flavor (suitable for everyone)
+✔ Boosts energy and reduces fatigue
+✔ Helps focus on daily tasks
+✔ Great for starting a good day
+✔ Coffee blended with milk for better taste
+✔ Can be enjoyed anytime
+
+👥 Who Is It For?
+✔ Those who don't like bitter coffee
+✔ People looking for mild energy
+✔ Students and office workers
+✔ Lovers of warm, tasty drinks
+
+☕ How to Use
+• Dissolve one sachet in a cup of hot water
+• Stir well until fully mixed
+• Use 1–2 times daily
+• Best time: morning or when feeling tired
+
+⏱️ Expected Results
+• First minutes: energy boost
+• Daily use: better focus and less fatigue
+• Continued use: helps maintain a more active day
+
+⚠️ Important Notes
+• Do not overconsume
+• Use with caution if sensitive to caffeine
+• Works better alongside a healthy lifestyle
+
+💚 Summary
+Dr.Biz Coffee Latte is a great choice for anyone who wants a tasty, mild, yet energizing coffee.`,
     },
   },
 ];
