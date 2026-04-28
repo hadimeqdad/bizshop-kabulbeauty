@@ -5,6 +5,7 @@ import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
 import claySoapImg from "@/assets/product-clay-soap.jpg";
 import stressReliefImg from "@/assets/product-stress-relief.jpg";
 import coffeeLatteImg from "@/assets/product-coffee-latte.jpg";
+import masalaCoffeeImg from "@/assets/product-masala-coffee.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -56,7 +57,7 @@ const seed: Array<{ en: string; fa: string; cat: Category; brand: Brand; price: 
   { en: "Royal Jelly Capsules", fa: "کپسول ژل رویال", cat: "medicinal", brand: "Biene Star", price: 1480 },
   { en: "Spirulina Greens", fa: "اسپیرولینا گیاهی", cat: "medicinal", brand: "Biene Star", price: 820 },
   { en: "Antacid Chewables", fa: "قرص جویدنی ضد اسید", cat: "medicinal", brand: "Setin", price: 180 },
-  { en: "Allergy Relief Tabs", fa: "قرص ضد حساسیت", cat: "medicinal", brand: "Setin", price: 260 },
+  
 
   // ---------- Healthcare (25) ----------
   { en: "Antibacterial Hand Soap", fa: "صابون ضدباکتری دست", cat: "healthcare", brand: "Setin", price: 140 },
@@ -749,6 +750,91 @@ Beyond its great taste, it helps boost energy and bring a sense of calm througho
 
 💚 Summary
 Dr.Biz Coffee Latte is a great choice for anyone who wants a tasty, mild, yet energizing coffee.`,
+    },
+  },
+  {
+    id: 1002,
+    name: { fa: "قهوه ماسالا دکتر بیز", en: "Dr.Biz Masala Coffee" },
+    brand: "Dr.Biz",
+    category: "medicinal",
+    price: 1350,
+    shade: "35 80% 50%",
+    image: masalaCoffeeImg,
+    details: {
+      fa: `🌿 معرفی محصول
+قهوه ماسالا دکتر بیز یک نوشیدنی خاص و خوش‌طعم است که از ترکیب قهوه با ادویه‌های گرم و گیاهی (ماسالا) تهیه شده و برای افزایش انرژی، تقویت بدن و ایجاد حس گرما و نشاط بسیار مناسب می‌باشد.
+
+این نوشیدنی علاوه بر طعم متفاوت، به بهبود حالت عمومی بدن نیز کمک می‌کند.
+
+✨ ویژگی‌ها و مزایا
+✔ افزایش انرژی و رفع خستگی
+✔ ایجاد حس گرما و نشاط در بدن
+✔ کمک به بهبود هضم غذا
+✔ تقویت بدن با ترکیبات گیاهی
+✔ طعم خاص و متفاوت نسبت به قهوه معمولی
+✔ مناسب برای فصل سرد
+
+👥 مناسب برای چه کسانی است؟
+✔ افرادی که زود خسته می‌شوند
+✔ کسانی که طبع سرد دارند
+✔ علاقه‌مندان به نوشیدنی‌های گرم و ادویه‌دار
+✔ کسانی که دنبال تنوع در نوشیدنی هستند
+
+☕ طرز استفاده
+• یک ساشه را در یک فنجان آب داغ حل کنید
+• خوب هم بزنید
+• روزانه ۱ تا ۲ بار مصرف شود
+• بهترین زمان: صبح یا بعد از غذا
+
+⏱️ زمان مشاهده اثر
+• دقایق اول: افزایش انرژی و گرمی بدن
+• استفاده روزانه: کاهش خستگی و بهبود حال عمومی
+• مصرف مداوم: کمک به تقویت بدن
+
+⚠️ نکات مهم
+• در مصرف زیاده‌روی نشود
+• برای افراد حساس به ادویه با احتیاط مصرف شود
+• در کنار تغذیه سالم اثر بهتر دارد
+
+💚 جمع‌بندی
+قهوه ماسالا دکتر بیز یک انتخاب عالی برای کسانی است که می‌خواهند انرژی بیشتر، بدن گرم‌تر و یک نوشیدنی خاص و متفاوت را تجربه کنند.`,
+      en: `🌿 Product Introduction
+Dr.Biz Masala Coffee is a unique and flavorful drink made from coffee blended with warm herbal spices (masala) — perfect for boosting energy, strengthening the body and bringing a feeling of warmth and vitality.
+
+Beyond its distinctive taste, it also helps improve the overall state of the body.
+
+✨ Features & Benefits
+✔ Boosts energy and reduces fatigue
+✔ Brings warmth and vitality to the body
+✔ Helps improve digestion
+✔ Strengthens the body with herbal ingredients
+✔ Unique flavor different from regular coffee
+✔ Great for cold seasons
+
+👥 Who Is It For?
+✔ People who get tired easily
+✔ Those with a cold constitution
+✔ Lovers of warm, spiced drinks
+✔ Those looking for variety in their beverages
+
+☕ How to Use
+• Dissolve one sachet in a cup of hot water
+• Stir well
+• Use 1–2 times daily
+• Best time: morning or after meals
+
+⏱️ Expected Results
+• First minutes: energy boost and body warmth
+• Daily use: less fatigue and improved well-being
+• Continued use: helps strengthen the body
+
+⚠️ Important Notes
+• Do not overconsume
+• Use with caution if sensitive to spices
+• Works better alongside a healthy diet
+
+💚 Summary
+Dr.Biz Masala Coffee is a great choice for those who want more energy, a warmer body, and a unique, distinctive drink experience.`,
     },
   },
 ];
