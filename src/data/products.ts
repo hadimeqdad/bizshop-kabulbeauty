@@ -6,6 +6,7 @@ import claySoapImg from "@/assets/product-clay-soap.jpg";
 import stressReliefImg from "@/assets/product-stress-relief.jpg";
 import coffeeLatteImg from "@/assets/product-coffee-latte.jpg";
 import masalaCoffeeImg from "@/assets/product-masala-coffee.jpg";
+import hotChocolateImg from "@/assets/product-hot-chocolate.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -56,7 +57,6 @@ const seed: Array<{ en: string; fa: string; cat: Category; brand: Brand; price: 
   { en: "Magnesium Glycinate", fa: "منیزیم گلیسینات", cat: "medicinal", brand: "Dynamin", price: 740 },
   { en: "Royal Jelly Capsules", fa: "کپسول ژل رویال", cat: "medicinal", brand: "Biene Star", price: 1480 },
   { en: "Spirulina Greens", fa: "اسپیرولینا گیاهی", cat: "medicinal", brand: "Biene Star", price: 820 },
-  { en: "Antacid Chewables", fa: "قرص جویدنی ضد اسید", cat: "medicinal", brand: "Setin", price: 180 },
   
 
   // ---------- Healthcare (25) ----------
@@ -835,6 +835,91 @@ Beyond its distinctive taste, it also helps improve the overall state of the bod
 
 💚 Summary
 Dr.Biz Masala Coffee is a great choice for those who want more energy, a warmer body, and a unique, distinctive drink experience.`,
+    },
+  },
+  {
+    id: 1003,
+    name: { fa: "قهوه هات چاکلیت دکتر بیز", en: "Dr.Biz Hot Chocolate Coffee" },
+    brand: "Dr.Biz",
+    category: "medicinal",
+    price: 1350,
+    shade: "25 60% 35%",
+    image: hotChocolateImg,
+    details: {
+      fa: `🌿 معرفی محصول
+قهوه هات چاکلیت دکتر بیز یک نوشیدنی خوش‌طعم و لذت‌بخش است که از ترکیب قهوه و شکلات تهیه شده و برای کسانی که به دنبال یک نوشیدنی شیرین، انرژی‌بخش و متفاوت هستند، انتخاب عالی می‌باشد.
+
+این نوشیدنی با طعم دلپذیر خود، همزمان انرژی می‌دهد و حس خوشایند ایجاد می‌کند.
+
+✨ ویژگی‌ها و مزایا
+✔ طعم شیرین و بسیار خوش‌مزه
+✔ افزایش انرژی و رفع خستگی
+✔ ایجاد حس شادی و لذت
+✔ مناسب برای نوشیدن در هر زمان
+✔ ترکیب قهوه و شکلات برای طعم خاص
+✔ مناسب برای فصل سرد
+
+👥 مناسب برای چه کسانی است؟
+✔ علاقه‌مندان به نوشیدنی‌های شیرین
+✔ کسانی که قهوه تلخ دوست ندارند
+✔ کودکان و بزرگسالان (با احتیاط در مصرف)
+✔ افرادی که به دنبال نوشیدنی لذت‌بخش هستند
+
+☕ طرز استفاده
+• یک ساشه را در یک فنجان آب داغ حل کنید
+• خوب هم بزنید تا کاملاً مخلوط شود
+• روزانه ۱ تا ۲ بار استفاده گردد
+• بهترین زمان: عصر یا زمان استراحت
+
+⏱️ زمان مشاهده اثر
+• دقایق اول: افزایش انرژی و حس خوب
+• استفاده روزانه: کاهش خستگی و بهبود حالت روحی
+• مصرف مداوم: کمک به داشتن روزی شادتر
+
+⚠️ نکات مهم
+• در مصرف زیاده‌روی نشود
+• برای افراد حساس به کافین با احتیاط استفاده شود
+• برای کودکان در مقدار کم مصرف گردد
+
+💚 جمع‌بندی
+قهوه هات چاکلیت دکتر بیز یک انتخاب عالی برای کسانی است که می‌خواهند یک نوشیدنی خوش‌مزه، انرژی‌بخش و شادی‌آور را تجربه کنند.`,
+      en: `🌿 Product Introduction
+Dr.Biz Hot Chocolate Coffee is a delicious, enjoyable drink made from coffee blended with chocolate — a great choice for anyone looking for a sweet, energizing and unique beverage.
+
+With its pleasant taste, it gives energy and creates a delightful feeling at the same time.
+
+✨ Features & Benefits
+✔ Sweet and very tasty flavor
+✔ Boosts energy and reduces fatigue
+✔ Creates a sense of joy and pleasure
+✔ Suitable for any time of day
+✔ Coffee and chocolate blend for a special taste
+✔ Great for cold seasons
+
+👥 Who Is It For?
+✔ Lovers of sweet beverages
+✔ Those who don't enjoy bitter coffee
+✔ Children and adults (with moderate use)
+✔ Anyone looking for an enjoyable drink
+
+☕ How to Use
+• Dissolve one sachet in a cup of hot water
+• Stir well until fully mixed
+• Use 1–2 times daily
+• Best time: afternoon or rest time
+
+⏱️ Expected Results
+• First minutes: energy boost and good feeling
+• Daily use: less fatigue and improved mood
+• Continued use: contributes to happier days
+
+⚠️ Important Notes
+• Do not overconsume
+• Use with caution if sensitive to caffeine
+• Use small amounts for children
+
+💚 Summary
+Dr.Biz Hot Chocolate Coffee is a great choice for anyone who wants a tasty, energizing and joyful drink experience.`,
     },
   },
 ];
