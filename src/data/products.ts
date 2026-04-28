@@ -5,6 +5,7 @@ import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
 import claySoapImg from "@/assets/product-clay-soap.jpg";
 import stressReliefImg from "@/assets/product-stress-relief.jpg";
 import coffeeLatteImg from "@/assets/product-coffee-latte.jpg";
+import masalaCoffeeImg from "@/assets/product-masala-coffee.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -56,7 +57,7 @@ const seed: Array<{ en: string; fa: string; cat: Category; brand: Brand; price: 
   { en: "Royal Jelly Capsules", fa: "کپسول ژل رویال", cat: "medicinal", brand: "Biene Star", price: 1480 },
   { en: "Spirulina Greens", fa: "اسپیرولینا گیاهی", cat: "medicinal", brand: "Biene Star", price: 820 },
   { en: "Antacid Chewables", fa: "قرص جویدنی ضد اسید", cat: "medicinal", brand: "Setin", price: 180 },
-  { en: "Allergy Relief Tabs", fa: "قرص ضد حساسیت", cat: "medicinal", brand: "Setin", price: 260 },
+  
 
   // ---------- Healthcare (25) ----------
   { en: "Antibacterial Hand Soap", fa: "صابون ضدباکتری دست", cat: "healthcare", brand: "Setin", price: 140 },
