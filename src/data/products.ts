@@ -7,6 +7,7 @@ import stressReliefImg from "@/assets/product-stress-relief.jpg";
 import coffeeLatteImg from "@/assets/product-coffee-latte.jpg";
 import masalaCoffeeImg from "@/assets/product-masala-coffee.jpg";
 import hotChocolateImg from "@/assets/product-hot-chocolate.jpg";
+import coffeeMochaImg from "@/assets/product-coffee-mocha.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
