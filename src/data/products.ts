@@ -923,4 +923,89 @@ With its pleasant taste, it gives energy and creates a delightful feeling at the
 Dr.Biz Hot Chocolate Coffee is a great choice for anyone who wants a tasty, energizing and joyful drink experience.`,
     },
   },
+  {
+    id: 1004,
+    name: { fa: "قهوه موکا دکتر بیز", en: "Dr.Biz Coffee Mocha" },
+    brand: "Dr.Biz",
+    category: "medicinal",
+    price: 1350,
+    shade: "15 70% 30%",
+    image: coffeeMochaImg,
+    details: {
+      fa: `🌿 معرفی محصول
+قهوه موکا دکتر بیز یک نوشیدنی خوش‌طعم و خاص است که از ترکیب قهوه، شکلات و شیر تهیه شده و برای کسانی که به دنبال یک نوشیدنی ملایم، انرژی‌بخش و لذت‌بخش هستند، انتخاب بسیار مناسب می‌باشد.
+
+این قهوه با طعم متعادل بین تلخی قهوه و شیرینی شکلات، تجربه‌ای متفاوت و دلچسب را فراهم می‌کند.
+
+✨ ویژگی‌ها و مزایا
+✔ طعم متعادل (نه خیلی تلخ، نه خیلی شیرین)
+✔ افزایش انرژی و رفع خستگی
+✔ ایجاد حس لذت و آرامش
+✔ کمک به تمرکز در کارهای روزانه
+✔ مناسب برای استفاده در هر زمان
+✔ ترکیب قهوه و شکلات برای طعم خاص
+
+👥 مناسب برای چه کسانی است؟
+✔ کسانی که قهوه خیلی تلخ دوست ندارند
+✔ علاقه‌مندان به نوشیدنی‌های شکلاتی
+✔ دانشجویان و کارمندان
+✔ افرادی که به دنبال انرژی ملایم هستند
+
+☕ طرز استفاده
+• یک ساشه را در یک فنجان آب داغ حل کنید
+• خوب هم بزنید تا کاملاً مخلوط شود
+• روزانه ۱ تا ۲ بار استفاده گردد
+• بهترین زمان: صبح یا عصر
+
+⏱️ زمان مشاهده اثر
+• دقایق اول: افزایش انرژی و حس خوب
+• استفاده روزانه: بهبود تمرکز و کاهش خستگی
+• مصرف مداوم: کمک به داشتن روزی فعال‌تر
+
+⚠️ نکات مهم
+• در مصرف زیاده‌روی نشود
+• برای افراد حساس به کافین با احتیاط استفاده شود
+• همراه با سبک زندگی سالم نتیجه بهتر دارد
+
+💚 جمع‌بندی
+قهوه موکا دکتر بیز یک انتخاب عالی برای کسانی است که می‌خواهند یک نوشیدنی خوش‌طعم، متعادل و انرژی‌بخش را تجربه کنند.`,
+      en: `🌿 Product Introduction
+Dr.Biz Coffee Mocha is a flavorful and special drink made from a blend of coffee, chocolate and milk — a great choice for anyone seeking a mild, energizing and enjoyable beverage.
+
+With a balanced taste between the bitterness of coffee and the sweetness of chocolate, it offers a uniquely pleasant experience.
+
+✨ Features & Benefits
+✔ Balanced flavor (not too bitter, not too sweet)
+✔ Boosts energy and reduces fatigue
+✔ Creates a sense of pleasure and calm
+✔ Helps with focus during daily tasks
+✔ Suitable for any time of day
+✔ Coffee and chocolate blend for a special taste
+
+👥 Who Is It For?
+✔ Those who don't enjoy very bitter coffee
+✔ Lovers of chocolate-based drinks
+✔ Students and office workers
+✔ Anyone seeking a mild energy boost
+
+☕ How to Use
+• Dissolve one sachet in a cup of hot water
+• Stir well until fully mixed
+• Use 1–2 times daily
+• Best time: morning or afternoon
+
+⏱️ Expected Results
+• First minutes: energy boost and good feeling
+• Daily use: improved focus and less fatigue
+• Continued use: contributes to more active days
+
+⚠️ Important Notes
+• Do not overconsume
+• Use with caution if sensitive to caffeine
+• Works better with a healthy lifestyle
+
+💚 Summary
+Dr.Biz Coffee Mocha is a great choice for anyone who wants a tasty, balanced and energizing drink experience.`,
+    },
+  },
 ];
