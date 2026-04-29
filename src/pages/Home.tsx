@@ -17,7 +17,7 @@ const Home = () => {
   const featured = [...products].sort(() => 0).slice(0, 8);
 
   const cats = [
-    { key: "medicinal", img: catMedicinal, icon: "💊" },
+    { key: "medicinal", img: catMedicinal, icon: "" },
     { key: "healthcare", img: catHealthcare, icon: "🧴" },
     { key: "cosmetics", img: catCosmetics, icon: "💄" },
     { key: "food", img: catFood, icon: "🥗" },
