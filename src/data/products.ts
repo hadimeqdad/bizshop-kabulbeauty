@@ -1,4 +1,5 @@
 import hairFriendImg from "@/assets/product-hair-friend.jpg";
+import caffeineGinsengShampooImg from "@/assets/product-caffeine-ginseng-shampoo.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
@@ -984,6 +985,109 @@ With a balanced taste between the bitterness of coffee and the sweetness of choc
 
 💚 Summary
 Dr.Biz Coffee Mocha is a great choice for anyone who wants a tasty, balanced and energizing drink experience.`,
+    },
+  },
+  {
+    id: seed.length + 100,
+    name: { en: "Caffeine & Ginseng Shampoo", fa: "شامپو کافئین و جنسینگ" },
+    category: "healthcare",
+    brand: "Dr.Biz",
+    price: 450,
+    shade: "150 55% 30%",
+    image: caffeineGinsengShampooImg,
+    details: {
+      fa: `🌿 معرفی محصول
+
+شامپو کافئین و جنسینگ بیز یک محصول تخصصی مراقبت از مو است که برای تقویت مو، کاهش ریزش و کنترل شوره سر طراحی شده است.
+
+❓ این محصول چه مشکلی را حل می‌کند؟
+کمک به کاهش ریزش مو و از بین بردن شوره سر
+
+⚙️ چگونه عمل می‌کند؟
+کافئین باعث افزایش گردش خون در پوست سر می‌شود و فولیکول‌های مو را فعال می‌کند، در حالی که جنسینگ مواد مغذی لازم را به ریشه مو رسانده و باعث تقویت و رشد بهتر موها می‌شود.
+
+✨ مهم‌ترین فواید
+✔ کاهش ریزش مو
+✔ از بین بردن شوره سر
+✔ تقویت ریشه و ساقه مو
+✔ افزایش ضخامت و حجم مو
+✔ کمک به رشد مجدد مو
+✔ ایجاد نرمی و درخشندگی مو
+✔ بهبود سلامت پوست سر
+
+🕒 روش مصرف
+• مقدار مناسب روی موهای خیس استفاده شود
+• هنگام حمام، ۲ تا ۳ بار در هفته
+
+👥 مناسب برای
+✔ افراد دارای ریزش مو
+✔ کسانی که شوره سر دارند
+✔ موهای ضعیف، نازک و کم‌حجم
+
+🚫 مناسب نیست برای
+• افراد دارای حساسیت به ترکیبات گیاهی
+• کودکان بدون مشورت پزشک
+
+⏳ زمان مشاهده نتیجه
+۲ تا ۶ هفته استفاده منظم
+
+⚠️ نکات مهم
+• از تماس با چشم جلوگیری شود
+• برای نتیجه بهتر به صورت منظم استفاده شود
+• در صورت حساسیت، مصرف را متوقف کنید
+• همراه با رژیم غذایی مناسب تاثیر بهتری دارد
+
+🏆 مزیت اصلی محصول
+ترکیب طبیعی کافئین و جنسینگ برای تقویت مو و کاهش ریزش به‌صورت مؤثر
+
+🧾 جمع‌بندی کوتاه
+این محصول برای کمک به کاهش ریزش مو و رفع شوره سر استفاده می‌شود و با داشتن ترکیباتی مانند کافئین و جنسینگ باعث تقویت ریشه مو و افزایش رشد آن می‌شود. مصرف منظم آن می‌تواند به داشتن موهایی سالم، پرپشت و درخشان کمک کند.`,
+      en: `🌿 Product Introduction
+
+Biz Caffeine & Ginseng Shampoo is a specialized hair care product designed to strengthen hair, reduce hair fall, and control dandruff.
+
+❓ What problem does it solve?
+Helps reduce hair loss and eliminate dandruff.
+
+⚙️ How does it work?
+Caffeine boosts blood circulation in the scalp and activates hair follicles, while ginseng delivers essential nutrients to the roots, strengthening hair and supporting better growth.
+
+✨ Key Benefits
+✔ Reduces hair fall
+✔ Eliminates dandruff
+✔ Strengthens hair roots and shafts
+✔ Increases thickness and volume
+✔ Supports hair regrowth
+✔ Adds softness and shine
+✔ Improves scalp health
+
+🕒 How to Use
+• Apply a suitable amount on wet hair
+• Use during shower, 2–3 times a week
+
+👥 Suitable For
+✔ People with hair fall
+✔ Those with dandruff
+✔ Weak, thin, low-volume hair
+
+🚫 Not Suitable For
+• People allergic to herbal ingredients
+• Children without medical advice
+
+⏳ Expected Results
+2 to 6 weeks of regular use
+
+⚠️ Important Notes
+• Avoid contact with eyes
+• Use regularly for best results
+• Stop use if irritation occurs
+• Works better with a healthy diet
+
+🏆 Main Advantage
+Natural blend of caffeine and ginseng to effectively strengthen hair and reduce fall.
+
+🧾 Summary
+This shampoo helps reduce hair fall and dandruff. With caffeine and ginseng, it strengthens roots and supports growth, helping you achieve healthy, thick, shiny hair with regular use.`,
     },
   },
 ];
