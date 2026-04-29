@@ -1,5 +1,6 @@
 import hairFriendImg from "@/assets/product-hair-friend.jpg";
 import caffeineGinsengShampooImg from "@/assets/product-caffeine-ginseng-shampoo.jpg";
+import exonicArganBodyWashImg from "@/assets/product-exonic-argan-body-wash.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
@@ -63,7 +64,7 @@ const seed: Array<{ en: string; fa: string; cat: Category; brand: Brand; price: 
   { en: "Face Mask Pack 50", fa: "ماسک صورت بسته ۵۰", cat: "healthcare", brand: "Setin", price: 380 },
   { en: "Cotton Swabs 200", fa: "گوش‌پاک‌کن ۲۰۰", cat: "healthcare", brand: "Setin", price: 90 },
   
-  { en: "Lip Balm Honey", fa: "بالم لب عسل", cat: "healthcare", brand: "Biene Star", price: 120 },
+  
   { en: "Nasal Saline Spray", fa: "اسپری بینی سالین", cat: "healthcare", brand: "Dr.Biz", price: 220 },
 
   // ---------- Cosmetics (25) ----------
@@ -1088,6 +1089,109 @@ Natural blend of caffeine and ginseng to effectively strengthen hair and reduce 
 
 🧾 Summary
 This shampoo helps reduce hair fall and dandruff. With caffeine and ginseng, it strengthens roots and supports growth, helping you achieve healthy, thick, shiny hair with regular use.`,
+    },
+  },
+  {
+    id: seed.length + 101,
+    name: { en: "Exonic Argan Oil Body Wash 300ml", fa: "شامپو بدن کرمی آرگان اکسونیک ۳۰۰ میل" },
+    category: "healthcare",
+    brand: "Biene Star",
+    price: 450,
+    shade: "200 50% 45%",
+    image: exonicArganBodyWashImg,
+    details: {
+      fa: `🌿 معرفی محصول
+
+شامپو بدن کرمی حاوی روغن آرگان، یک شوینده ملایم و مغذی برای پوست است که علاوه بر پاک‌کنندگی، به نرمی و رطوبت پوست کمک می‌کند.
+
+🔹 مشخصات سریع
+• نام محصول: شامپو بدن کرمی آرگان ۳۰۰ میل
+• برند: EXONIC
+• نوع محصول: شوینده بدن (Body Wash)
+• کاربرد اصلی: پاکسازی، آبرسانی و نرم‌کننده پوست
+
+❓ این محصول چه مشکلی را حل می‌کند؟
+خشکی و زبری پوست بعد از شستشو را کاهش می‌دهد.
+
+⚙️ چگونه عمل می‌کند؟
+با استفاده از روغن آرگان و ترکیبات مرطوب‌کننده، همزمان با پاکسازی، رطوبت طبیعی پوست را حفظ کرده و از خشکی جلوگیری می‌کند.
+
+✨ مهم‌ترین فواید
+✔ پاک‌کنندگی ملایم بدون آسیب به پوست
+✔ نرم‌کننده و لطافت‌بخش پوست
+✔ کمک به حفظ رطوبت طبیعی
+✔ مناسب استفاده روزانه
+✔ ایجاد حس سبکی و تمیزی بدون خشکی
+
+🕒 روش مصرف
+• مقدار مصرف: به مقدار کافی روی لیف یا دست
+• بهترین زمان مصرف: هنگام استحمام (روزانه)
+
+👥 مناسب برای
+انواع پوست، مخصوصاً پوست‌های خشک و معمولی
+
+🚫 مناسب نیست برای
+افراد با حساسیت شدید به ترکیبات معطر یا روغنی
+
+⏳ زمان مشاهده نتیجه
+از همان اولین استفاده (نرمی و لطافت قابل احساس است)
+
+⚠️ نکات مهم
+• از تماس با چشم خودداری شود
+• در صورت بروز حساسیت، مصرف قطع شود
+• در جای خشک و خنک نگهداری شود
+
+🏆 مزیت اصلی محصول
+ترکیب پاک‌کنندگی و آبرسانی در یک محصول، بدون ایجاد حس خشکی
+
+🧾 جمع‌بندی کوتاه
+این محصول برای کمک به پاکسازی و جلوگیری از خشکی پوست استفاده می‌شود و با داشتن ترکیباتی مانند روغن آرگان باعث نرمی و حفظ رطوبت پوست می‌شود. مصرف منظم آن می‌تواند به داشتن پوستی لطیف و سالم کمک کند.`,
+      en: `🌿 Product Introduction
+
+Exonic Creamy Argan Oil Body Wash is a gentle, nourishing cleanser that not only cleans the skin but also helps maintain softness and moisture.
+
+🔹 Quick Specs
+• Product: Creamy Argan Body Wash 300ml
+• Brand: EXONIC
+• Type: Body Wash
+• Main Use: Cleansing, hydration, and softening
+
+❓ What problem does it solve?
+Reduces dryness and roughness after showering.
+
+⚙️ How does it work?
+With argan oil and moisturizing ingredients, it cleanses while preserving the skin's natural moisture and preventing dryness.
+
+✨ Key Benefits
+✔ Gentle cleansing without harming the skin
+✔ Softens and smooths the skin
+✔ Helps retain natural moisture
+✔ Suitable for daily use
+✔ Leaves a clean, light feel without dryness
+
+🕒 How to Use
+• Apply a sufficient amount on a loofah or hands
+• Best used during the shower (daily)
+
+👥 Suitable For
+All skin types, especially dry and normal skin
+
+🚫 Not Suitable For
+People with severe sensitivity to fragrances or oils
+
+⏳ Expected Results
+From the very first use — softness and smoothness are noticeable
+
+⚠️ Important Notes
+• Avoid contact with eyes
+• Discontinue use if irritation occurs
+• Store in a cool, dry place
+
+🏆 Main Advantage
+Combines cleansing and hydration in one product without leaving the skin dry.
+
+🧾 Summary
+This product helps cleanse the skin and prevent dryness. With argan oil, it softens and locks in moisture, supporting smooth, healthy skin with regular use.`,
     },
   },
 ];
