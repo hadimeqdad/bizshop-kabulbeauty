@@ -97,7 +97,7 @@ const Home = () => {
               <img src={c.img} alt={t(`cat_${c.key}` as any)} loading="lazy" width={800} height={1000} className="absolute inset-0 w-full h-full object-cover transition-smooth group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent" />
               <div className="absolute bottom-0 inset-x-0 p-4 md:p-5">
-                <div className="text-2xl mb-1">{c.icon}</div>
+                {c.icon && <div className="text-2xl mb-1">{c.icon}</div>}
                 <h3 className="font-display text-xl md:text-2xl text-background">{t(`cat_${c.key}` as any)}</h3>
                 <span className="text-[10px] uppercase tracking-widest text-gold inline-flex items-center gap-1 mt-1">
                   {t("shop_now")} <Arrow className="w-3 h-3" />
