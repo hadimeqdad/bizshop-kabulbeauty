@@ -246,6 +246,7 @@ export const products: Product[] = [
     id: i + 1,
     name: { en: s.en, fa: s.fa },
     category: s.cat,
+    subcategory: inferSubcategory(s.cat, s.fa, s.en),
     brand: s.brand,
     price: s.price,
     shade: tint(s.cat, i),
