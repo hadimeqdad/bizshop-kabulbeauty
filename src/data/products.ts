@@ -1248,4 +1248,102 @@ Combines cleansing and hydration in one product without leaving the skin dry.
 This product helps cleanse the skin and prevent dryness. With argan oil, it softens and locks in moisture, supporting smooth, healthy skin with regular use.`,
     },
   },
+  {
+    id: seed.length + 102,
+    name: { en: "BIZ Avocado Body Wash 300ml", fa: "شامپو بدن عصاره آووکادو ۳۰۰ میل" },
+    category: "healthcare",
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz",
+    price: 450,
+    shade: "150 55% 45%",
+    image: exonicAvocadoBodyWashImg,
+    details: {
+      fa: `🌿 معرفی محصول
+
+🔹 مشخصات سریع
+• نام محصول: شامپو بدن عصاره آووکادو ۳۰۰ میل
+• برند: بیز
+• نوع محصول: شامپو بدن
+• کاربرد اصلی: پاکسازی و نرم‌کننده پوست بدن
+
+❓ این محصول چه مشکلی را حل می‌کند؟
+خشکی و زبری پوست بدن را کاهش داده و پوست را نرم و لطیف می‌کند.
+
+⚙️ چگونه عمل می‌کند؟
+با داشتن عصاره آووکادو که سرشار از ویتامین‌ها و چربی‌های مفید است، رطوبت پوست را حفظ کرده و از خشک شدن آن جلوگیری می‌کند.
+
+✨ مهم‌ترین فواید
+✔ آبرسانی عمیق به پوست
+✔ نرم و لطیف کردن پوست بدن
+✔ جلوگیری از خشکی و کشیدگی پوست
+✔ مناسب برای استفاده روزانه
+
+🕒 روش مصرف
+• مقدار مصرف: به مقدار کافی روی پوست مرطوب بدن
+• بهترین زمان مصرف: هنگام استحمام (روزانه)
+
+👥 مناسب برای
+افرادی با پوست خشک و معمولی
+
+🚫 مناسب نیست برای
+افرادی که به ترکیبات گیاهی خاص حساسیت دارند
+
+⏳ زمان مشاهده نتیجه
+از اولین استفاده نرمی پوست قابل احساس است (برای نتیجه بهتر مصرف مداوم)
+
+⚠️ نکات مهم
+• از تماس با چشم خودداری شود
+• در صورت بروز حساسیت، مصرف را قطع کنید
+• در جای خشک و خنک نگهداری شود
+
+🏆 مزیت اصلی محصول
+داشتن عصاره طبیعی آووکادو که همزمان پاک‌کنندگی و آبرسانی را فراهم می‌کند (برخلاف بسیاری از شوینده‌ها که فقط تمیز می‌کنند و پوست را خشک می‌کنند)
+
+🧾 جمع‌بندی کوتاه
+این محصول برای کمک به پاکسازی و نرم‌کنندگی پوست بدن استفاده می‌شود و با داشتن ترکیباتی مانند عصاره آووکادو باعث آبرسانی و جلوگیری از خشکی پوست می‌شود. مصرف منظم آن می‌تواند به داشتن پوستی نرم، لطیف و سالم کمک کند.`,
+      en: `🌿 Product Introduction
+
+🔹 Quick Specs
+• Product: Avocado Body Wash 300ml
+• Brand: BIZ
+• Type: Body Wash
+• Main Use: Cleansing and softening body skin
+
+❓ What problem does it solve?
+Reduces dryness and roughness of body skin, leaving it soft and smooth.
+
+⚙️ How does it work?
+With avocado extract rich in vitamins and beneficial fats, it retains skin's moisture and prevents dryness.
+
+✨ Key Benefits
+✔ Deep skin hydration
+✔ Softens and smooths body skin
+✔ Prevents dryness and tightness
+✔ Suitable for daily use
+
+🕒 How to Use
+• Apply a sufficient amount on wet skin
+• Best used during the shower (daily)
+
+👥 Suitable For
+People with dry and normal skin
+
+🚫 Not Suitable For
+Those sensitive to specific herbal ingredients
+
+⏳ Expected Results
+Softness noticeable from the first use (continued use for best results)
+
+⚠️ Important Notes
+• Avoid contact with eyes
+• Discontinue use if irritation occurs
+• Store in a cool, dry place
+
+🏆 Main Advantage
+Natural avocado extract provides cleansing and hydration at once (unlike many cleansers that only clean and leave skin dry).
+
+🧾 Summary
+This product helps cleanse and soften body skin. With avocado extract, it hydrates and prevents dryness. Regular use supports soft, smooth, healthy skin.`,
+    },
+  },
 ];
