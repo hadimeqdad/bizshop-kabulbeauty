@@ -61,7 +61,6 @@ const CategoryPage = () => {
             <div className="absolute bottom-0 inset-x-0 p-4 md:p-5">
               <h3 className="font-display text-xl md:text-2xl text-background">{t("all_products")}</h3>
               <span className="text-[10px] uppercase tracking-widest text-gold inline-flex items-center gap-1 mt-1">
-                {totalCount} {t("afn") /* reused label ok-ish, remove */ ? "" : ""}
                 {totalCount} <Arrow className="w-3 h-3" />
               </span>
             </div>
