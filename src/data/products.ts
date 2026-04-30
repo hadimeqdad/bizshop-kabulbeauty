@@ -1,6 +1,7 @@
 import hairFriendImg from "@/assets/product-hair-friend.jpg";
 import caffeineGinsengShampooImg from "@/assets/product-caffeine-ginseng-shampoo.jpg";
 import exonicArganBodyWashImg from "@/assets/product-exonic-argan-body-wash.jpg";
+import exonicAvocadoBodyWashImg from "@/assets/product-exonic-avocado-body-wash.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
