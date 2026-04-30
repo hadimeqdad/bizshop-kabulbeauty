@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useLang } from "@/lib/i18n";
 import { products, Category, Brand } from "@/data/products";
+import { SUBCATEGORIES, getSubcategory } from "@/data/subcategories";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,27 +12,50 @@ const cats: ("all" | Category)[] = ["all", "medicinal", "healthcare", "cosmetics
 const brands: ("all" | Brand)[] = ["all", "Dr.Biz", "Setin", "Biene Star", "Dynamin"];
 
 const Shop = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [params, setParams] = useSearchParams();
-  const initial = (params.get("cat") as Category | null) ?? "all";
-  const [active, setActive] = useState<"all" | Category>(initial);
+  const initialCat = (params.get("cat") as Category | null) ?? "all";
+  const initialSub = params.get("sub") ?? "all";
+  const [active, setActive] = useState<"all" | Category>(initialCat);
+  const [sub, setSub] = useState<string>(initialSub);
   const [brand, setBrand] = useState<"all" | Brand>("all");
   const [query, setQuery] = useState("");
 
+  // Sync URL
   useEffect(() => {
-    if (active === "all") params.delete("cat"); else params.set("cat", active);
-    setParams(params, { replace: true });
+    const next = new URLSearchParams(params);
+    if (active === "all") next.delete("cat"); else next.set("cat", active);
+    if (sub === "all") next.delete("sub"); else next.set("sub", sub);
+    setParams(next, { replace: true });
+  }, [active, sub]);
+
+  // Reset sub when category changes away from its parent
+  useEffect(() => {
+    if (active === "all") { setSub("all"); return; }
+    if (sub !== "all" && !getSubcategory(active as Category, sub)) setSub("all");
   }, [active]);
+
+  // Listen to external URL changes (e.g. coming from Category page)
+  useEffect(() => {
+    const c = (params.get("cat") as Category | null) ?? "all";
+    const s = params.get("sub") ?? "all";
+    if (c !== active) setActive(c);
+    if (s !== sub) setSub(s);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.toString()]);
+
+  const subList = active !== "all" ? SUBCATEGORIES[active as Category] ?? [] : [];
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return products.filter(p => {
       if (active !== "all" && p.category !== active) return false;
+      if (sub !== "all" && p.subcategory !== sub) return false;
       if (brand !== "all" && p.brand !== brand) return false;
       if (q && !p.name.en.toLowerCase().includes(q) && !p.name.fa.includes(q) && !p.brand.toLowerCase().includes(q)) return false;
       return true;
     });
-  }, [active, brand, query]);
+  }, [active, sub, brand, query]);
 
   return (
     <>
@@ -71,13 +95,38 @@ const Shop = () => {
               key={c}
               variant={active === c ? "default" : "outline"}
               size="sm"
-              onClick={() => setActive(c)}
+              onClick={() => { setActive(c); setSub("all"); }}
               className="rounded-full px-5"
             >
               {c === "all" ? t("all") : t(`cat_${c}` as any)}
             </Button>
           ))}
         </div>
+
+        {/* Subcategory filter */}
+        {subList.length > 0 && (
+          <div className="flex flex-wrap gap-2 justify-center mb-4">
+            <Button
+              variant={sub === "all" ? "secondary" : "ghost"}
+              size="sm"
+              onClick={() => setSub("all")}
+              className="rounded-full px-4 text-xs h-8"
+            >
+              {t("all_products")}
+            </Button>
+            {subList.map(s => (
+              <Button
+                key={s.key}
+                variant={sub === s.key ? "secondary" : "ghost"}
+                size="sm"
+                onClick={() => setSub(s.key)}
+                className="rounded-full px-4 text-xs h-8"
+              >
+                {s.name[lang]}
+              </Button>
+            ))}
+          </div>
+        )}
 
         {/* Brand filter */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
