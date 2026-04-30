@@ -8,6 +8,7 @@ import { CartProvider } from "@/lib/cart";
 import Layout from "@/components/layout/Layout";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
+import CategoryPage from "./pages/Category";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -27,6 +28,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/shop" element={<Shop />} />
+                <Route path="/category/:cat" element={<CategoryPage />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
