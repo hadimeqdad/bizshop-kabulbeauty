@@ -91,7 +91,7 @@ const Home = () => {
           {cats.map((c) => (
             <Link
               key={c.key}
-              to={`/shop?cat=${c.key}`}
+              to={`/category/${c.key}`}
               className="group relative aspect-[4/5] overflow-hidden rounded-md shadow-soft"
             >
               <img src={c.img} alt={t(`cat_${c.key}` as any)} loading="lazy" width={800} height={1000} className="absolute inset-0 w-full h-full object-cover transition-smooth group-hover:scale-110" />
