@@ -6,6 +6,7 @@ import exonicAloeBodyWashImg from "@/assets/product-exonic-aloe-body-wash.jpg";
 import exonicRoseBodyWashImg from "@/assets/product-exonic-rose-body-wash.jpg";
 import exonicMoringaBodyWashImg from "@/assets/product-exonic-moringa-body-wash.jpg";
 import exonicCaviarShampooImg from "@/assets/product-exonic-caviar-shampoo.jpg";
+import exonicCaviarBodyLotionImg from "@/assets/product-exonic-caviar-body-lotion.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
@@ -1756,6 +1757,110 @@ Combines luxury care with real hair fortification in one shampoo.
 
 🧾 Summary
 Helps strengthen and repair hair. Caviar extract enhances softness and shine, supporting healthier, stronger hair with regular use.`,
+    },
+  },
+  {
+    id: seed.length + 107,
+    name: { en: "EXONIC Caviar Fortifying Body Lotion 300ml", fa: "لوسیون بدن کَویار تقویت‌کننده اکسونیک ۳۰۰ میل" },
+    category: "healthcare",
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz",
+    price: 450,
+    shade: "155 35% 65%",
+    image: exonicCaviarBodyLotionImg,
+    details: {
+      fa: `🌿 معرفی محصول
+شامپو تقویت‌کننده کَویار EXONIC یک محصول لوکس برای مراقبت از مو است که با فرمول غنی خود به تقویت، ترمیم و افزایش درخشندگی موها کمک می‌کند و ظاهر مو را سالم‌تر و جذاب‌تر می‌سازد.
+
+🔹 مشخصات سریع
+• نام محصول: شامپو کَویار تقویت‌کننده ۳۰۰ میل
+• برند: EXONIC
+• نوع محصول: شامپو مو
+• کاربرد اصلی: تقویت، ترمیم و افزایش درخشندگی مو
+
+❓ این محصول چه مشکلی را حل می‌کند؟
+به کاهش ضعف، خشکی، کدر بودن و بی‌حالتی موها کمک می‌کند و موها را شاداب‌تر نشان می‌دهد.
+
+⚙️ چگونه عمل می‌کند؟
+این شامپو با داشتن عصاره کَویار و ترکیبات مغذی، مواد مورد نیاز مو را تأمین کرده و با تغذیه ساقه مو، باعث تقویت ساختار مو و بهبود نرمی و درخشندگی آن می‌شود.
+
+✨ مهم‌ترین فواید
+✔ تقویت‌کننده و مغذی مو
+✔ کمک به کاهش خشکی و شکنندگی
+✔ افزایش نرمی و درخشندگی مو
+✔ بهبود حالت‌پذیری
+✔ مناسب استفاده روزانه یا منظم
+
+🕒 روش مصرف
+• مقدار مصرف: مقدار کافی روی موهای خیس
+• نحوه استفاده: به آرامی ماساژ دهید تا کف کند، سپس آبکشی نمایید
+• بهترین زمان مصرف: هنگام استحمام (۲ تا ۳ بار در هفته یا در صورت نیاز روزانه)
+
+👥 مناسب برای
+انواع مو، مخصوصاً موهای ضعیف، خشک و آسیب‌دیده
+
+🚫 مناسب نیست برای
+افرادی که به ترکیبات دریایی یا پروتئینی حساسیت دارند
+
+⏳ زمان مشاهده نتیجه
+بین ۱ تا ۳ هفته استفاده منظم
+
+⚠️ نکات مهم
+• از تماس با چشم خودداری شود
+• در صورت بروز حساسیت، مصرف را متوقف کنید
+• برای نتیجه بهتر همراه نرم‌کننده استفاده شود
+
+🏆 مزیت اصلی محصول
+ترکیب مراقبت لوکس + تقویت واقعی مو در یک شامپو
+
+🧾 جمع‌بندی کوتاه
+شامپو کَویار EXONIC با ترکیبات مغذی خود به تقویت و ترمیم مو کمک کرده و باعث افزایش نرمی، درخشندگی و سلامت موها می‌شود. استفاده منظم از آن می‌تواند موهایی قوی‌تر، نرم‌تر و خوش‌حالت‌تر برای شما به همراه داشته باشد.`,
+      en: `🌿 Product Introduction
+EXONIC Caviar Fortifying Shampoo is a luxury hair care product with a rich formula that strengthens, repairs, and boosts shine — leaving hair healthier and more attractive.
+
+🔹 Quick Specs
+• Product: Caviar Fortifying Shampoo 300ml
+• Brand: EXONIC
+• Type: Hair Shampoo
+• Main Use: Strengthening, repair, and shine enhancement
+
+❓ Problem Solved
+Helps reduce weakness, dryness, dullness and lifelessness, making hair look more vibrant.
+
+⚙️ How It Works
+With caviar extract and nourishing compounds, it delivers essential nutrients to the hair shaft, strengthening structure and improving softness and shine.
+
+✨ Key Benefits
+✔ Strengthens and nourishes hair
+✔ Helps reduce dryness and breakage
+✔ Boosts softness and shine
+✔ Improves manageability
+✔ Suitable for daily or regular use
+
+🕒 How to Use
+• Apply enough to wet hair
+• Massage gently to lather, then rinse
+• Best during shower (2–3 times a week or daily as needed)
+
+👥 Suitable For
+All hair types, especially weak, dry, and damaged hair
+
+🚫 Not Suitable For
+Those sensitive to marine or protein-based ingredients
+
+⏳ Visible Results
+Between 1 to 3 weeks of regular use
+
+⚠️ Important Notes
+• Avoid contact with eyes
+• Discontinue if irritation occurs
+• Use with conditioner for best results
+
+🏆 Main Advantage
+Combines luxury care with real hair fortification in one shampoo.
+
+🧾 Summary
+EXONIC Caviar Shampoo helps strengthen and repair hair with its nourishing compounds, boosting softness, shine, and overall hair health. Regular use can give you stronger, softer, and more manageable hair.`,
     },
   },
 ];
