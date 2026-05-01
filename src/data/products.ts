@@ -2,6 +2,8 @@ import hairFriendImg from "@/assets/product-hair-friend.jpg";
 import caffeineGinsengShampooImg from "@/assets/product-caffeine-ginseng-shampoo.jpg";
 import exonicArganBodyWashImg from "@/assets/product-exonic-argan-body-wash.jpg";
 import exonicAvocadoBodyWashImg from "@/assets/product-exonic-avocado-body-wash.jpg";
+import exonicAloeBodyWashImg from "@/assets/product-exonic-aloe-body-wash.jpg";
+import exonicRoseBodyWashImg from "@/assets/product-exonic-rose-body-wash.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
@@ -1344,6 +1346,210 @@ Natural avocado extract provides cleansing and hydration at once (unlike many cl
 
 🧾 Summary
 This product helps cleanse and soften body skin. With avocado extract, it hydrates and prevents dryness. Regular use supports soft, smooth, healthy skin.`,
+    },
+  },
+  {
+    id: seed.length + 103,
+    name: { en: "EXONIC Aloe Vera Body Wash 300ml", fa: "شامپو بدن آلوئه‌ورا اکسونیک ۳۰۰ میل" },
+    category: "healthcare",
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz",
+    price: 450,
+    shade: "150 50% 45%",
+    image: exonicAloeBodyWashImg,
+    details: {
+      fa: `🌿 معرفی محصول
+شامپو بدن آلوئه‌ورا یک شوینده ملایم و تسکین‌دهنده است که علاوه بر پاکسازی پوست، به آبرسانی و کاهش تحریکات پوستی کمک می‌کند.
+
+🔹 مشخصات سریع
+• نام محصول: شامپو بدن آلوئه‌ورا ۳۰۰ میل
+• برند: EXONIC
+• نوع محصول: شوینده بدن (Body Wash)
+• کاربرد اصلی: پاکسازی، آبرسانی و تسکین پوست
+
+❓ این محصول چه مشکلی را حل می‌کند؟
+خشکی، حساسیت و تحریکات خفیف پوست را کاهش می‌دهد.
+
+⚙️ چگونه عمل می‌کند؟
+با استفاده از عصاره آلوئه‌ورا، پوست را تمیز کرده و همزمان رطوبت‌رسانی و آرامش‌بخشی انجام می‌دهد تا از خشکی و التهاب جلوگیری شود.
+
+✨ مهم‌ترین فواید
+✔ پاک‌کنندگی ملایم بدون ایجاد خشکی
+✔ آبرسان و حفظ رطوبت پوست
+✔ کمک به کاهش حساسیت و قرمزی
+✔ ایجاد حس خنکی و آرامش روی پوست
+✔ مناسب استفاده روزانه
+
+🕒 روش مصرف
+• مقدار مصرف: به مقدار کافی روی لیف یا دست
+• بهترین زمان مصرف: هنگام استحمام (روزانه)
+
+👥 مناسب برای
+انواع پوست، مخصوصاً پوست‌های حساس و خشک
+
+🚫 مناسب نیست برای
+افراد با حساسیت خاص به ترکیبات گیاهی یا عطرها
+
+⏳ زمان مشاهده نتیجه
+از اولین استفاده (حس لطافت و آرامش قابل احساس است)
+
+⚠️ نکات مهم
+• از تماس با چشم خودداری شود
+• در صورت بروز حساسیت، مصرف را متوقف کنید
+• در جای خشک و خنک نگهداری شود
+
+🏆 مزیت اصلی محصول
+ترکیب پاکسازی + تسکین پوست در یک محصول سبک و روزانه
+
+🧾 جمع‌بندی کوتاه
+این محصول برای کمک به پاکسازی و آبرسانی پوست استفاده می‌شود و با داشتن ترکیباتی مانند عصاره آلوئه‌ورا باعث نرمی، رطوبت و کاهش تحریکات پوستی می‌شود. مصرف منظم آن می‌تواند به داشتن پوستی آرام، لطیف و سالم کمک کند.`,
+      en: `🌿 Product Introduction
+Aloe Vera Body Wash is a gentle, soothing cleanser that hydrates and calms skin while cleansing.
+
+🔹 Quick Specs
+• Product: Aloe Vera Body Wash 300ml
+• Brand: EXONIC
+• Type: Body Wash
+• Main Use: Cleansing, hydration, soothing
+
+❓ Problem Solved
+Reduces dryness, sensitivity, and mild irritation.
+
+⚙️ How It Works
+Aloe vera extract cleanses while delivering hydration and calming relief.
+
+✨ Key Benefits
+✔ Gentle cleansing without dryness
+✔ Hydrates and locks in moisture
+✔ Helps reduce sensitivity and redness
+✔ Cooling, calming feel
+✔ Suitable for daily use
+
+🕒 How to Use
+• Apply enough to a loofah or hand
+• Best during shower (daily)
+
+👥 Suitable For
+All skin types, especially sensitive and dry skin
+
+🚫 Not Suitable For
+Those allergic to botanical ingredients or fragrances
+
+⏳ Visible Results
+From first use (softness and calm felt immediately)
+
+⚠️ Important Notes
+• Avoid contact with eyes
+• Discontinue if irritation occurs
+• Store in a cool, dry place
+
+🏆 Main Advantage
+Cleansing + skin soothing in one light, daily product.
+
+🧾 Summary
+Helps cleanse and hydrate the skin. Aloe vera extract softens, moisturizes, and reduces irritation, supporting calm, smooth, healthy skin with regular use.`,
+    },
+  },
+  {
+    id: seed.length + 104,
+    name: { en: "EXONIC Black Baccara Rose Body Wash 300ml", fa: "شامپو بدن رز بلک باکارا اکسونیک ۳۰۰ میل" },
+    category: "healthcare",
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz",
+    price: 450,
+    shade: "340 55% 55%",
+    image: exonicRoseBodyWashImg,
+    details: {
+      fa: `🌿 معرفی محصول
+شامپو بدن رز (Black Baccara Rose) یک شوینده لطیف با رایحه‌ای لوکس و ماندگار است که علاوه بر پاکسازی، حس نرمی و طراوت خاصی به پوست می‌دهد.
+
+🔹 مشخصات سریع
+• نام محصول: شامپو بدن رز بلک باکارا ۳۰۰ میل
+• برند: EXONIC
+• نوع محصول: شوینده بدن (Body Wash)
+• کاربرد اصلی: پاکسازی، خوشبوکنندگی و لطافت پوست
+
+❓ این محصول چه مشکلی را حل می‌کند؟
+بوی نامطبوع بدن و خشکی پوست را کاهش می‌دهد.
+
+⚙️ چگونه عمل می‌کند؟
+با ترکیب مواد شوینده ملایم و رایحه گل رز، پوست را تمیز کرده و همزمان یک لایه لطافت و عطر خوش روی آن باقی می‌گذارد.
+
+✨ مهم‌ترین فواید
+✔ پاک‌کنندگی ملایم بدون خشکی
+✔ ایجاد رایحه خوش و نسبتاً ماندگار
+✔ نرم‌کننده و لطیف‌کننده پوست
+✔ ایجاد حس لوکس و طراوت بعد از حمام
+✔ مناسب استفاده روزانه
+
+🕒 روش مصرف
+• مقدار مصرف: به مقدار کافی روی لیف یا دست
+• بهترین زمان مصرف: هنگام استحمام (روزانه)
+
+👥 مناسب برای
+انواع پوست، مخصوصاً افرادی که به رایحه‌های خوش علاقه دارند
+
+🚫 مناسب نیست برای
+افراد با حساسیت به عطرها یا پوست بسیار حساس
+
+⏳ زمان مشاهده نتیجه
+از اولین استفاده (حس نرمی و بوی خوش قابل احساس است)
+
+⚠️ نکات مهم
+• از تماس با چشم خودداری شود
+• در صورت بروز حساسیت، مصرف را متوقف کنید
+• در جای خشک و خنک نگهداری شود
+
+🏆 مزیت اصلی محصول
+ترکیب پاکسازی + رایحه لوکس در یک محصول روزانه
+
+🧾 جمع‌بندی کوتاه
+این محصول برای کمک به پاکسازی و خوشبو شدن پوست استفاده می‌شود و با داشتن رایحه رز باعث نرمی و ایجاد حس طراوت روی پوست می‌شود. مصرف منظم آن می‌تواند به داشتن پوستی خوشبو و لطیف کمک کند.`,
+      en: `🌿 Product Introduction
+Black Baccara Rose Body Wash is a gentle cleanser with a luxurious, lasting fragrance that softens and refreshes the skin.
+
+🔹 Quick Specs
+• Product: Black Baccara Rose Body Wash 300ml
+• Brand: EXONIC
+• Type: Body Wash
+• Main Use: Cleansing, fragrance, softness
+
+❓ Problem Solved
+Reduces body odor and skin dryness.
+
+⚙️ How It Works
+Mild cleansers paired with rose fragrance clean the skin while leaving softness and a pleasant scent.
+
+✨ Key Benefits
+✔ Gentle cleansing without dryness
+✔ Pleasant, fairly lasting fragrance
+✔ Softens and smooths the skin
+✔ Luxurious, refreshing feel after shower
+✔ Suitable for daily use
+
+🕒 How to Use
+• Apply enough to a loofah or hand
+• Best during shower (daily)
+
+👥 Suitable For
+All skin types, especially fragrance lovers
+
+🚫 Not Suitable For
+Those sensitive to fragrances or with very sensitive skin
+
+⏳ Visible Results
+From first use (softness and pleasant scent felt immediately)
+
+⚠️ Important Notes
+• Avoid contact with eyes
+• Discontinue if irritation occurs
+• Store in a cool, dry place
+
+🏆 Main Advantage
+Cleansing + luxurious fragrance in one daily product.
+
+🧾 Summary
+Helps cleanse and freshen the skin. The rose fragrance softens and refreshes, supporting smooth, sweet-scented skin with regular use.`,
     },
   },
 ];
