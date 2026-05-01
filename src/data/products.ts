@@ -7,6 +7,11 @@ import exonicRoseBodyWashImg from "@/assets/product-exonic-rose-body-wash.jpg";
 import exonicMoringaBodyWashImg from "@/assets/product-exonic-moringa-body-wash.jpg";
 import exonicCaviarShampooImg from "@/assets/product-exonic-caviar-shampoo.jpg";
 import exonicCaviarBodyLotionImg from "@/assets/product-exonic-caviar-body-lotion.jpg";
+import exonicCaviarConditionerImg from "@/assets/product-exonic-caviar-conditioner.jpg";
+import bizSesameShampooImg from "@/assets/product-biz-sesame-shampoo.png";
+import bizCaffeineGarlicShampooImg from "@/assets/product-biz-caffeine-garlic-shampoo.png";
+import bizPomegranateShampooImg from "@/assets/product-biz-pomegranate-shampoo.png";
+import bizOstrichShampooImg from "@/assets/product-biz-ostrich-shampoo.png";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
@@ -1861,6 +1866,76 @@ Combines luxury care with real hair fortification in one shampoo.
 
 🧾 Summary
 EXONIC Caviar Shampoo helps strengthen and repair hair with its nourishing compounds, boosting softness, shine, and overall hair health. Regular use can give you stronger, softer, and more manageable hair.`,
+    },
+  },
+  {
+    id: seed.length + 108,
+    name: { en: "EXONIC Caviar Hair Conditioner 300ml", fa: "شامپو کَویار اکسونیک ۳۰۰ میل" },
+    category: "healthcare" as Category,
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz" as Brand,
+    price: 450,
+    shade: "40 80% 55%",
+    image: exonicCaviarConditionerImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\n• نام محصول: شامپو کَویار EXONIC\n• برند: EXONIC\n• نوع محصول: شامپو مو\n• کاربرد اصلی: تقویت، ترمیم و افزایش درخشندگی مو\n\n❓ این محصول چه مشکلی را حل می‌کند؟\nخشکی، آسیب‌دیدگی و کدر بودن موها را بهبود می‌بخشد.\n\n⚙️ چگونه عمل می‌کند؟\nبا رساندن مواد مغذی و رطوبت به ساقه مو، ساختار مو را تقویت کرده و آن را نرم و درخشان می‌کند.\n\n✨ مهم‌ترین فواید\n✔ تقویت ریشه و ساقه مو\n✔ کاهش خشکی و وزی مو\n✔ افزایش نرمی و لطافت\n✔ کمک به ترمیم موهای آسیب‌دیده\n✔ افزایش درخشندگی طبیعی مو\n\n🕒 روش مصرف\n• مقدار مناسب روی موهای خیس ماساژ داده شود و سپس آبکشی گردد\n• بهترین زمان مصرف: هنگام استحمام (۲ تا ۳ بار در هفته)\n\n👥 مناسب برای\nموهای خشک، آسیب‌دیده و کدر\n\n🚫 مناسب نیست برای\nافراد دارای حساسیت به ترکیبات محصول\n\n⏳ زمان مشاهده نتیجه\n۲ تا ۴ هفته\n\n⚠️ نکات مهم\n• از تماس با چشم خودداری شود\n• در صورت بروز حساسیت، مصرف قطع شود\n• برای نتیجه بهتر به‌صورت منظم استفاده شود\n\n🏆 مزیت اصلی محصول\nاستفاده از عصاره کَویار برای تغذیه عمیق مو که نسبت به شامپوهای معمولی اثر تقویتی بیشتری دارد.\n\n🧾 جمع‌بندی کوتاه\nاین محصول برای کمک به تقویت و ترمیم موها استفاده می‌شود و با داشتن ترکیباتی مانند عصاره کَویار باعث افزایش نرمی، لطافت و درخشندگی مو می‌شود.`,
+      en: `🌿 EXONIC Caviar Hair Shampoo\n\nLuxury caviar-enriched shampoo that nourishes, repairs, and restores shine to dry and damaged hair.\n\n✨ Benefits: strengthens roots, reduces frizz, deep nourishment, restores natural shine.\n🕒 Use 2–3 times a week. Visible results in 2–4 weeks.`,
+    },
+  },
+  {
+    id: seed.length + 109,
+    name: { en: "BIZ Sesame Extract Shampoo 300ml", fa: "شامپو کنجد BIZ ۳۰۰ میل" },
+    category: "healthcare" as Category,
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz" as Brand,
+    price: 450,
+    shade: "0 70% 45%",
+    image: bizSesameShampooImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\n• نام محصول: شامپو کنجد BIZ\n• برند: BIZ\n• نوع محصول: شامپو مو\n• کاربرد اصلی: ترمیم، تقویت و احیای موهای خشک و آسیب‌دیده\n\n❓ این محصول چه مشکلی را حل می‌کند؟\nبه بهبود خشکی، شکنندگی و آسیب موها کمک می‌کند.\n\n⚙️ چگونه عمل می‌کند؟\nبا استفاده از عصاره کنجد، موها را تغذیه کرده و با تأمین رطوبت و مواد مغذی، ساختار مو را ترمیم و تقویت می‌کند.\n\n✨ مهم‌ترین فواید\n✔ ترمیم موهای خشک و آسیب‌دیده\n✔ تقویت ریشه و ساقه مو\n✔ افزایش نرمی و لطافت مو\n✔ کاهش وزی و شکنندگی\n✔ حفظ رطوبت طبیعی مو\n\n🕒 روش مصرف\n• مقدار مناسب روی موهای خیس ماساژ داده شود و سپس آبکشی گردد\n• ۲ تا ۳ بار در هفته\n\n👥 مناسب برای\nموهای خشک، آسیب‌دیده و شکننده\n\n🚫 مناسب نیست برای\nافراد دارای حساسیت به ترکیبات محصول\n\n⏳ زمان مشاهده نتیجه\n۲ تا ۴ هفته استفاده منظم\n\n⚠️ نکات مهم\n• از تماس با چشم خودداری شود\n• در صورت بروز حساسیت، مصرف قطع گردد\n\n🏆 مزیت اصلی محصول\nدارای عصاره کنجد که به‌صورت طبیعی باعث تغذیه عمیق و ترمیم مؤثر موها می‌شود.\n\n🧾 جمع‌بندی کوتاه\nاین محصول برای کمک به ترمیم و تقویت موهای خشک و آسیب‌دیده استفاده می‌شود و با عصاره کنجد باعث افزایش نرمی، لطافت و کاهش شکنندگی مو می‌شود.`,
+      en: `🌿 BIZ Sesame Extract Shampoo\n\nNourishing shampoo with sesame extract for repair and restoration of dry and damaged hair.\n\n✨ Benefits: deep nourishment, strengthens roots, restores softness, reduces breakage.\n🕒 Use 2–3 times a week. Visible results in 2–4 weeks.`,
+    },
+  },
+  {
+    id: seed.length + 110,
+    name: { en: "BIZ Caffeine & Garlic Shampoo 300ml", fa: "شامپو کافئین و سیر BIZ ۳۰۰ میل" },
+    category: "healthcare" as Category,
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz" as Brand,
+    price: 450,
+    shade: "140 60% 35%",
+    image: bizCaffeineGarlicShampooImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\n• نام محصول: شامپو کافئین و سیر BIZ\n• برند: BIZ\n• نوع محصول: شامپو مو\n• کاربرد اصلی: تقویت ریشه مو، کاهش ریزش و افزایش رشد مو\n\n❓ این محصول چه مشکلی را حل می‌کند؟\nبه کاهش ریزش مو، ضعف ریشه و کم‌پشتی موها کمک می‌کند.\n\n⚙️ چگونه عمل می‌کند؟\nبا ترکیب کافئین و عصاره سیر باعث افزایش گردش خون در پوست سر شده و فولیکول‌های مو را تحریک می‌کند.\n\n✨ مهم‌ترین فواید\n✔ تقویت ریشه مو\n✔ کاهش ریزش مو\n✔ تحریک رشد مجدد مو\n✔ افزایش ضخامت و استحکام مو\n✔ بهبود سلامت پوست سر\n\n🕒 روش مصرف\n• ۲–۳ دقیقه روی موهای خیس ماساژ داده شود سپس آبکشی گردد\n• ۲ تا ۳ بار در هفته\n\n👥 مناسب برای\nافراد دارای ریزش مو، موهای ضعیف و کم‌پشت\n\n🚫 مناسب نیست برای\nافراد دارای حساسیت به ترکیبات گیاهی (به‌خصوص سیر)\n\n⏳ زمان مشاهده نتیجه\n۳ تا ۶ هفته استفاده منظم\n\n⚠️ نکات مهم\n• از تماس با چشم خودداری شود\n• در صورت بروز حساسیت، مصرف قطع گردد\n\n🏆 مزیت اصلی محصول\nترکیب قدرتمند کافئین و سیر که همزمان باعث کاهش ریزش و تحریک رشد مو می‌شود.\n\n🧾 جمع‌بندی کوتاه\nاین شامپو برای تقویت ریشه مو و کاهش ریزش طراحی شده و به افزایش رشد، ضخامت و سلامت مو کمک می‌کند.`,
+      en: `🌿 BIZ Caffeine & Garlic Shampoo\n\nFortifying shampoo combining caffeine and garlic extract to reduce hair loss and stimulate growth.\n\n✨ Benefits: strengthens roots, reduces shedding, stimulates regrowth, improves scalp health.\n🕒 Use 2–3 times a week. Visible results in 3–6 weeks.`,
+    },
+  },
+  {
+    id: seed.length + 111,
+    name: { en: "BIZ Pomegranate Shampoo 300ml", fa: "شامپو انار BIZ ۳۰۰ میل" },
+    category: "healthcare" as Category,
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz" as Brand,
+    price: 450,
+    shade: "350 75% 45%",
+    image: bizPomegranateShampooImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\n• نام محصول: شامپو انار BIZ\n• برند: BIZ\n• نوع محصول: شامپو مو\n• کاربرد اصلی: محافظت از رنگ مو، تقویت و افزایش درخشندگی مو\n\n❓ این محصول چه مشکلی را حل می‌کند؟\nبه جلوگیری از کدر شدن و آسیب دیدن موهای رنگ‌شده کمک می‌کند.\n\n⚙️ چگونه عمل می‌کند؟\nبا داشتن عصاره انار و فیلتر محافظتی (UV Filter) از مو در برابر آسیب‌های محیطی و نور خورشید محافظت کرده و رنگ مو را تثبیت می‌کند.\n\n✨ مهم‌ترین فواید\n✔ حفظ و تثبیت رنگ مو\n✔ افزایش درخشندگی و شفافیت مو\n✔ محافظت در برابر اشعه‌های مضر\n✔ تقویت ساقه مو\n✔ کاهش خشکی موهای رنگ‌شده\n\n🕒 روش مصرف\n• ۲–۳ دقیقه روی موهای خیس ماساژ داده شود سپس آبکشی گردد\n• ۲ تا ۳ بار در هفته\n\n👥 مناسب برای\nموهای رنگ‌شده و آسیب‌دیده\n\n🚫 مناسب نیست برای\nافراد دارای حساسیت به ترکیبات محصول\n\n⏳ زمان مشاهده نتیجه\n۲ تا ۴ هفته استفاده منظم\n\n⚠️ نکات مهم\n• از تماس با چشم خودداری شود\n• در صورت بروز حساسیت، مصرف قطع گردد\n\n🏆 مزیت اصلی محصول\nدارای فیلتر محافظتی در برابر نور خورشید برای جلوگیری از کم‌رنگ شدن مو.\n\n🧾 جمع‌بندی کوتاه\nاین شامپو مخصوص موهای رنگ‌شده با عصاره انار و فیلتر محافظتی به حفظ رنگ، افزایش درخشندگی و جلوگیری از آسیب مو کمک می‌کند.`,
+      en: `🌿 BIZ Pomegranate Shampoo\n\nVitamin shampoo with pomegranate extract and UV filter — protects color-treated hair, boosts shine, and prevents fading.\n\n✨ Benefits: locks in color, adds shine, UV protection, strengthens hair shaft.\n🕒 Use 2–3 times a week. Visible results in 2–4 weeks.`,
+    },
+  },
+  {
+    id: seed.length + 112,
+    name: { en: "BIZ Ostrich Oil Shampoo 300ml", fa: "شامپو روغن شترمرغ BIZ ۳۰۰ میل" },
+    category: "healthcare" as Category,
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz" as Brand,
+    price: 450,
+    shade: "25 80% 50%",
+    image: bizOstrichShampooImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\n• نام محصول: شامپو روغن شترمرغ BIZ\n• برند: BIZ\n• نوع محصول: شامپو مو\n• کاربرد اصلی: تقویت مو، کاهش ریزش و افزایش ضخامت مو\n\n❓ این محصول چه مشکلی را حل می‌کند؟\nبه کاهش ریزش مو، نازکی و ضعف موها کمک می‌کند.\n\n⚙️ چگونه عمل می‌کند؟\nبا داشتن روغن شترمرغ که سرشار از اسیدهای چرب مفید است، به عمق پوست سر نفوذ کرده و باعث تغذیه فولیکول‌های مو، تقویت ریشه و افزایش ضخامت تارهای مو می‌شود.\n\n✨ مهم‌ترین فواید\n✔ کاهش ریزش مو\n✔ افزایش ضخامت و پرپشتی مو\n✔ تقویت ریشه و ساقه مو\n✔ نرم‌کننده و لطیف‌کننده مو\n✔ ترمیم موهای آسیب‌دیده\n\n🕒 روش مصرف\n• ۲–۳ دقیقه روی موهای خیس ماساژ داده شود سپس آبکشی گردد\n• ۲ تا ۳ بار در هفته\n\n👥 مناسب برای\nافراد دارای ریزش مو، موهای نازک و ضعیف\n\n🚫 مناسب نیست برای\nافراد دارای حساسیت به ترکیبات محصول\n\n⏳ زمان مشاهده نتیجه\n۳ تا ۶ هفته استفاده منظم\n\n⚠️ نکات مهم\n• از تماس با چشم خودداری شود\n• در صورت بروز حساسیت، مصرف قطع گردد\n\n🏆 مزیت اصلی محصول\nدارای روغن شترمرغ که باعث تقویت عمیق و افزایش ضخامت مو می‌شود.\n\n🧾 جمع‌بندی کوتاه\nاین شامپو با روغن شترمرغ به تقویت ریشه، تغذیه مو و بهبود سلامت کلی مو کمک می‌کند و موهایی قوی‌تر، ضخیم‌تر و سالم‌تر به همراه دارد.`,
+      en: `🌿 BIZ Ostrich Oil Shampoo\n\nFortifying shampoo with ostrich oil — rich in beneficial fatty acids that nourish follicles, reduce hair loss and increase thickness.\n\n✨ Benefits: reduces shedding, increases thickness, strengthens roots, softens and repairs hair.\n🕒 Use 2–3 times a week. Visible results in 3–6 weeks.`,
     },
   },
 ];
