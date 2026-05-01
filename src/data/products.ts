@@ -4,6 +4,7 @@ import exonicArganBodyWashImg from "@/assets/product-exonic-argan-body-wash.jpg"
 import exonicAvocadoBodyWashImg from "@/assets/product-exonic-avocado-body-wash.jpg";
 import exonicAloeBodyWashImg from "@/assets/product-exonic-aloe-body-wash.jpg";
 import exonicRoseBodyWashImg from "@/assets/product-exonic-rose-body-wash.jpg";
+import exonicMoringaBodyWashImg from "@/assets/product-exonic-moringa-body-wash.jpg";
 import luxuryCoinImg from "@/assets/product-luxury-coin-serum.jpg";
 import fumariaTeaImg from "@/assets/product-fumaria-tea.jpg";
 import supremeCoffeeImg from "@/assets/product-supreme-coffee.jpg";
@@ -1550,6 +1551,108 @@ Cleansing + luxurious fragrance in one daily product.
 
 🧾 Summary
 Helps cleanse and freshen the skin. The rose fragrance softens and refreshes, supporting smooth, sweet-scented skin with regular use.`,
+    },
+  },
+  {
+    id: seed.length + 105,
+    name: { en: "EXONIC Moringa Body Wash 300ml", fa: "شامپو بدن مورینگا اکسونیک ۳۰۰ میل" },
+    category: "healthcare",
+    subcategory: "hc_biz_shampoo",
+    brand: "Dr.Biz",
+    price: 430,
+    shade: "45 70% 60%",
+    image: exonicMoringaBodyWashImg,
+    details: {
+      fa: `🌿 معرفی محصول
+شامپو بدن مورینگا یک شوینده ملایم با خاصیت پاکسازی عمیق است که به حذف آلودگی‌ها و ایجاد حس تازگی در پوست کمک می‌کند.
+
+🔹 مشخصات سریع
+• نام محصول: شامپو بدن مورینگا ۳۰۰ میل
+• برند: EXONIC
+• نوع محصول: شوینده بدن (Body Wash)
+• کاربرد اصلی: پاکسازی عمیق، طراوت‌بخشی و آبرسانی سبک
+
+❓ این محصول چه مشکلی را حل می‌کند؟
+آلودگی، چربی اضافی و کدری پوست را کاهش می‌دهد.
+
+⚙️ چگونه عمل می‌کند؟
+با استفاده از عصاره مورینگا، آلودگی‌ها و ناخالصی‌های سطح پوست را پاک کرده و همزمان به حفظ تعادل رطوبت پوست کمک می‌کند.
+
+✨ مهم‌ترین فواید
+✔ پاکسازی عمیق بدون ایجاد خشکی
+✔ کمک به حذف آلودگی‌های محیطی از پوست
+✔ ایجاد حس تازگی و سبکی
+✔ کمک به شفاف‌تر شدن ظاهر پوست
+✔ مناسب استفاده روزانه
+
+🕒 روش مصرف
+• مقدار مصرف: به مقدار کافی روی لیف یا دست
+• بهترین زمان مصرف: هنگام استحمام (روزانه)
+
+👥 مناسب برای
+انواع پوست، مخصوصاً پوست‌های چرب و در معرض آلودگی
+
+🚫 مناسب نیست برای
+افراد با پوست بسیار خشک یا حساس به ترکیبات گیاهی
+
+⏳ زمان مشاهده نتیجه
+از اولین استفاده (حس تمیزی و طراوت قابل احساس است)
+
+⚠️ نکات مهم
+• از تماس با چشم خودداری شود
+• در صورت بروز حساسیت، مصرف را متوقف کنید
+• در جای خشک و خنک نگهداری شود
+
+🏆 مزیت اصلی محصول
+تمرکز روی پاکسازی عمیق و ایجاد حس پوست تمیز و سبک
+
+🧾 جمع‌بندی کوتاه
+این محصول برای کمک به پاکسازی عمیق و حذف آلودگی‌های پوست استفاده می‌شود و با داشتن ترکیباتی مانند عصاره مورینگا باعث شفافیت و طراوت پوست می‌شود. مصرف منظم آن می‌تواند به داشتن پوستی تمیز، سبک و شاداب کمک کند.`,
+      en: `🌿 Product Introduction
+Moringa Body Wash is a mild yet deep-cleansing wash that removes impurities and leaves the skin feeling fresh.
+
+🔹 Quick Specs
+• Product: Moringa Body Wash 300ml
+• Brand: EXONIC
+• Type: Body Wash
+• Main Use: Deep cleansing, freshness, light hydration
+
+❓ Problem Solved
+Reduces dirt, excess oil, and dullness on the skin.
+
+⚙️ How It Works
+Moringa extract clears surface impurities while helping maintain the skin's moisture balance.
+
+✨ Key Benefits
+✔ Deep cleansing without dryness
+✔ Helps remove environmental pollutants
+✔ Refreshing, light feel
+✔ Supports a clearer-looking complexion
+✔ Suitable for daily use
+
+🕒 How to Use
+• Apply enough to a loofah or hand
+• Best during shower (daily)
+
+👥 Suitable For
+All skin types, especially oily and pollution-exposed skin
+
+🚫 Not Suitable For
+Very dry skin or those sensitive to plant extracts
+
+⏳ Visible Results
+From first use (clean, refreshed feeling)
+
+⚠️ Important Notes
+• Avoid contact with eyes
+• Discontinue if irritation occurs
+• Store in a cool, dry place
+
+🏆 Main Advantage
+Focused on deep cleansing for a clean, light skin feel.
+
+🧾 Summary
+Helps deeply cleanse and remove impurities. Moringa extract supports clarity and freshness, leaving skin clean, light, and revitalized with regular use.`,
     },
   },
 ];
