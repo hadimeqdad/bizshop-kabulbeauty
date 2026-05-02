@@ -21,6 +21,16 @@ import coffeeLatteImg from "@/assets/product-coffee-latte.jpg";
 import masalaCoffeeImg from "@/assets/product-masala-coffee.jpg";
 import hotChocolateImg from "@/assets/product-hot-chocolate.jpg";
 import coffeeMochaImg from "@/assets/product-coffee-mocha.jpg";
+import setinFoeniculumTeaImg from "@/assets/product-setin-foeniculum-tea.png";
+import setinFoeniculumBlendTeaImg from "@/assets/product-setin-foeniculum-blend-tea.jpg";
+import setinTribulusTeaImg from "@/assets/product-setin-tribulus-tea.jpg";
+import setinSlimmingGreenTeaImg from "@/assets/product-setin-slimming-green-tea.jpg";
+import bienestarRiceBranImg from "@/assets/product-bienestar-rice-bran.jpg";
+import bienestarMultigrainBranImg from "@/assets/product-bienestar-multigrain-bran.jpg";
+import bionestarWheatGermImg from "@/assets/product-bionestar-wheat-germ.jpg";
+import drbizBlackGarlicImg from "@/assets/product-drbiz-black-garlic.jpg";
+import drbizHoney500gImg from "@/assets/product-drbiz-honey-500g.png";
+import drbizHoney900gImg from "@/assets/product-drbiz-honey-900g.png";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -1936,6 +1946,146 @@ EXONIC Caviar Shampoo helps strengthen and repair hair with its nourishing compo
     details: {
       fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\n• نام محصول: شامپو روغن شترمرغ BIZ\n• برند: BIZ\n• نوع محصول: شامپو مو\n• کاربرد اصلی: تقویت مو، کاهش ریزش و افزایش ضخامت مو\n\n❓ این محصول چه مشکلی را حل می‌کند؟\nبه کاهش ریزش مو، نازکی و ضعف موها کمک می‌کند.\n\n⚙️ چگونه عمل می‌کند؟\nبا داشتن روغن شترمرغ که سرشار از اسیدهای چرب مفید است، به عمق پوست سر نفوذ کرده و باعث تغذیه فولیکول‌های مو، تقویت ریشه و افزایش ضخامت تارهای مو می‌شود.\n\n✨ مهم‌ترین فواید\n✔ کاهش ریزش مو\n✔ افزایش ضخامت و پرپشتی مو\n✔ تقویت ریشه و ساقه مو\n✔ نرم‌کننده و لطیف‌کننده مو\n✔ ترمیم موهای آسیب‌دیده\n\n🕒 روش مصرف\n• ۲–۳ دقیقه روی موهای خیس ماساژ داده شود سپس آبکشی گردد\n• ۲ تا ۳ بار در هفته\n\n👥 مناسب برای\nافراد دارای ریزش مو، موهای نازک و ضعیف\n\n🚫 مناسب نیست برای\nافراد دارای حساسیت به ترکیبات محصول\n\n⏳ زمان مشاهده نتیجه\n۳ تا ۶ هفته استفاده منظم\n\n⚠️ نکات مهم\n• از تماس با چشم خودداری شود\n• در صورت بروز حساسیت، مصرف قطع گردد\n\n🏆 مزیت اصلی محصول\nدارای روغن شترمرغ که باعث تقویت عمیق و افزایش ضخامت مو می‌شود.\n\n🧾 جمع‌بندی کوتاه\nاین شامپو با روغن شترمرغ به تقویت ریشه، تغذیه مو و بهبود سلامت کلی مو کمک می‌کند و موهایی قوی‌تر، ضخیم‌تر و سالم‌تر به همراه دارد.`,
       en: `🌿 BIZ Ostrich Oil Shampoo\n\nFortifying shampoo with ostrich oil — rich in beneficial fatty acids that nourish follicles, reduce hair loss and increase thickness.\n\n✨ Benefits: reduces shedding, increases thickness, strengthens roots, softens and repairs hair.\n🕒 Use 2–3 times a week. Visible results in 3–6 weeks.`,
+    },
+  },
+  {
+    id: seed.length + 113,
+    name: { en: "Dr.Biz Women's Herbal Tea", fa: "دمنوش بانوان دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_herbal_traditional",
+    brand: "Dr.Biz" as Brand,
+    price: 470,
+    shade: "320 60% 45%",
+    image: setinFoeniculumTeaImg,
+    details: {
+      fa: `🌿 معرفی محصول\nدمنوش بانوان دکتر بیز یک نوشیدنی گیاهی و طبیعی است که به‌طور خاص برای سلامت بانوان، تنظیم بدن و ایجاد آرامش طراحی شده است.\n\n✨ ویژگی‌ها و مزایا\n✔ کمک به تنظیم وضعیت عمومی بدن بانوان\n✔ کاهش دردها و ناراحتی‌های دوره‌ای\n✔ کمک به ایجاد آرامش و کاهش استرس\n✔ کمک به بهبود حالت روحی\n✔ حمایت از سلامت عمومی بدن\n✔ کاملاً گیاهی و طبیعی\n\n👩 مناسب برای\n✔ بانوان در سنین مختلف\n✔ افرادی که دچار دردهای دوره‌ای هستند\n✔ کسانی که استرس دارند\n\n☕ طرز استفاده\nیک ساشه را در آب جوش قرار دهید، ۵–۱۰ دقیقه صبر کنید، روزانه ۱ تا ۲ بار مصرف شود. بهترین زمان: عصر یا شب.\n\n⏱️ زمان مشاهده نتیجه\nچند روز اول: احساس آرامش بیشتر؛ ۱ تا ۲ هفته: بهبود حالت عمومی بدن.\n\n⚠️ نکات مهم\n• استفاده منظم برای نتیجه بهتر ضروری است\n• در دوران بارداری با مشوره استفاده شود\n\n💚 جمع‌بندی\nانتخابی مناسب برای آرامش بیشتر، تعادل بهتر و سلامت طبیعی بانوان.`,
+      en: `🌿 Dr.Biz Women's Herbal Tea\n\nNatural herbal blend designed for women's wellbeing, balance, and calm.\n\n✨ Benefits: helps regulate body, eases period discomfort, calming, supports overall wellness.\n☕ Steep one sachet 5–10 min, 1–2 times daily.`,
+    },
+  },
+  {
+    id: seed.length + 114,
+    name: { en: "Dr.Biz Bloating Relief Herbal Tea", fa: "دمنوش نفخ دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_herbal_traditional",
+    brand: "Dr.Biz" as Brand,
+    price: 470,
+    shade: "200 70% 50%",
+    image: setinFoeniculumBlendTeaImg,
+    details: {
+      fa: `🌱 معرفی محصول\nدمنوش نفخ دکتر بیز یک نوشیدنی گیاهی و طبیعی است که برای کاهش نفخ، بهبود هضم غذا و آرامش معده طراحی شده است.\n\n✨ ویژگی‌ها و مزایا\n✔ کمک به کاهش نفخ و گاز معده\n✔ بهبود هضم و جذب غذا\n✔ کاهش احساس سنگینی بعد از غذا\n✔ کمک به آرامش معده و روده\n✔ مناسب برای استفاده روزانه\n✔ کاملاً گیاهی و طبیعی\n\n👥 مناسب برای\n✔ افرادی که نفخ معده دارند\n✔ کسانی که بعد از غذا احساس سنگینی می‌کنند\n✔ افراد با مشکلات گوارشی خفیف\n\n☕ طرز استفاده\nیک ساشه را در آب جوش قرار دهید، ۵–۱۰ دقیقه صبر کنید، روزانه ۱ تا ۲ بار. بهترین زمان: بعد از غذا.\n\n⏱️ زمان مشاهده نتیجه\nهمان روز: کاهش نفخ؛ مصرف مداوم: عملکرد بهتر گوارش.\n\n💚 جمع‌بندی\nانتخابی مناسب برای هضم بهتر، شکم سبک‌تر و احساس راحتی بعد از غذا.`,
+      en: `🌱 Dr.Biz Bloating Relief Herbal Tea\n\nHerbal blend that reduces bloating, improves digestion and soothes the stomach.\n\n✨ Benefits: reduces gas, eases heaviness after meals, calms gut.\n☕ Steep one sachet 5–10 min, 1–2 times daily, ideally after meals.`,
+    },
+  },
+  {
+    id: seed.length + 115,
+    name: { en: "Dr.Biz Tribulus (Khar Khasak) Herbal Tea", fa: "دمنوش خارخاسک دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_herbal_traditional",
+    brand: "Dr.Biz" as Brand,
+    price: 470,
+    shade: "0 70% 40%",
+    image: setinTribulusTeaImg,
+    details: {
+      fa: `🌱 معرفی محصول\nدمنوش خارخاسک دکتر بیز یک نوشیدنی گیاهی و طبیعی است که برای تقویت بدن، کمک به سلامت کلیه‌ها و افزایش انرژی طبیعی طراحی شده است.\n\n✨ ویژگی‌ها و مزایا\n✔ کمک به سلامت کلیه‌ها و مجاری ادراری\n✔ کمک به دفع بهتر مواد زائد از بدن\n✔ افزایش انرژی و تقویت عمومی بدن\n✔ کمک به بهبود عملکرد جسمی\n✔ مناسب برای استفاده روزانه\n✔ کاملاً گیاهی و طبیعی\n\n👥 مناسب برای\n✔ افرادی که به سلامت کلیه‌ها اهمیت می‌دهند\n✔ کسانی که احساس ضعف و خستگی دارند\n✔ افراد با فعالیت زیاد روزانه\n\n☕ طرز استفاده\nیک ساشه را در آب جوش قرار دهید، ۵–۱۰ دقیقه صبر کنید، روزانه ۱ تا ۲ بار. بهترین زمان: صبح یا بعد از غذا.\n\n⏱️ زمان مشاهده نتیجه\nچند روز اول: انرژی بیشتر؛ ۱ تا ۲ هفته: بهبود عمومی بدن.\n\n⚠️ نکات مهم\n• در صورت داشتن بیماری خاص یا مشکلات کلیوی، با مشوره استفاده شود\n• همراه با آب کافی مصرف گردد\n\n💚 جمع‌بندی\nانتخابی مناسب برای بدن قوی‌تر، انرژی بیشتر و سلامت بهتر.`,
+      en: `🌱 Dr.Biz Tribulus Herbal Tea\n\nHerbal tea that supports kidney health, urinary tract, and overall vitality.\n\n✨ Benefits: kidney support, helps cleanse the body, boosts energy.\n☕ Steep one sachet 5–10 min, 1–2 times daily.`,
+    },
+  },
+  {
+    id: seed.length + 116,
+    name: { en: "Dr.Biz Slimming Combined Green Tea", fa: "دمنوش لاغری دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_herbal_traditional",
+    brand: "Dr.Biz" as Brand,
+    price: 1380,
+    shade: "60 80% 50%",
+    image: setinSlimmingGreenTeaImg,
+    details: {
+      fa: `🌱 معرفی محصول\nدمنوش لاغری دکتر بیز یک نوشیدنی گیاهی و طبیعی است که برای کمک به کاهش وزن، بهبود سوخت‌وساز بدن و کاهش اشتها طراحی شده است.\n\n✨ ویژگی‌ها و مزایا\n✔ کمک به کاهش وزن به‌صورت طبیعی\n✔ افزایش سوخت‌وساز (متابولیسم) بدن\n✔ کمک به کاهش اشتها\n✔ کمک به چربی‌سوزی بهتر\n✔ کمک به بهبود هضم غذا\n✔ کاملاً گیاهی و طبیعی\n\n👥 مناسب برای\n✔ افرادی که اضافه وزن دارند\n✔ کسانی که می‌خواهند وزن خود را کنترل کنند\n✔ افراد دارای سبک زندگی کم‌تحرک\n✔ کسانی که به دنبال روش طبیعی لاغری هستند\n\n☕ طرز استفاده\nیک ساشه را در آب جوش قرار دهید، ۵–۱۰ دقیقه صبر کنید، روزانه ۱ تا ۲ بار. بهترین زمان: قبل یا بعد از غذا.\n\n⏱️ زمان مشاهده نتیجه\nچند روز اول: احساس سبکی؛ ۲ تا ۳ هفته: شروع کاهش وزن؛ مصرف مداوم: کاهش وزن تدریجی و پایدار.\n\n⚠️ نکات مهم\n• در کنار رژیم غذایی سالم و فعالیت بدنی اثرگذاری بیشتر دارد\n• در صورت داشتن بیماری خاص با مشوره استفاده شود\n\n💚 جمع‌بندی\nانتخابی مناسب برای کاهش وزن طبیعی، سالم و تدریجی.`,
+      en: `🌱 Dr.Biz Slimming Combined Green Tea\n\nHerbal slimming tea that boosts metabolism, curbs appetite, and supports natural weight loss.\n\n✨ Benefits: speeds metabolism, reduces appetite, fat-burning support.\n☕ Steep one sachet 5–10 min, 1–2 times daily.`,
+    },
+  },
+  {
+    id: seed.length + 117,
+    name: { en: "Dr.Biz Rice Bran (Bione Star)", fa: "سبوس برنج دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_spice_saffron",
+    brand: "Dr.Biz" as Brand,
+    price: 510,
+    shade: "140 50% 40%",
+    image: bienestarRiceBranImg,
+    details: {
+      fa: `🌿 معرفی محصول\nسبوس برنج دکتر بیز یک محصول طبیعی و مغذی است که از لایه بیرونی دانه برنج به‌دست آمده و سرشار از فیبر، ویتامین‌ها و مواد معدنی مفید می‌باشد.\n\n✨ ویژگی‌ها و مزایا\n✔ کمک به بهبود عملکرد دستگاه گوارش\n✔ کمک به رفع یبوست\n✔ سرشار از فیبر طبیعی\n✔ کمک به کاهش چربی و کلسترول\n✔ کمک به کنترل وزن\n✔ تقویت انرژی بدن\n\n👥 مناسب برای\n✔ افرادی که یبوست دارند\n✔ کسانی که رژیم غذایی سالم می‌خواهند\n✔ افراد دارای اضافه وزن\n\n🥣 طرز استفاده\nبا شیر، ماست یا آب مخلوط کنید. روزانه ۱ تا ۲ قاشق، ترجیحاً صبح یا قبل از غذا.\n\n⏱️ زمان مشاهده نتیجه\nچند روز اول: بهبود گوارش؛ ۱ تا ۲ هفته: کاهش یبوست.\n\n⚠️ نکات مهم\n• همراه با آب کافی مصرف شود\n\n💚 جمع‌بندی\nانتخابی عالی برای گوارش بهتر و تغذیه طبیعی‌تر.`,
+      en: `🌿 Dr.Biz Rice Bran\n\nNatural rice bran rich in fiber, vitamins, and minerals.\n\n✨ Benefits: improves digestion, relieves constipation, supports weight control, lowers cholesterol.\n🥣 Use 1–2 spoons daily mixed with milk, yogurt, or water.`,
+    },
+  },
+  {
+    id: seed.length + 118,
+    name: { en: "Dr.Biz Wheat Germ Powder (Bione Star)", fa: "پودر جوانه گندم دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_spice_saffron",
+    brand: "Dr.Biz" as Brand,
+    price: 510,
+    shade: "45 80% 55%",
+    image: bionestarWheatGermImg,
+    details: {
+      fa: `🌿 معرفی محصول\nجوانه گندم دکتر بیز یک محصول طبیعی و بسیار مغذی است که از بخش زنده دانه گندم به‌دست آمده و سرشار از ویتامین‌ها، مواد معدنی و پروتئین‌های مفید می‌باشد.\n\n✨ ویژگی‌ها و مزایا\n✔ سرشار از ویتامین‌های ضروری بدن\n✔ کمک به افزایش انرژی و رفع خستگی\n✔ تقویت سیستم ایمنی بدن\n✔ کمک به بهبود پوست و مو\n✔ کمک به افزایش وزن سالم (برای افراد لاغر)\n✔ مناسب برای تغذیه روزانه\n\n👥 مناسب برای\n✔ افرادی که ضعف و کم‌انرژی دارند\n✔ کسانی که می‌خواهند وزن اضافه کنند\n✔ افراد با تغذیه ضعیف\n\n🥣 طرز استفاده\nبا شیر، ماست یا آب مخلوط کنید. روزانه ۱ تا ۲ قاشق. بهترین زمان: صبح یا قبل از غذا.\n\n⏱️ زمان مشاهده نتیجه\nچند روز اول: افزایش انرژی؛ ۱ تا ۲ هفته: بهبود وضعیت بدن.\n\n💚 جمع‌بندی\nانتخابی عالی برای بدنی قوی‌تر و انرژی بیشتر.`,
+      en: `🌿 Dr.Biz Wheat Germ Powder\n\nHighly nutritious wheat germ powder rich in vitamins, minerals, and protein.\n\n✨ Benefits: boosts energy, supports immune system, healthy weight gain, glowing skin & hair.\n🥣 Use 1–2 spoons daily.`,
+    },
+  },
+  {
+    id: seed.length + 119,
+    name: { en: "Dr.Biz Multigrain Bran", fa: "سبوس چند غله دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_spice_saffron",
+    brand: "Dr.Biz" as Brand,
+    price: 510,
+    shade: "350 60% 60%",
+    image: bienestarMultigrainBranImg,
+    details: {
+      fa: `🌿 معرفی محصول\nسبوس چند غله دکتر بیز یک محصول طبیعی و مغذی است که از ترکیب چندین غله مفید (برنج، گندم، جو) تهیه شده و سرشار از فیبر، ویتامین‌ها و مواد معدنی ضروری بدن می‌باشد.\n\n✨ ویژگی‌ها و مزایا\n✔ سرشار از فیبر طبیعی و مواد مغذی\n✔ کمک به بهبود عملکرد دستگاه گوارش\n✔ کمک به کاهش یبوست و پاکسازی بدن\n✔ کمک به کنترل اشتها و تناسب اندام\n✔ تقویت سیستم ایمنی بدن\n✔ کمک به افزایش انرژی و سلامت عمومی\n\n👥 مناسب برای\n✔ افرادی که مشکلات گوارشی دارند\n✔ کسانی که به دنبال تغذیه سالم هستند\n✔ افراد دارای رژیم غذایی و تناسب اندام\n\n🥣 طرز استفاده\nبا شیر، ماست یا آب مخلوط کنید. قابل استفاده در سوپ و آش. روزانه ۱ تا ۲ قاشق، صبح ناشتا یا قبل از غذا.\n\n⏱️ زمان مشاهده نتیجه\nچند روز اول: بهبود هضم؛ ۱ تا ۲ هفته: بهبود گوارش؛ مصرف مداوم: تقویت عمومی.\n\n💚 جمع‌بندی\nانتخابی عالی برای گوارش بهتر و سبک زندگی سالم‌تر.`,
+      en: `🌿 Dr.Biz Multigrain Bran\n\nNutritious multigrain bran (rice, wheat, barley) rich in fiber and minerals.\n\n✨ Benefits: improves digestion, relieves constipation, supports weight control and immunity.\n🥣 Use 1–2 spoons daily mixed with milk, yogurt, water, or in soups.`,
+    },
+  },
+  {
+    id: seed.length + 120,
+    name: { en: "Dr.Biz Black Garlic 170g", fa: "سیر سیاه دکتر بیز ۱۷۰ گرم" },
+    category: "food" as Category,
+    subcategory: "food_black_garlic",
+    brand: "Dr.Biz" as Brand,
+    price: 540,
+    shade: "20 90% 50%",
+    image: drbizBlackGarlicImg,
+    details: {
+      fa: `🌿 معرفی محصول\nسیر سیاه دکتر بیز نوعی سیر فرآوری‌شده است که در شرایط خاص (گرما و رطوبت کنترل‌شده) تهیه می‌شود و نسبت به سیر معمولی، طعم ملایم‌تر، بوی کمتر و خواص بیشتر دارد.\n\n✨ ویژگی‌ها و مزایا\n✔ کمک به تقویت سیستم ایمنی بدن\n✔ دارای آنتی‌اکسیدان قوی\n✔ کمک به سلامت قلب و عروق\n✔ کمک به کاهش کلسترول\n✔ کمک به افزایش انرژی بدن\n✔ طعم ملایم و قابل‌تحمل‌تر نسبت به سیر معمولی\n\n👥 مناسب برای\n✔ افرادی که سیستم ایمنی ضعیف دارند\n✔ کسانی که به سلامت قلب اهمیت می‌دهند\n✔ افراد دارای خستگی و ضعف\n✔ کسانی که سیر معمولی را نمی‌توانند مصرف کنند\n\n🧄 طرز استفاده\nروزانه ۱ تا ۲ حبه، به‌صورت مستقیم یا همراه غذا. بهترین زمان: صبح یا قبل از غذا.\n\n⏱️ زمان مشاهده نتیجه\nچند روز اول: انرژی بیشتر؛ ۱ تا ۲ هفته: بهبود حالت عمومی بدن.\n\n⚠️ نکات مهم\n• در مصرف زیاده‌روی نشود\n• در صورت داشتن بیماری خاص یا مصرف دارو با مشوره استفاده شود\n\n💚 جمع‌بندی\nانتخابی عالی برای بدن قوی‌تر، قلب سالم‌تر و انرژی بیشتر.`,
+      en: `🌿 Dr.Biz Black Garlic 170g\n\nFermented black garlic with milder flavor and enhanced health benefits compared to regular garlic.\n\n✨ Benefits: powerful antioxidants, immune support, heart health, lowers cholesterol, boosts energy.\n🧄 Eat 1–2 cloves daily, ideally morning or before meals.`,
+    },
+  },
+  {
+    id: seed.length + 121,
+    name: { en: "Dr.Biz Natural Honey 500g", fa: "عسل طبیعی دکتر بیز ۵۰۰ گرم" },
+    category: "food" as Category,
+    subcategory: "food_honey_sucrose",
+    brand: "Dr.Biz" as Brand,
+    price: 780,
+    shade: "40 90% 55%",
+    image: drbizHoney500gImg,
+    details: {
+      fa: `🌿 معرفی محصول\nعسل ۵۰۰ گرمی دکتر بیز یک عسل طبیعی و خالص است که برای مصرف روزانه، انرژی سریع و تقویت بدن بسیار مناسب می‌باشد.\n\n✨ ویژگی‌ها و مزایا\n✔ منبع طبیعی انرژی سریع\n✔ کمک به تقویت سیستم ایمنی بدن\n✔ دارای خواص ضدباکتری و آنتی‌اکسیدان\n✔ مناسب برای صبحانه و نوشیدنی‌ها\n✔ طعم طبیعی و خوش‌مزه\n\n👥 مناسب برای\n✔ افرادی که انرژی کم دارند\n✔ کودکان و بزرگسالان (با مصرف مناسب)\n✔ کسانی که تغذیه سالم می‌خواهند\n✔ ورزشکاران و افراد پرکار\n\n🍯 طرز استفاده\nبه‌صورت مستقیم، در چای، آب گرم، صبحانه یا میان‌وعده.\n\n⏱️ زمان مشاهده اثر\nفوری: افزایش انرژی؛ مصرف مداوم: تقویت سیستم ایمنی.\n\n⚠️ نکات مهم\n• در جای خشک و خنک نگهداری شود\n• برای کودکان زیر ۱ سال مناسب نیست\n• در مصرف زیاده‌روی نشود\n\n💚 جمع‌بندی\nانتخابی عالی برای انرژی سریع و یک شیرینی طبیعی و سالم.`,
+      en: `🌿 Dr.Biz Natural Honey 500g\n\nPure natural honey for daily energy and immune support.\n\n✨ Benefits: quick natural energy, antibacterial & antioxidant properties, perfect for breakfast & drinks.\n🍯 Enjoy directly or with tea, warm water, breakfast.`,
+    },
+  },
+  {
+    id: seed.length + 122,
+    name: { en: "Dr.Biz Natural Honey 900g", fa: "عسل طبیعی دکتر بیز ۹۰۰ گرم" },
+    category: "food" as Category,
+    subcategory: "food_honey_sucrose",
+    brand: "Dr.Biz" as Brand,
+    price: 1250,
+    shade: "35 95% 50%",
+    image: drbizHoney900gImg,
+    details: {
+      fa: `🌿 معرفی محصول\nعسل ۹۰۰ گرمی دکتر بیز یک عسل طبیعی و خالص در بسته‌بندی خانواده است که برای مصرف روزانه، انرژی سریع و تقویت بدن بسیار مناسب می‌باشد.\n\n✨ ویژگی‌ها و مزایا\n✔ منبع طبیعی انرژی سریع\n✔ کمک به تقویت سیستم ایمنی بدن\n✔ دارای خواص ضدباکتری و آنتی‌اکسیدان\n✔ مناسب برای صبحانه و نوشیدنی‌ها\n✔ بسته‌بندی خانواده و اقتصادی\n✔ طعم طبیعی و خوش‌مزه\n\n👥 مناسب برای\n✔ افرادی که انرژی کم دارند\n✔ کودکان و بزرگسالان (با مصرف مناسب)\n✔ کسانی که تغذیه سالم می‌خواهند\n✔ ورزشکاران و افراد پرکار\n\n🍯 طرز استفاده\nبه‌صورت مستقیم، در چای، آب گرم، صبحانه یا میان‌وعده.\n\n⏱️ زمان مشاهده اثر\nفوری: افزایش انرژی؛ مصرف مداوم: تقویت سیستم ایمنی.\n\n⚠️ نکات مهم\n• در جای خشک و خنک نگهداری شود\n• برای کودکان زیر ۱ سال مناسب نیست\n• در مصرف زیاده‌روی نشود\n\n💚 جمع‌بندی\nانتخابی عالی برای خانواده، انرژی سریع و یک شیرینی طبیعی و سالم.`,
+      en: `🌿 Dr.Biz Natural Honey 900g\n\nPure natural honey in family-size jar for daily energy and immune support.\n\n✨ Benefits: quick energy, antibacterial & antioxidant properties, family/economy size.\n🍯 Enjoy directly or with tea, warm water, breakfast.`,
     },
   },
 ];
