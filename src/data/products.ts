@@ -42,7 +42,7 @@ export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
 
 export interface Product {
-  id: number;
+  id: string;
   name: { en: string; fa: string };
   category: Category;
   subcategory?: string;
