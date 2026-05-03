@@ -3,7 +3,7 @@ import { useLang } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowLeft, Leaf, ShieldCheck, Truck, MessageCircle } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 import hero from "@/assets/hero.jpg";
 import promo from "@/assets/promo.jpg";
 import catMedicinal from "@/assets/cat-medicinal.jpg";
@@ -13,8 +13,9 @@ import catFood from "@/assets/cat-food.jpg";
 
 const Home = () => {
   const { t, lang, dir } = useLang();
+  const { products } = useProducts();
   const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
-  const featured = [...products].sort(() => 0).slice(0, 8);
+  const featured = products.slice(0, 8);
 
   const cats = [
     { key: "medicinal", img: catMedicinal, icon: "" },

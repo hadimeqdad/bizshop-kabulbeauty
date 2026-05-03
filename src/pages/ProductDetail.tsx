@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { products } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 import { useLang } from "@/lib/i18n";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
@@ -11,10 +11,13 @@ const ProductDetail = () => {
   const { lang, t, dir } = useLang();
   const { add } = useCart();
   const [added, setAdded] = useState(false);
+  const { products, loading } = useProducts();
 
-  const product = products.find(p => String(p.id) === id);
+  const product = products.find(p => p.id === id);
 
   useEffect(() => { window.scrollTo(0, 0); }, [id]);
+
+  if (loading) return <div className="container py-20 text-center text-muted-foreground">...</div>;
 
   if (!product) return <Navigate to="/shop" replace />;
 
