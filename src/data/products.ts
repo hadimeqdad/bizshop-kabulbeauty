@@ -31,6 +31,12 @@ import bionestarWheatGermImg from "@/assets/product-bionestar-wheat-germ.jpg";
 import drbizBlackGarlicImg from "@/assets/product-drbiz-black-garlic.jpg";
 import drbizHoney500gImg from "@/assets/product-drbiz-honey-500g.png";
 import drbizHoney900gImg from "@/assets/product-drbiz-honey-900g.png";
+import dateBarNaturalImg from "@/assets/product-drbiz-date-bar-natural.jpg";
+import dateBarCinnamonImg from "@/assets/product-drbiz-date-bar-cinnamon.jpg";
+import dateBarGingerImg from "@/assets/product-drbiz-date-bar-ginger.jpg";
+import dateBarBoostImg from "@/assets/product-drbiz-date-bar-boost.jpg";
+import dateBarDietImg from "@/assets/product-drbiz-date-bar-diet.jpg";
+import dateBarEnergyImg from "@/assets/product-drbiz-date-bar-energy.jpg";
 
 export type Category = "medicinal" | "healthcare" | "cosmetics" | "food";
 export type Brand = "Dr.Biz" | "Setin" | "Biene Star" | "Dynamin";
@@ -2002,6 +2008,90 @@ EXONIC Caviar Shampoo helps strengthen and repair hair with its nourishing compo
     details: {
       fa: `🌿 معرفی محصول\nعسل ۹۰۰ گرمی دکتر بیز یک عسل طبیعی و خالص در بسته‌بندی خانواده است که برای مصرف روزانه، انرژی سریع و تقویت بدن بسیار مناسب می‌باشد.\n\n✨ ویژگی‌ها و مزایا\n✔ منبع طبیعی انرژی سریع\n✔ کمک به تقویت سیستم ایمنی بدن\n✔ دارای خواص ضدباکتری و آنتی‌اکسیدان\n✔ مناسب برای صبحانه و نوشیدنی‌ها\n✔ بسته‌بندی خانواده و اقتصادی\n✔ طعم طبیعی و خوش‌مزه\n\n👥 مناسب برای\n✔ افرادی که انرژی کم دارند\n✔ کودکان و بزرگسالان (با مصرف مناسب)\n✔ کسانی که تغذیه سالم می‌خواهند\n✔ ورزشکاران و افراد پرکار\n\n🍯 طرز استفاده\nبه‌صورت مستقیم، در چای، آب گرم، صبحانه یا میان‌وعده.\n\n⏱️ زمان مشاهده اثر\nفوری: افزایش انرژی؛ مصرف مداوم: تقویت سیستم ایمنی.\n\n⚠️ نکات مهم\n• در جای خشک و خنک نگهداری شود\n• برای کودکان زیر ۱ سال مناسب نیست\n• در مصرف زیاده‌روی نشود\n\n💚 جمع‌بندی\nانتخابی عالی برای خانواده، انرژی سریع و یک شیرینی طبیعی و سالم.`,
       en: `🌿 Dr.Biz Natural Honey 900g\n\nPure natural honey in family-size jar for daily energy and immune support.\n\n✨ Benefits: quick energy, antibacterial & antioxidant properties, family/economy size.\n🍯 Enjoy directly or with tea, warm water, breakfast.`,
+    },
+  },
+  {
+    id: seed.length + 123,
+    name: { en: "Biz Natural Date Bar", fa: "خرما بار طبیعی دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_date_bar",
+    brand: "Dr.Biz" as Brand,
+    price: 650,
+    shade: "20 75% 45%",
+    image: dateBarNaturalImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\nنام محصول: خرما بار طبیعی شرکت بیز (Biz Natural Date Bar)\nبرند: BIZ\nنوع محصول: میان‌وعده طبیعی و سالم\nکاربرد اصلی: تأمین انرژی، تقویت بدن و جایگزین سالم برای تنقلات ناسالم\n\n❓ این محصول چه مشکلی را حل می‌کند؟\nکمبود انرژی، ضعف بدنی، گرسنگی بین وعده‌ها و مصرف تنقلات ناسالم را برطرف می‌کند\n\n⚙️ چگونه عمل می‌کند؟\nاز خرمای طبیعی و ترکیبات مغذی تهیه شده و با داشتن قند طبیعی، فیبر و مواد معدنی به‌سرعت انرژی بدن را تأمین کرده و باعث افزایش توان و تمرکز می‌شود\n\n✨ مهم‌ترین فواید\n• تأمین انرژی فوری و طبیعی\n• جایگزین سالم برای شیرینی و تنقلات\n• کمک به بهبود عملکرد گوارش (به‌دلیل فیبر)\n• مناسب برای ورزشکاران و افراد پرمشغله\n• حفظ سطح قند خون در حد متعادل\n\n🕒 روش مصرف\nمقدار: ۱ عدد خرما بار — هر زمان از روز، به‌خصوص قبل یا بعد از فعالیت بدنی\n\n👥 مناسب برای\nافراد پرمشغله، ورزشکاران، دانش‌آموزان و دانشجویان، علاقه‌مندان به تغذیه سالم\n\n🚫 مناسب نیست برای\nافراد مبتلا به دیابت (بدون مشورت پزشک) و افراد دارای حساسیت به ترکیبات\n\n⚠️ نکات مهم\nدر مصرف تعادل رعایت شود • در جای خشک و خنک نگهداری شود • دور از نور مستقیم خورشید\n\n🏆 مزیت اصلی\nمیان‌وعده‌ای کاملاً طبیعی، بدون مواد مضر و سرشار از انرژی سالم\n\n🧾 جمع‌بندی\nخرما بار طبیعی بیز یک میان‌وعده سالم و مغذی است که با تأمین انرژی سریع، به بهبود عملکرد روزانه و جایگزینی تنقلات ناسالم کمک می‌کند.`,
+      en: `Biz Natural Date Bar — natural, healthy snack made from dates and nutritious ingredients. Quick natural energy, fiber for digestion, healthy alternative to junk snacks.`,
+    },
+  },
+  {
+    id: seed.length + 124,
+    name: { en: "Biz Cinnamon Date Bar", fa: "خرما بار دارچینی دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_date_bar",
+    brand: "Dr.Biz" as Brand,
+    price: 680,
+    shade: "25 70% 40%",
+    image: dateBarCinnamonImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\nنام: خرما بار دارچینی بیز (Biz Cinnamon Date Bar)\nبرند: BIZ — میان‌وعده طبیعی و انرژی‌زا\nکاربرد: تأمین انرژی، کمک به کنترل اشتها و بهبود گوارش\n\n❓ چه مشکلی را حل می‌کند؟\nخستگی روزانه، میل زیاد به شیرینی‌های ناسالم، ضعف انرژی و مشکلات گوارشی خفیف را کاهش می‌دهد\n\n⚙️ چگونه عمل می‌کند؟\nاز خرمای طبیعی و دارچین تهیه شده. خرما انرژی سریع و سالم می‌دهد و دارچین با تنظیم قند خون و بهبود متابولیسم، اشتها را کنترل می‌کند\n\n✨ فواید\n• انرژی طبیعی و سریع\n• کنترل اشتها و کاهش میل به شیرینی\n• بهبود گوارش\n• تنظیم نسبی قند خون\n• طبع گرم، مناسب فصول سرد\n\n🕒 روش مصرف\n۱ عدد در طول روز، بهترین زمان: میان‌وعده یا قبل از فعالیت\n\n👥 مناسب برای\nافراد پرمشغله، رژیم غذایی سالم، علاقه‌مندان به شیرینی، ورزشکاران\n\n🚫 مناسب نیست برای\nافراد دیابتی (بدون مشورت)، حساس به دارچین، رژیم‌های خاص پزشکی\n\n🏆 مزیت اصلی\nترکیب خرما و دارچین برای انرژی پایدار + کنترل اشتها`,
+      en: `Biz Cinnamon Date Bar — natural date bar with cinnamon. Energy + appetite control, supports digestion and balanced blood sugar.`,
+    },
+  },
+  {
+    id: seed.length + 125,
+    name: { en: "Biz Ginger Date Bar", fa: "خرما بار زنجبیلی دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_date_bar",
+    brand: "Dr.Biz" as Brand,
+    price: 710,
+    shade: "15 85% 50%",
+    image: dateBarGingerImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\nنام: خرما بار زنجبیلی بیز (Biz Ginger Date Bar)\nبرند: BIZ — میان‌وعده طبیعی و انرژی‌زا\nکاربرد: افزایش انرژی، بهبود گوارش و تقویت سیستم ایمنی\n\n❓ چه مشکلی را حل می‌کند؟\nخستگی، ضعف بدن، نفخ و هضم ضعیف، نیاز به میان‌وعده سالم\n\n⚙️ چگونه عمل می‌کند؟\nترکیب خرمای طبیعی و زنجبیل: خرما انرژی سریع می‌دهد، زنجبیل با خواص ضدالتهابی و گرم‌کننده هضم را بهبود می‌بخشد و بدن را تقویت می‌کند\n\n✨ فواید\n• انرژی سریع و طبیعی\n• بهبود هضم و کاهش نفخ\n• تقویت سیستم ایمنی\n• خاصیت گرم‌کننده (مناسب فصول سرد)\n• کاهش خستگی و افزایش تمرکز\n\n🕒 روش مصرف\n۱ عدد در طول روز — میان‌وعده، قبل از ورزش یا هنگام ضعف\n\n👥 مناسب برای\nافراد ضعیف و خسته، ورزشکاران، افراد با مشکلات گوارشی\n\n🚫 مناسب نیست برای\nافراد حساس به زنجبیل و بیماران خاص (با مشورت پزشک)\n\n🏆 مزیت اصلی\nترکیب هوشمندانه خرما و زنجبیل برای انرژی + سلامت گوارش`,
+      en: `Biz Ginger Date Bar — natural dates with ginger for quick energy, digestion support, and immune boost. Warming flavor, ideal for cold seasons.`,
+    },
+  },
+  {
+    id: seed.length + 126,
+    name: { en: "Biz Energy Boost Date Bar", fa: "خرما بار تقویتی دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_date_bar",
+    brand: "Dr.Biz" as Brand,
+    price: 650,
+    shade: "340 70% 45%",
+    image: dateBarBoostImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\nنام: خرما بار تقویتی بیز (Biz Energy Boost Date Bar)\nبرند: BIZ — میان‌وعده طبیعی و مقوی\nکاربرد: افزایش انرژی، تقویت بدن و رفع ضعف عمومی\n\n❓ چه مشکلی را حل می‌کند؟\nضعف بدنی، خستگی روزانه، کمبود انرژی و نیاز به میان‌وعده سالم و مغذی\n\n⚙️ چگونه عمل می‌کند؟\nاز خرمای طبیعی همراه با ترکیبات مقوی تهیه شده. قند طبیعی خرما به‌سرعت انرژی می‌دهد و مواد مغذی، بدن را تقویت می‌کنند\n\n✨ فواید\n• انرژی سریع و طبیعی\n• رفع خستگی و ضعف\n• تقویت عمومی بدن\n• مناسب فعالیت‌های روزانه و ورزشی\n\n🕒 روش مصرف\n۱ عدد در طول روز — قبل یا بعد از فعالیت\n\n👥 مناسب برای\nافراد ضعیف، ورزشکاران، دانش‌آموزان، افراد پرمشغله\n\n🚫 مناسب نیست برای\nافراد دیابتی (بدون مشورت پزشک)، حساس به ترکیبات\n\n⚠️ نکات\nتعادل در مصرف • نگهداری در جای خشک و خنک • جایگزین وعده اصلی نیست\n\n🏆 مزیت اصلی\nترکیب مواد طبیعی برای تقویت‌کننده سریع، سالم و بدون مواد مضر`,
+      en: `Biz Energy Boost Date Bar — fortifying natural snack to quickly restore energy, fight fatigue and strengthen the body.`,
+    },
+  },
+  {
+    id: seed.length + 127,
+    name: { en: "Biz Diet Date Bar", fa: "خرما بار رژیمی دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_date_bar",
+    brand: "Dr.Biz" as Brand,
+    price: 750,
+    shade: "120 45% 35%",
+    image: dateBarDietImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\nنام: خرما بار رژیمی بیز (Biz Diet Date Bar)\nبرند: BIZ — میان‌وعده طبیعی و کم‌حجم\nکاربرد: کنترل اشتها، تأمین انرژی سالم و کمک به رژیم غذایی\n\n❓ چه مشکلی را حل می‌کند؟\nپرخوری، میل به شیرینی، گرسنگی بین وعده‌ها و انتخاب تنقلات ناسالم را کاهش می‌دهد\n\n⚙️ چگونه عمل می‌کند؟\nقند طبیعی خرما و فیبر آن احساس سیری ایجاد می‌کنند و انرژی لازم را بدون تنقلات مضر تأمین می‌کند\n\n✨ فواید\n• کنترل اشتها\n• جایگزین سالم برای شیرینی و تنقلات\n• انرژی طبیعی بدون افت ناگهانی\n• کمک به حفظ رژیم غذایی سالم\n• فیبر مفید برای گوارش\n\n🕒 روش مصرف\n۱ عدد بین وعده‌های غذایی، هنگام گرسنگی یا میل به شیرینی\n\n👥 مناسب برای\nافراد در رژیم، علاقه‌مندان به کاهش وزن، سبک زندگی سالم، دانشجویان و کارمندان\n\n🚫 مناسب نیست برای\nافراد دیابتی (بدون مشورت پزشک)، رژیم‌های خاص، حساس به ترکیبات\n\n⏳ زمان نتیجه\nبا مصرف منظم، طی چند روز تا چند هفته در کنترل اشتها قابل مشاهده است\n\n🏆 مزیت اصلی\nمیان‌وعده‌ای طبیعی که اشتها را کنترل می‌کند بدون حذف انرژی`,
+      en: `Biz Diet Date Bar — natural low-volume snack that helps control appetite and supports a healthy diet without sacrificing energy.`,
+    },
+  },
+  {
+    id: seed.length + 128,
+    name: { en: "Biz Energy Date Bar", fa: "خرما بار انرژی‌زا دکتر بیز" },
+    category: "food" as Category,
+    subcategory: "food_date_bar",
+    brand: "Dr.Biz" as Brand,
+    price: 650,
+    shade: "30 90% 50%",
+    image: dateBarEnergyImg,
+    details: {
+      fa: `🌿 معرفی محصول\n\n🔹 مشخصات سریع\nنام: خرما بار انرژی‌زا بیز (Biz Energy Date Bar)\nبرند: BIZ — میان‌وعده طبیعی و پرانرژی\nکاربرد: افزایش سریع انرژی و بهبود عملکرد روزانه\n\n❓ چه مشکلی را حل می‌کند؟\nخستگی، افت انرژی در طول روز، بی‌حالی و نیاز به میان‌وعده فوری و سالم\n\n⚙️ چگونه عمل می‌کند؟\nقند طبیعی خرما، انرژی سریع و پایدار می‌دهد و ترکیبات مغذی، توان جسمی و ذهنی را افزایش می‌دهند و از افت ناگهانی انرژی جلوگیری می‌کنند\n\n✨ فواید\n• افزایش سریع انرژی\n• کاهش خستگی و بی‌حالی\n• افزایش تمرکز\n• میان‌وعده سالم و طبیعی\n• مناسب قبل و بعد از فعالیت\n\n🕒 روش مصرف\n۱ عدد در طول روز — قبل از ورزش، حین فعالیت یا هنگام افت انرژی\n\n👥 مناسب برای\nافراد پرمشغله، ورزشکاران، دانش‌آموزان و دانشجویان، افراد با فعالیت بالا\n\n🚫 مناسب نیست برای\nافراد دیابتی (بدون مشورت پزشک)، حساس به ترکیبات\n\n⚠️ نکات\nتعادل در مصرف • نگهداری در جای خشک و خنک • جایگزین وعده اصلی نیست\n\n🏆 مزیت اصلی\nانرژی سریع، طبیعی و سالم بدون مواد مضر یا افزودنی‌های غیرضروری`,
+      en: `Biz Energy Date Bar — high-energy natural snack for quick stamina, focus and steady performance throughout the day.`,
     },
   },
 ];
