@@ -6,8 +6,8 @@ export interface CartItem { product: Product; qty: number; }
 interface CartCtx {
   items: CartItem[];
   add: (p: Product) => void;
-  remove: (id: number) => void;
-  update: (id: number, qty: number) => void;
+  remove: (id: string) => void;
+  update: (id: string, qty: number) => void;
   clear: () => void;
   count: number;
   total: number;
@@ -29,8 +29,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const ex = prev.find(i => i.product.id === p.id);
     return ex ? prev.map(i => i.product.id === p.id ? { ...i, qty: i.qty + 1 } : i) : [...prev, { product: p, qty: 1 }];
   });
-  const remove = (id: number) => setItems(prev => prev.filter(i => i.product.id !== id));
-  const update = (id: number, qty: number) => setItems(prev => qty <= 0 ? prev.filter(i => i.product.id !== id) : prev.map(i => i.product.id === id ? { ...i, qty } : i));
+  const remove = (id: string) => setItems(prev => prev.filter(i => i.product.id !== id));
+  const update = (id: string, qty: number) => setItems(prev => qty <= 0 ? prev.filter(i => i.product.id !== id) : prev.map(i => i.product.id === id ? { ...i, qty } : i));
   const clear = () => setItems([]);
   const count = items.reduce((s, i) => s + i.qty, 0);
   const total = items.reduce((s, i) => s + i.qty * i.product.price, 0);

@@ -1,7 +1,8 @@
 import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useLang } from "@/lib/i18n";
-import { products, Category, Brand } from "@/data/products";
+import { Category, Brand } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 import { SUBCATEGORIES, getSubcategory } from "@/data/subcategories";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ const brands: ("all" | Brand)[] = ["all", "Dr.Biz", "Setin", "Biene Star", "Dyna
 
 const Shop = () => {
   const { t, lang } = useLang();
+  const { products } = useProducts();
   const [params, setParams] = useSearchParams();
   const initialCat = (params.get("cat") as Category | null) ?? "all";
   const initialSub = params.get("sub") ?? "all";

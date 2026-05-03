@@ -1,6 +1,7 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useLang } from "@/lib/i18n";
-import { products, Category as Cat } from "@/data/products";
+import { Category as Cat } from "@/data/products";
+import { useProducts } from "@/hooks/useProducts";
 import { SUBCATEGORIES } from "@/data/subcategories";
 import { ArrowRight, ArrowLeft, LayoutGrid, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
@@ -9,6 +10,7 @@ const VALID: Cat[] = ["medicinal", "healthcare", "cosmetics", "food"];
 const CategoryPage = () => {
   const { cat } = useParams();
   const { t, lang, dir } = useLang();
+  const { products } = useProducts();
   const Chevron = dir === "rtl" ? ChevronLeft : ChevronRight;
 
   if (!cat || !VALID.includes(cat as Cat)) return <Navigate to="/shop" replace />;
