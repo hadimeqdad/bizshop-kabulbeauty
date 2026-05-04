@@ -1,26 +1,25 @@
 import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useLang } from "@/lib/i18n";
-import { Category, Brand } from "@/data/products";
+import { Category } from "@/data/products";
 import { useProducts } from "@/hooks/useProducts";
 import { SUBCATEGORIES, getSubcategory } from "@/data/subcategories";
 import ProductCard from "@/components/ProductCard";
+import ProductsLoader from "@/components/ProductsLoader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, X } from "lucide-react";
 
 const cats: ("all" | Category)[] = ["all", "medicinal", "healthcare", "cosmetics", "food"];
-const brands: ("all" | Brand)[] = ["all", "Dr.Biz", "Setin", "Biene Star", "Dynamin"];
 
 const Shop = () => {
   const { t, lang } = useLang();
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const [params, setParams] = useSearchParams();
   const initialCat = (params.get("cat") as Category | null) ?? "all";
   const initialSub = params.get("sub") ?? "all";
   const [active, setActive] = useState<"all" | Category>(initialCat);
   const [sub, setSub] = useState<string>(initialSub);
-  const [brand, setBrand] = useState<"all" | Brand>("all");
   const [query, setQuery] = useState("");
 
   // Sync URL
@@ -53,11 +52,10 @@ const Shop = () => {
     return products.filter(p => {
       if (active !== "all" && p.category !== active) return false;
       if (sub !== "all" && p.subcategory !== sub) return false;
-      if (brand !== "all" && p.brand !== brand) return false;
       if (q && !p.name.en.toLowerCase().includes(q) && !p.name.fa.includes(q) && !p.brand.toLowerCase().includes(q)) return false;
       return true;
     });
-  }, [active, sub, brand, query]);
+  }, [active, sub, query, products]);
 
   return (
     <>
@@ -130,22 +128,11 @@ const Shop = () => {
           </div>
         )}
 
-        {/* Brand filter */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {brands.map(b => (
-            <Button
-              key={b}
-              variant={brand === b ? "secondary" : "ghost"}
-              size="sm"
-              onClick={() => setBrand(b)}
-              className="rounded-full px-4 text-xs h-8"
-            >
-              {b === "all" ? t("all") : b}
-            </Button>
-          ))}
-        </div>
+        <div className="mb-10" />
 
-        {filtered.length === 0 ? (
+        {loading ? (
+          <ProductsLoader />
+        ) : filtered.length === 0 ? (
           <p className="text-center text-muted-foreground py-20">{t("no_results")}</p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
