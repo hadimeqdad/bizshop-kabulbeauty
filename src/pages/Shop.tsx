@@ -105,30 +105,48 @@ const Shop = () => {
 
         {/* Subcategory filter */}
         {subList.length > 0 && (
-          <div className="flex flex-wrap gap-2 justify-center mb-4">
-            <Button
-              variant={sub === "all" ? "secondary" : "ghost"}
-              size="sm"
-              onClick={() => setSub("all")}
-              className="rounded-full px-4 text-xs h-8"
-            >
-              {t("all_products")}
-            </Button>
-            {subList.map(s => (
-              <Button
-                key={s.key}
-                variant={sub === s.key ? "secondary" : "ghost"}
-                size="sm"
-                onClick={() => setSub(s.key)}
-                className="rounded-full px-4 text-xs h-8"
+          <div className="mb-8 md:mb-10">
+            <div className="flex items-center gap-3 mb-3 justify-center">
+              <span className="h-px flex-1 max-w-[60px] bg-border" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-accent">
+                {t("subcategories")}
+              </span>
+              <span className="h-px flex-1 max-w-[60px] bg-border" />
+            </div>
+            <div className="flex flex-wrap gap-2 justify-center">
+              <button
+                onClick={() => setSub("all")}
+                className={`group inline-flex items-center gap-1.5 rounded-full px-4 h-9 text-xs font-medium border transition-smooth ${
+                  sub === "all"
+                    ? "bg-primary text-primary-foreground border-primary shadow-soft"
+                    : "bg-card text-foreground border-border hover:border-primary/50 hover:text-primary"
+                }`}
               >
-                {s.name[lang]}
-              </Button>
-            ))}
+                <span className={`w-1.5 h-1.5 rounded-full ${sub === "all" ? "bg-gold" : "bg-accent/50"}`} />
+                {t("all_products")}
+              </button>
+              {subList.map(s => {
+                const isActive = sub === s.key;
+                return (
+                  <button
+                    key={s.key}
+                    onClick={() => setSub(s.key)}
+                    className={`group inline-flex items-center gap-1.5 rounded-full px-4 h-9 text-xs font-medium border transition-smooth ${
+                      isActive
+                        ? "bg-primary text-primary-foreground border-primary shadow-soft"
+                        : "bg-card text-foreground border-border hover:border-primary/50 hover:text-primary"
+                    }`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full ${isActive ? "bg-gold" : "bg-accent/50"}`} />
+                    {s.name[lang]}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         )}
 
-        <div className="mb-10" />
+        <div className="mb-2" />
 
         {loading ? (
           <ProductsLoader />
