@@ -1,26 +1,25 @@
 import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useLang } from "@/lib/i18n";
-import { Category, Brand } from "@/data/products";
+import { Category } from "@/data/products";
 import { useProducts } from "@/hooks/useProducts";
 import { SUBCATEGORIES, getSubcategory } from "@/data/subcategories";
 import ProductCard from "@/components/ProductCard";
+import ProductsLoader from "@/components/ProductsLoader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, X } from "lucide-react";
 
 const cats: ("all" | Category)[] = ["all", "medicinal", "healthcare", "cosmetics", "food"];
-const brands: ("all" | Brand)[] = ["all", "Dr.Biz", "Setin", "Biene Star", "Dynamin"];
 
 const Shop = () => {
   const { t, lang } = useLang();
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const [params, setParams] = useSearchParams();
   const initialCat = (params.get("cat") as Category | null) ?? "all";
   const initialSub = params.get("sub") ?? "all";
   const [active, setActive] = useState<"all" | Category>(initialCat);
   const [sub, setSub] = useState<string>(initialSub);
-  const [brand, setBrand] = useState<"all" | Brand>("all");
   const [query, setQuery] = useState("");
 
   // Sync URL
