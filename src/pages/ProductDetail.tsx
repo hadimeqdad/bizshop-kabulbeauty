@@ -31,6 +31,25 @@ const ProductDetail = () => {
 
   return (
     <section className="container py-8 md:py-14">
+      <SEO
+        title={`${product.name[lang]} — بیزشاپ`}
+        description={product.details?.[lang]?.slice(0, 155) || `خرید ${product.name[lang]} از برند ${product.brand} در بیزشاپ کابل`}
+        keywords={`${product.name.fa}, ${product.name.en}, ${product.brand}, بیزشاپ, دکتر بیز کابل`}
+        image={product.image}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: product.name[lang],
+          image: product.image,
+          brand: { "@type": "Brand", name: product.brand },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "AFN",
+            price: product.price,
+            availability: "https://schema.org/InStock",
+          },
+        }}
+      />
       <Link to="/shop" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
         <ChevronLeft className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
         {t("nav_shop")}
