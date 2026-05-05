@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { MapPin, MessageCircle, Mail } from "lucide-react";
 import { z } from "zod";
+import SEO from "@/components/SEO";
 
 const schema = z.object({
   name: z.string().trim().min(2).max(80),
@@ -30,6 +31,11 @@ const Contact = () => {
 
   return (
     <>
+      <SEO
+        title="تماس با بیزشاپ — کابل افغانستان"
+        description="آدرس و راه‌های ارتباطی بیزشاپ کابل: واتساپ، نقشه و فرم تماس برای خرید محصولات دکتر بیز"
+        keywords="تماس بیزشاپ, آدرس فروشگاه کابل, واتساپ بیزشاپ"
+      />
       <section className="border-b border-border/60 bg-muted/30">
         <div className="container py-14 md:py-20 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">{t("brand")}</p>

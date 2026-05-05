@@ -5,6 +5,8 @@ import { SUBCATEGORIES } from "@/data/subcategories";
 import { useProducts } from "@/hooks/useProducts";
 import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { useMemo } from "react";
+import ProductsLoader from "@/components/ProductsLoader";
+import SEO from "@/components/SEO";
 import catMedicinal from "@/assets/cat-medicinal.jpg";
 import catHealthcare from "@/assets/cat-healthcare.jpg";
 import catCosmetics from "@/assets/cat-cosmetics.jpg";
@@ -21,7 +23,7 @@ const CAT_IMAGES: Record<Cat, string> = {
 const CategoryPage = () => {
   const { cat } = useParams();
   const { t, lang, dir } = useLang();
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
 
   if (!cat || !VALID.includes(cat as Cat)) return <Navigate to="/shop" replace />;
@@ -49,6 +51,12 @@ const CategoryPage = () => {
 
   return (
     <>
+      <SEO
+        title={`${t(`cat_${category}` as any)} — بیزشاپ کابل`}
+        description={`خرید محصولات ${t(`cat_${category}` as any)} برندهای دکتر بیز، ستین، داینامین و بیینه استار در بیزشاپ کابل افغانستان`}
+        keywords={`${t(`cat_${category}` as any)}, بیزشاپ, دکتر بیز کابل, خرید آنلاین افغانستان`}
+      />
+      {loading && <div className="container py-8"><ProductsLoader /></div>}
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink">
         <div className="absolute inset-0">

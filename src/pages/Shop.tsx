@@ -9,6 +9,7 @@ import ProductsLoader from "@/components/ProductsLoader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, X } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const cats: ("all" | Category)[] = ["all", "medicinal", "healthcare", "cosmetics", "food"];
 
@@ -59,6 +60,11 @@ const Shop = () => {
 
   return (
     <>
+      <SEO
+        title="فروشگاه بیزشاپ — محصولات دکتر بیز، ستین، داینامین و بیینه استار"
+        description="فروشگاه آنلاین بیزشاپ کابل: خرید محصولات بهداشتی، آرایشی، درمانی و غذایی دکتر بیز با تحویل سریع در افغانستان"
+        keywords="فروشگاه بیزشاپ, خرید آنلاین کابل, دکتر بیز, ستین, داینامین, بیینه استار"
+      />
       <section className="border-b border-border bg-secondary/40">
         <div className="container py-12 md:py-16 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">{t("featured_sub")}</p>

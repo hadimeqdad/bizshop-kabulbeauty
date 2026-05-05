@@ -1,0 +1,1 @@
+UPDATE public.products SET subcategory = NULL WHERE subcategory = 'hc_biz_general';

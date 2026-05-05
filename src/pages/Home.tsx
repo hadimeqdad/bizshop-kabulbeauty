@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 import { ArrowRight, ArrowLeft, Leaf, ShieldCheck, Truck, MessageCircle } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
@@ -34,6 +35,18 @@ const Home = () => {
 
   return (
     <>
+      <SEO
+        title="بیزشاپ — فروشگاه آنلاین محصولات دکتر بیز در کابل افغانستان"
+        description="خرید محصولات بهداشتی، آرایشی و غذایی دکتر بیز، ستین، داینامین و بیینه استار در کابل افغانستان"
+        keywords="bizshop، بیزشاپ، دکتر بیز کابل، خرید آنلاین افغانستان، فروشگاه کابل"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Store",
+          name: "BizShop بیزشاپ",
+          url: "https://bizshop-kabulbeauty.lovable.app/",
+          address: { "@type": "PostalAddress", addressLocality: "Kabul", addressCountry: "AF" },
+        }}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink">
         <div className="absolute inset-0">

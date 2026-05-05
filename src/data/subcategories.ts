@@ -8,7 +8,6 @@ export interface SubcategoryDef {
 export const SUBCATEGORIES: Record<Category, SubcategoryDef[]> = {
   medicinal: [],
   healthcare: [
-    { key: "hc_biz_general", name: { fa: "بهداشتی BIZ", en: "BIZ Hygiene" } },
     { key: "hc_biz_shampoo", name: { fa: "شامپوهای تخصصی BIZ", en: "BIZ Specialty Shampoos" } },
     { key: "hc_biz_soap", name: { fa: "صابون‌های زیبایی BIZ", en: "BIZ Beauty Soaps" } },
     { key: "hc_biz_hair_skin", name: { fa: "محصولات تقویتی مو و پوست BIZ", en: "BIZ Hair & Skin Strengthening" } },

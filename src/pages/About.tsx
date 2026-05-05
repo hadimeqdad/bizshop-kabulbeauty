@@ -1,6 +1,7 @@
 import { useLang } from "@/lib/i18n";
 import heroImg from "@/assets/hero.jpg";
 import { ShieldCheck, Heart, Leaf } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const About = () => {
   const { t, lang } = useLang();
@@ -17,6 +18,11 @@ const About = () => {
   ];
   return (
     <>
+      <SEO
+        title="درباره بیزشاپ — فروشگاه محصولات سلامت در کابل"
+        description="بیزشاپ کابل، نماینده رسمی محصولات دکتر بیز، ستین، داینامین و بیینه استار در افغانستان"
+        keywords="درباره بیزشاپ, دکتر بیز کابل, فروشگاه سلامتی افغانستان"
+      />
       <section className="container py-16 md:py-24 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div className="animate-fade-up">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">{t("brand")}</p>
