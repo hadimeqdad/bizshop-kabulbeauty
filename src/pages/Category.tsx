@@ -5,6 +5,8 @@ import { SUBCATEGORIES } from "@/data/subcategories";
 import { useProducts } from "@/hooks/useProducts";
 import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { useMemo } from "react";
+import ProductsLoader from "@/components/ProductsLoader";
+import SEO from "@/components/SEO";
 import catMedicinal from "@/assets/cat-medicinal.jpg";
 import catHealthcare from "@/assets/cat-healthcare.jpg";
 import catCosmetics from "@/assets/cat-cosmetics.jpg";
