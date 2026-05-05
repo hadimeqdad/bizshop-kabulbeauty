@@ -23,7 +23,7 @@ const CAT_IMAGES: Record<Cat, string> = {
 const CategoryPage = () => {
   const { cat } = useParams();
   const { t, lang, dir } = useLang();
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
 
   if (!cat || !VALID.includes(cat as Cat)) return <Navigate to="/shop" replace />;
