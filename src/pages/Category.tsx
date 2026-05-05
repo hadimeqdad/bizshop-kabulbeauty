@@ -51,6 +51,12 @@ const CategoryPage = () => {
 
   return (
     <>
+      <SEO
+        title={`${t(`cat_${category}` as any)} — بیزشاپ کابل`}
+        description={`خرید محصولات ${t(`cat_${category}` as any)} برندهای دکتر بیز، ستین، داینامین و بیینه استار در بیزشاپ کابل افغانستان`}
+        keywords={`${t(`cat_${category}` as any)}, بیزشاپ, دکتر بیز کابل, خرید آنلاین افغانستان`}
+      />
+      {loading && <div className="container py-8"><ProductsLoader /></div>}
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink">
         <div className="absolute inset-0">
