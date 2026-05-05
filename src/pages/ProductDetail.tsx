@@ -5,6 +5,8 @@ import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Plus, Check } from "lucide-react";
 import { useEffect, useState } from "react";
+import ProductsLoader from "@/components/ProductsLoader";
+import SEO from "@/components/SEO";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -17,7 +19,7 @@ const ProductDetail = () => {
 
   useEffect(() => { window.scrollTo(0, 0); }, [id]);
 
-  if (loading) return <div className="container py-20 text-center text-muted-foreground">...</div>;
+  if (loading) return <div className="container py-8"><ProductsLoader /></div>;
 
   if (!product) return <Navigate to="/shop" replace />;
 
