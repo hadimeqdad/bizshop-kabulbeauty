@@ -5,7 +5,7 @@ const WhatsAppFloat = () => {
   const { t } = useLang();
   return (
     <a
-      href="https://wa.me/message/64F75TYQX77KI1"
+      href="https://wa.me/93787628812"
       target="_blank"
       rel="noopener"
       aria-label={t("whatsapp")}
