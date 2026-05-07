@@ -47,7 +47,7 @@ const Footer = () => {
       <div className="border-t border-background/10">
         <div className="container py-5 text-xs text-background/60 flex flex-col md:flex-row gap-2 items-center justify-between">
           <span>© {new Date().getFullYear()} {t("brand")}. {t("rights")}.</span>
-          <span>{lang === "" ? "" : ""}</span>
+          <span></span>
         </div>
       </div>
     </footer>
