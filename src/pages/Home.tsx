@@ -7,10 +7,10 @@ import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import hero from "@/assets/hero.jpg";
 import promo from "@/assets/promo.jpg";
-import catMedicinal from "@/assets/cat-medicinal.jpg";
-import catHealthcare from "@/assets/cat-healthcare.jpg";
-import catCosmetics from "@/assets/cat-cosmetics.jpg";
-import catFood from "@/assets/cat-food.jpg";
+import catMedicinal from "@/assets/cat-medicinal.jpg.jpg";
+import catHealthcare from "@/assets/cat-healthcare.jpg.jpg";
+import catCosmetics from "@/assets/cat-cosmetics.jpg.";
+import catFood from "@/assets/cat-food.jpg.jpg";
 
 const Home = () => {
   const { t, lang, dir } = useLang();
