@@ -16,10 +16,11 @@ export const SUBCATEGORIES: Record<Category, SubcategoryDef[]> = {
     { key: "hc_oral", name: { fa: "محصولات دهان و دندان", en: "Oral Care" } },
     { key: "hc_skincare", name: { fa: "محصولات مراقبت از پوست", en: "Skincare" } },
     { key: "hc_hair_mask", name: { fa: "ماسک مو و ژل مو", en: "Hair Masks & Gels" } },
-    { key: "hc_moisturizer", name: { fa: "کریم‌های مرطوب‌کننده", en: "Moisturizing Creams" } },
+    { key: "hc_moisturizer", name: { fa: "کرم‌های مرطوب‌کننده", en: "Moisturizing Creams" } },
     { key: "hc_body_spray", name: { fa: "سپری خوشبوکننده بدن", en: "Body Sprays" } },
     { key: "hc_hygiene_gel", name: { fa: "ژل‌های بهداشتی", en: "Hygiene Gels" } },
     { key: "hc_deodorant", name: { fa: "مام رول ضد عرق", en: "Roll-On Deodorants" } },
+    { key: "hc_sunscreen", name: { fa: "کرم های ضد آفتاب", en: "Sunscreen" } },
   ],
   cosmetics: [
     { key: "cos_luxury_coin_cream", name: { fa: "کرم‌های لاکچری کوین", en: "Luxury Coin Creams" } },
@@ -44,6 +45,7 @@ export const SUBCATEGORIES: Record<Category, SubcategoryDef[]> = {
     { key: "food_honey_sucrose", name: { fa: "عسل مخصوص Dr.BIZ", en: "Dr.BIZ Special Honey" } },
     { key: "food_black_garlic", name: { fa: "سیر سیاه", en: "Black Garlic" } },
     { key: "food_date_bar", name: { fa: "خرما بار Dr.BIZ", en: "Dr.BIZ Date Bars" } },
+    { key: "food_drinks", name: { fa: "انواع نوشیدنی", en: "Drinks" } },
   ],
 };
 
