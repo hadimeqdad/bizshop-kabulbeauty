@@ -31,7 +31,7 @@ const Home = () => {
     { icon: MessageCircle, title: t("trust_support"), sub: t("trust_support_sub") },
   ];
 
-  const brands = ["Dr.Biz", "Setin", "Biene Star", "Dynamin"];
+  const brands = ["Dr.Biz", "Setin", "Biene Star", "Dynamin", "Luxury Coin", "Gatio", "Exonic", "Vitabella"];
 
   return (
     <>
