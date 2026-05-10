@@ -75,6 +75,13 @@ const ProductCard = ({ product }: { product: Product }) => {
           >
             {added ? <><Check className="w-3.5 h-3.5" />{t("added")}</> : <><Plus className="w-3.5 h-3.5" />{t("add_to_cart")}</>}
           </Button>
+          <a
+  href={`https://wa.me/93787628812?text=سلام، می‌خوام ${product.name[lang]} رو سفارش بدم. قیمت: ${product.price} افغانی`}
+  target="_blank"
+  className="w-full mt-2 bg-green-500 text-white text-xs py-2 px-3 rounded flex items-center justify-center gap-1"
+>
+  📲 سفارش از واتساپ
+</a>
         </div>
       </div>
     </article>
