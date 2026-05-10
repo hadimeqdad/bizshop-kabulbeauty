@@ -63,25 +63,28 @@ const ProductCard = ({ product }: { product: Product }) => {
             {product.name[lang]}
           </h3>
         </Link>
-        <div className="flex items-center justify-between mt-auto pt-2">
-          <span className="text-sm font-semibold text-foreground">
-            {product.price.toLocaleString()} <span className="text-[10px] text-muted-foreground font-normal">{t("afn")}</span>
-          </span>
-          <Button
-            size="sm"
-            variant={added ? "secondary" : "default"}
-            onClick={handleAdd}
-            className="h-8 px-3 text-xs gap-1"
-          >
-            {added ? <><Check className="w-3.5 h-3.5" />{t("added")}</> : <><Plus className="w-3.5 h-3.5" />{t("add_to_cart")}</>}
-          </Button>
-          <a
+    <div className="mt-auto pt-2">
+  <div className="flex items-center justify-between mb-2">
+    <span className="text-sm font-semibold text-foreground">
+      {product.price.toLocaleString()} <span className="text-[10px] text-muted-foreground font-normal">{t("afn")}</span>
+    </span>
+    <Button
+      size="sm"
+      variant={added ? "secondary" : "default"}
+      onClick={handleAdd}
+      className="h-7 px-2 text-xs gap-1"
+    >
+      {added ? <><Check className="w-3 h-3" />{t("added")}</> : <><Plus className="w-3 h-3" />{t("add_to_cart")}</>}
+    </Button>
+  </div>
   <a
-  href={`https://wa.me/93787628812?text=سلام، میخوام ${product.name[lang]} رو سفارش بدم. قیمت: ${product.price} افغانی`}
-  target="_blank"
-  className="w-full mt-2 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold py-2 px-3 rounded transition-all"
->
-  <span>📲</span> سفارش از واتساپ
+    href={`https://wa.me/93787628812?text=سلام، میخوام ${product.name[lang]} رو سفارش بدم`}
+    target="_blank"
+    className="w-full h-8 flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold rounded"
+  >
+    📲 سفارش از واتساپ
+  </a>
+</div>
 </a>
         </div>
       </div>
