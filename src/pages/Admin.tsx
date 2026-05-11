@@ -47,6 +47,7 @@ interface DbProduct {
   details_en: string | null;
   shade: string | null;
   sort_order: number;
+  original_price: number | null;
 }
 
 const emptyForm: Omit<DbProduct, "id"> = {
@@ -61,6 +62,7 @@ const emptyForm: Omit<DbProduct, "id"> = {
   details_en: "",
   shade: "150 50% 35%",
   sort_order: 0,
+  original_price: null,
 };
 
 const CATEGORIES: Category[] = ["medicinal", "healthcare", "cosmetics", "food"];
@@ -139,7 +141,7 @@ const Admin = () => {
       return;
     }
     setSaving(true);
-    const payload = { ...form, price: Number(form.price), sort_order: Number(form.sort_order) };
+    const payload = { ...form, price: Number(form.price), original_price: form.original_price ? Number(form.original_price) : null, sort_order: Number(form.sort_order) };
     const { error } = editing
       ? await supabase.from("products").update(payload).eq("id", editing.id)
       : await supabase.from("products").insert(payload);
@@ -349,6 +351,16 @@ const Admin = () => {
                 <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
               </div>
               <div>
+                <div>
+  <Label>{fa ? "قیمت اصلی (قبل از تخفیف)" : "Original Price"}</Label>
+  <Input 
+    type="number" 
+    min={0} 
+    placeholder={fa ? "اختیاری" : "Optional"}
+    value={form.original_price ?? ""} 
+    onChange={(e) => setForm({ ...form, original_price: e.target.value ? Number(e.target.value) : null })} 
+  />
+</div>
                 <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
                 <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
               </div>
