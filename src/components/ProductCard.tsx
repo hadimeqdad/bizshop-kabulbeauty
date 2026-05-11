@@ -66,6 +66,13 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="mt-auto pt-2">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-semibold text-foreground">
+  {product.price.toLocaleString()} <span className="text-[10px] text-muted-foreground font-normal">{t("afn")}</span>
+  {product.originalPrice && (
+    <span className="text-xs text-muted-foreground line-through mr-2">
+      {product.originalPrice.toLocaleString()}
+    </span>
+  )}
+</span>
               {product.price.toLocaleString()} <span className="text-[10px] text-muted-foreground font-normal">{t("afn")}</span>
             </span>
             <Button
