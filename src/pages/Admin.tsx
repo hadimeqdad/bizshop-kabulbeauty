@@ -345,22 +345,22 @@ const Admin = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div>
                 <Label>{fa ? "قیمت (افغانی)" : "Price (AFN)"}</Label>
                 <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
               </div>
               <div>
-                <div>
-  <Label>{fa ? "قیمت اصلی (قبل از تخفیف)" : "Original Price"}</Label>
-  <Input 
-    type="number" 
-    min={0} 
-    placeholder={fa ? "اختیاری" : "Optional"}
-    value={form.original_price ?? ""} 
-    onChange={(e) => setForm({ ...form, original_price: e.target.value ? Number(e.target.value) : null })} 
-  />
-</div>
+                <Label>{fa ? "قیمت اصلی (قبل از تخفیف)" : "Original Price"}</Label>
+                <Input
+                  type="number"
+                  min={0}
+                  placeholder={fa ? "اختیاری" : "Optional"}
+                  value={form.original_price ?? ""}
+                  onChange={(e) => setForm({ ...form, original_price: e.target.value ? Number(e.target.value) : null })}
+                />
+              </div>
+              <div>
                 <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
                 <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
               </div>
