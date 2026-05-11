@@ -1,0 +1,2 @@
+ALTER TABLE public.products 
+ADD COLUMN IF NOT EXISTS original_price NUMERIC;
