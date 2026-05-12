@@ -46,8 +46,7 @@ interface DbProduct {
   details_fa: string | null;
   details_en: string | null;
   shade: string | null;
-  sort_order: number;
-  original_price: number | null;
+  sort_order: number
 }
 
 const emptyForm: Omit<DbProduct, "id"> = {
@@ -62,7 +61,6 @@ const emptyForm: Omit<DbProduct, "id"> = {
   details_en: "",
   shade: "150 50% 35%",
   sort_order: 0,
-  original_price: null,
 };
 
 const CATEGORIES: Category[] = ["medicinal", "healthcare", "cosmetics", "food"];
@@ -141,7 +139,7 @@ const Admin = () => {
       return;
     }
     setSaving(true);
-    const payload = { ...form, price: Number(form.price), original_price: form.original_price ? Number(form.original_price) : null, sort_order: Number(form.sort_order) };
+    const payload = { ...form, price: Number(form.price), sort_order: Number(form.sort_order) };
     const { error } = editing
       ? await supabase.from("products").update(payload).eq("id", editing.id)
       : await supabase.from("products").insert(payload);
