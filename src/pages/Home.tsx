@@ -8,9 +8,9 @@ import { useProducts } from "@/hooks/useProducts";
 import hero from "@/assets/hero.jpg";
 import promo from "@/assets/promo.jpg";
 import catMedicinal from "@/assets/file_000000002bfc7243b357c60be7fcf0ed.jpg";
-import catHealthcare from "@/assets/cat-healthcare.jpg.";
-import catCosmetics from "@/assets/cat-cosmetics.jpg.";
-import catFood from "@/assets/cat-food.jpg.";
+import catHealthcare from "@/assets/cat-healthcare.jpg";
+import catCosmetics from "@/assets/cat-cosmetics.jpg";
+import catFood from "@/assets/cat-food.jpg";
 
 const Home = () => {
   const { t, lang, dir } = useLang();
