@@ -46,7 +46,7 @@ interface DbProduct {
   details_fa: string | null;
   details_en: string | null;
   shade: string | null;
-  sort_order: number
+  sort_order: number;
 }
 
 const emptyForm: Omit<DbProduct, "id"> = {
@@ -343,12 +343,10 @@ const Admin = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <Label>{fa ? "قیمت (افغانی)" : "Price (AFN)"}</Label>
                 <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
-              </div>
-              <div>
               </div>
               <div>
                 <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
