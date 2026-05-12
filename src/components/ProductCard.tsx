@@ -65,14 +65,6 @@ const ProductCard = ({ product }: { product: Product }) => {
         </Link>
         <div className="mt-auto pt-2">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-semibold text-foreground">
-              {product.originalPrice && (
-                <span className="text-xs text-muted-foreground line-through ml-1">
-                  {product.originalPrice.toLocaleString()}
-                </span>
-              )}
-              {product.price.toLocaleString()} <span className="text-[10px] text-muted-foreground font-normal">{t("afn")}</span>
-            </span>
             <Button
               size="sm"
               variant={added ? "secondary" : "default"}
