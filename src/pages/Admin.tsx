@@ -351,14 +351,6 @@ const Admin = () => {
                 <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
               </div>
               <div>
-                <Label>{fa ? "قیمت اصلی (قبل از تخفیف)" : "Original Price"}</Label>
-                <Input
-                  type="number"
-                  min={0}
-                  placeholder={fa ? "اختیاری" : "Optional"}
-                  value={form.original_price ?? ""}
-                  onChange={(e) => setForm({ ...form, original_price: e.target.value ? Number(e.target.value) : null })}
-                />
               </div>
               <div>
                 <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
