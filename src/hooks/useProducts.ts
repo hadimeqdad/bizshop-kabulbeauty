@@ -10,6 +10,7 @@ export interface DbProductRow {
   subcategory: string | null;
   brand: string;
   price: number;
+  original_price: number | null;
   image_url: string | null;
   details_fa: string | null;
   details_en: string | null;
@@ -24,6 +25,7 @@ export const rowToProduct = (r: DbProductRow): Product => ({
   subcategory: r.subcategory ?? undefined,
   brand: r.brand as Brand,
   price: Number(r.price),
+  originalPrice: r.original_price ? Number(r.original_price) : undefined,
   shade: r.shade ?? "150 50% 35%",
   image: r.image_url ?? undefined,
   details:
@@ -33,7 +35,7 @@ export const rowToProduct = (r: DbProductRow): Product => ({
 });
 
 const CACHE_KEY = "bizshop:products:v1";
-const CACHE_TTL_MS = 1000 * 60 * 10; // 10 minutes
+const CACHE_TTL_MS = 1000 * 60 * 10;
 
 interface CacheShape {
   ts: number;
@@ -58,7 +60,6 @@ const writeCache = (data: Product[]) => {
   }
 };
 
-// In-memory cache shared across hook instances during a session
 let memoryCache: Product[] | null = null;
 
 export function useProducts() {
@@ -85,7 +86,6 @@ export function useProducts() {
     const cache = readCache();
     const fresh = cache && Date.now() - cache.ts < CACHE_TTL_MS;
     if (fresh && cache) {
-      // serve cached + revalidate silently
       memoryCache = cache.data;
       setProducts(cache.data);
       setLoading(false);
