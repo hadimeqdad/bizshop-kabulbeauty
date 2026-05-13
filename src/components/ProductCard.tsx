@@ -64,22 +64,6 @@ const ProductCard = ({ product }: { product: Product }) => {
           </h3>
         </Link>
         <div className="mt-auto pt-2">
-          <div className="flex items-center gap-2 mb-1">
-            {product.originalPrice && product.originalPrice > product.price ? (
-              <>
-                <span className="text-sm font-bold text-green-600">
-                  {product.price.toLocaleString()} ؋
-                </span>
-                <span className="text-xs text-muted-foreground line-through">
-                  {product.originalPrice.toLocaleString()} ؋
-                </span>
-              </>
-            ) : (
-              <span className="text-sm font-bold text-primary">
-                {product.price.toLocaleString()} ؋
-              </span>
-            )}
-          </div>
           <div className="flex items-center justify-between mb-2">
             <Button
               size="sm"
