@@ -76,7 +76,7 @@ const ProductCard = ({ product }: { product: Product }) => {
     </>
   ) : (
     <span className="text-sm font-bold text-primary">
-      {product.price.toLocaleString()} ؋
+      {product.price ? product.price.toLocaleString() : "—"} ؋
     </span>
   )}
 </div>
