@@ -25,6 +25,7 @@ export type Database = {
           image_url: string | null
           name_en: string
           name_fa: string
+          original_price: number | null
           price: number
           shade: string | null
           sort_order: number
@@ -41,6 +42,7 @@ export type Database = {
           image_url?: string | null
           name_en: string
           name_fa: string
+          original_price?: number | null
           price?: number
           shade?: string | null
           sort_order?: number
@@ -57,6 +59,7 @@ export type Database = {
           image_url?: string | null
           name_en?: string
           name_fa?: string
+          original_price?: number | null
           price?: number
           shade?: string | null
           sort_order?: number
