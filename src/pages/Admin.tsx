@@ -178,8 +178,6 @@ const Admin = () => {
 
   if (!session) return null;
 
-  if (!isAdmin) {
-    return (
       <section className="container py-16 max-w-xl">
         <div className="bg-card border border-border rounded-lg p-8 text-center">
           <h1 className="font-display text-2xl text-primary mb-3">
