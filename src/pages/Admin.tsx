@@ -176,7 +176,9 @@ const Admin = () => {
     );
   }
 
-  if (!session) return null;
+ if (!session) return null;
+
+  const filtered = filter === "all" ? items : items.filter((i) => i.category === filter);
 
       <section className="container py-16 max-w-xl">
         <div className="bg-card border border-border rounded-lg p-8 text-center">
