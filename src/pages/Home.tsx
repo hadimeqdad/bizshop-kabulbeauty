@@ -6,7 +6,7 @@ import { ArrowRight, ArrowLeft, Leaf, ShieldCheck, Truck, MessageCircle } from "
 import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import hero from "@/assets/hero.jpg";
-import promo from "@/assets/promo.jpg";
+import promo from "@/assets/IMG_20260220_110843.jpg";
 import catMedicinal from "@/assets/cat-medicinal.jpg";
 import catHealthcare from "@/assets/cat-healthcare.jpg";
 import catCosmetics from "@/assets/cat-cosmetics.jpg";
