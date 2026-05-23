@@ -47,6 +47,7 @@ interface DbProduct {
   details_en: string | null;
   shade: string | null;
   sort_order: number;
+  discount_price: number | null;
 }
 
 const emptyForm: Omit<DbProduct, "id"> = {
@@ -61,8 +62,8 @@ const emptyForm: Omit<DbProduct, "id"> = {
   details_en: "",
   shade: "150 50% 35%",
   sort_order: 0,
+  discount_price: null,
 };
-
 const CATEGORIES: Category[] = ["medicinal", "healthcare", "cosmetics", "food"];
 const BRANDS = ["Dr.Biz", "Setin", "Biene Star", "Dynamin"];
 
@@ -355,7 +356,10 @@ const Admin = () => {
                 <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
               </div>
             </div>
-
+<div>
+  <Label>{fa ? "قیمت تخفیف (افغانی)" : "Discount Price (AFN)"}</Label>
+  <Input type="number" min={0} value={form.discount_price ?? ""} onChange={(e) => setForm({ ...form, discount_price: e.target.value === "" ? null : Number(e.target.value) })} />
+</div>
             <div>
               <Label>{fa ? "تصویر محصول" : "Product image"}</Label>
               <div className="mt-2 flex items-start gap-3">
