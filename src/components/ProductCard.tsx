@@ -78,7 +78,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             </Button>
           </div>
           <a
-            href={`https://wa.me/93787628812?text=سلام، میخواستم ${product.name[lang]} را سفارش بدم`}
+            href={`https://api.whatsapp.com/send?phone=93787628812&text=سلام، میخواستم ${product.name[lang]} را سفارش بدم`}
             target="_blank"
             className="w-full h-8 flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold rounded"
           >
