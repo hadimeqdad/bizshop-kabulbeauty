@@ -10,7 +10,7 @@ export interface DbProductRow {
   subcategory: string | null;
   brand: string;
   price: number;
-  original_price: number | null;
+  discount_price: number | null;
   image_url: string | null;
   details_fa: string | null;
   details_en: string | null;
@@ -25,7 +25,7 @@ export const rowToProduct = (r: DbProductRow): Product => ({
   subcategory: r.subcategory ?? undefined,
   brand: r.brand as Brand,
   price: Number(r.price),
-  originalPrice: r.original_price ? Number(r.original_price) : undefined,
+  discount_price: r.discount_price ? Number(r.discount_price) : undefined,
   shade: r.shade ?? "150 50% 35%",
   image: r.image_url ?? undefined,
   details:
