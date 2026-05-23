@@ -140,7 +140,7 @@ const Admin = () => {
       return;
     }
     setSaving(true);
-    const payload = { ...form, price: Number(form.price), sort_order: Number(form.sort_order) };
+    const payload = { ...form, price: Number(form.price), sort_order: Number(form.sort_order), discount_price: form.discount_price ? Number(form.discount_price) : null };
     const { error } = editing
       ? await supabase.from("products").update(payload).eq("id", editing.id)
       : await supabase.from("products").insert(payload);
