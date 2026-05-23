@@ -48,7 +48,7 @@ export interface Product {
   subcategory?: string;
   brand: Brand;
   price: number; // AFN
-  originalPrice?: number; // AFN
+  discount_price?: number; // AFN
   shade: string; // hsl tint for placeholder
   image?: string;
   details?: { fa: string; en: string };
