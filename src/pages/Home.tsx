@@ -43,7 +43,7 @@ const Home = () => {
           "@context": "https://schema.org",
           "@type": "Store",
           name: "BizShop بیزشاپ",
-          url: "https://bizshop-kabulbeauty.lovable.app/",
+        url: "https://bizshopkabul.com/",
           address: { "@type": "PostalAddress", addressLocality: "Kabul", addressCountry: "AF" },
         }}
       />
