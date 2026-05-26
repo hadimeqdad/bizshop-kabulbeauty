@@ -8,9 +8,9 @@ import { useMemo } from "react";
 import ProductsLoader from "@/components/ProductsLoader";
 import SEO from "@/components/SEO";
 import catMedicinal from "@/assets/1000122016.webp";
-import catHealthcare from "@/assets/cat-healthcare.jpg";
+import catHealthcare from "@/assets/1000122013.webp";
 import catCosmetics from "@/assets/cat-cosmetics.jpg";
-import catFood from "@/assets/cat-food.jpg";
+import catFood from "@/assets/1000122015.webp";
 
 const VALID: Cat[] = ["medicinal", "healthcare", "cosmetics", "food"];
 const CAT_IMAGES: Record<Cat, string> = {
