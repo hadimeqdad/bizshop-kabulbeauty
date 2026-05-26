@@ -7,7 +7,7 @@ import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { useMemo } from "react";
 import ProductsLoader from "@/components/ProductsLoader";
 import SEO from "@/components/SEO";
-import catMedicinal from "@/assets/cat-medicinal.jpg";
+import catMedicinal from "@/assets/1000122016.webp";
 import catHealthcare from "@/assets/cat-healthcare.jpg";
 import catCosmetics from "@/assets/cat-cosmetics.jpg";
 import catFood from "@/assets/cat-food.jpg";
