@@ -16,6 +16,7 @@ export interface DbProductRow {
   details_en: string | null;
   shade: string | null;
   sort_order: number;
+  stock: number | null;
 }
 
 export const rowToProduct = (r: DbProductRow): Product => ({
@@ -28,13 +29,14 @@ export const rowToProduct = (r: DbProductRow): Product => ({
   discount_price: r.discount_price ? Number(r.discount_price) : undefined,
   shade: r.shade ?? "150 50% 35%",
   image: r.image_url ?? undefined,
+  stock: r.stock ?? undefined,
   details:
     r.details_fa || r.details_en
       ? { fa: r.details_fa ?? "", en: r.details_en ?? "" }
       : undefined,
 });
 
-const CACHE_KEY = "bizshop:products:v1";
+const CACHE_KEY = "bizshop:products:v2";
 const CACHE_TTL_MS = 1000 * 60 * 10;
 
 interface CacheShape {
