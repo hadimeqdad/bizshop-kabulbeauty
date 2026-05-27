@@ -509,4 +509,120 @@ const Admin = () => {
                 <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
               </div>
               <div>
-                <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Lab
+                <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
+                <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <Label>{fa ? "قیمت تخفیف (افغانی)" : "Discount Price (AFN)"}</Label>
+                <Input type="number" min={0} value={form.discount_price ?? ""} onChange={(e) => setForm({ ...form, discount_price: e.target.value === "" ? null : Number(e.target.value) })} />
+              </div>
+              <div>
+                <Label>{fa ? "موجودی (عدد)" : "Stock"}</Label>
+                <Input type="number" min={0} value={form.stock ?? ""} onChange={(e) => setForm({ ...form, stock: e.target.value === "" ? null : Number(e.target.value) })} />
+              </div>
+            </div>
+
+            <div>
+              <Label>{fa ? "تصویر محصول" : "Product image"}</Label>
+              <div className="mt-2 flex items-start gap-3">
+                <div className="w-24 h-24 rounded border border-border bg-muted overflow-hidden shrink-0">
+                  {form.image_url && <img src={form.image_url} alt="" className="w-full h-full object-cover" />}
+                </div>
+                <div className="flex-1 space-y-2">
+                  <label className="inline-flex items-center gap-2 cursor-pointer text-sm border border-border rounded px-3 py-2 hover:bg-muted">
+                    {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                    {uploading ? (fa ? "در حال آپلود..." : "Uploading...") : (fa ? "انتخاب فایل" : "Choose file")}
+                    <input type="file" accept="image/*" className="hidden" disabled={uploading}
+                      onChange={(e) => { const f = e.target.files?.[0]; if (f) handleUpload(f); e.target.value = ""; }} />
+                  </label>
+                  {form.image_url && (
+                    <button type="button" onClick={() => setForm({ ...form, image_url: null })} className="text-xs text-destructive hover:underline block">
+                      {fa ? "حذف عکس" : "Remove image"}
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Label>{fa ? "توضیحات (فارسی)" : "Details (Persian)"}</Label>
+              <Textarea rows={5} value={form.details_fa ?? ""} onChange={(e) => setForm({ ...form, details_fa: e.target.value })} />
+            </div>
+            <div>
+              <Label>{fa ? "توضیحات (انگلیسی)" : "Details (English)"}</Label>
+              <Textarea rows={5} value={form.details_en ?? ""} onChange={(e) => setForm({ ...form, details_en: e.target.value })} />
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setOpen(false)}>{fa ? "انصراف" : "Cancel"}</Button>
+            <Button onClick={handleSave} disabled={saving}>
+              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : fa ? "ذخیره" : "Save"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Coupon Dialog */}
+      <Dialog open={couponOpen} onOpenChange={setCouponOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-display text-2xl">
+              {editingCoupon ? (fa ? "ویرایش کد تخفیف" : "Edit Coupon") : (fa ? "کد تخفیف جدید" : "New Coupon")}
+            </DialogTitle>
+          </DialogHeader>
+
+          <div className="grid gap-4">
+            <div>
+              <Label>{fa ? "کد تخفیف *" : "Coupon Code *"}</Label>
+              <Input
+                value={couponForm.code}
+                onChange={(e) => setCouponForm({ ...couponForm, code: e.target.value.toUpperCase() })}
+                placeholder="WELCOME15"
+                className="font-mono"
+              />
+            </div>
+            <div>
+              <Label>{fa ? "درصد تخفیف *" : "Discount Percent *"}</Label>
+              <Input
+                type="number" min={1} max={100}
+                value={couponForm.discount_percent}
+                onChange={(e) => setCouponForm({ ...couponForm, discount_percent: Number(e.target.value) })}
+              />
+            </div>
+            <div>
+              <Label>{fa ? "تاریخ انقضا (اختیاری)" : "Expiry Date (optional)"}</Label>
+              <Input
+                type="date"
+                value={couponForm.expires_at}
+                onChange={(e) => setCouponForm({ ...couponForm, expires_at: e.target.value })}
+              />
+            </div>
+            <div className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                id="active"
+                checked={couponForm.active}
+                onChange={(e) => setCouponForm({ ...couponForm, active: e.target.checked })}
+                className="w-4 h-4"
+              />
+              <Label htmlFor="active">{fa ? "فعال" : "Active"}</Label>
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setCouponOpen(false)}>{fa ? "انصراف" : "Cancel"}</Button>
+            <Button onClick={handleSaveCoupon} disabled={couponSaving}>
+              {couponSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : fa ? "ذخیره" : "Save"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </section>
+  );
+};
+
+export default Admin;
