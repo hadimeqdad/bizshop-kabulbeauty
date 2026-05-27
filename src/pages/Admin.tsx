@@ -48,6 +48,7 @@ interface DbProduct {
   shade: string | null;
   sort_order: number;
   discount_price: number | null;
+  stock: number | null;
 }
 
 const emptyForm: Omit<DbProduct, "id"> = {
@@ -63,6 +64,7 @@ const emptyForm: Omit<DbProduct, "id"> = {
   shade: "150 50% 35%",
   sort_order: 0,
   discount_price: null,
+  stock: null,
 };
 const CATEGORIES: Category[] = ["medicinal", "healthcare", "cosmetics", "food"];
 const BRANDS = ["Dr.Biz", "Setin", "Biene Star", "Dynamin"];
@@ -140,7 +142,13 @@ const Admin = () => {
       return;
     }
     setSaving(true);
-    const payload = { ...form, price: Number(form.price), sort_order: Number(form.sort_order), discount_price: form.discount_price ? Number(form.discount_price) : null };
+    const payload = {
+      ...form,
+      price: Number(form.price),
+      sort_order: Number(form.sort_order),
+      discount_price: form.discount_price ? Number(form.discount_price) : null,
+      stock: form.stock !== null ? Number(form.stock) : null,
+    };
     const { error } = editing
       ? await supabase.from("products").update(payload).eq("id", editing.id)
       : await supabase.from("products").insert(payload);
@@ -179,7 +187,6 @@ const Admin = () => {
 
   if (!session) return null;
 
-  // ✅ اصلاح: return اضافه شد و از بلوک تکراری جدا شد
   if (!isAdmin) {
     return (
       <section className="container py-16 max-w-xl">
@@ -203,7 +210,6 @@ const Admin = () => {
     );
   }
 
-  // ✅ اصلاح: فقط یک بار تعریف می‌شود
   const filtered = filter === "all" ? items : items.filter((i) => i.category === filter);
   const subList = form.category ? SUBCATEGORIES[form.category as Category] ?? [] : [];
 
@@ -252,6 +258,7 @@ const Admin = () => {
                 <TableHead>{fa ? "نام" : "Name"}</TableHead>
                 <TableHead>{fa ? "دسته" : "Category"}</TableHead>
                 <TableHead>{fa ? "قیمت" : "Price"}</TableHead>
+                <TableHead>{fa ? "موجودی" : "Stock"}</TableHead>
                 <TableHead className="text-end">{fa ? "عملیات" : "Actions"}</TableHead>
               </TableRow>
             </TableHeader>
@@ -271,6 +278,7 @@ const Admin = () => {
                   </TableCell>
                   <TableCell className="text-sm">{p.category}</TableCell>
                   <TableCell className="text-sm">{Number(p.price).toLocaleString()}</TableCell>
+                  <TableCell className="text-sm">{p.stock ?? "—"}</TableCell>
                   <TableCell>
                     <div className="flex gap-1 justify-end">
                       <Button size="icon" variant="ghost" onClick={() => openEdit(p)}>
@@ -285,7 +293,7 @@ const Admin = () => {
               ))}
               {filtered.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center py-12 text-muted-foreground">
+                  <TableCell colSpan={6} className="text-center py-12 text-muted-foreground">
                     {fa ? "محصولی یافت نشد" : "No products"}
                   </TableCell>
                 </TableRow>
@@ -356,10 +364,18 @@ const Admin = () => {
                 <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
               </div>
             </div>
-<div>
-  <Label>{fa ? "قیمت تخفیف (افغانی)" : "Discount Price (AFN)"}</Label>
-  <Input type="number" min={0} value={form.discount_price ?? ""} onChange={(e) => setForm({ ...form, discount_price: e.target.value === "" ? null : Number(e.target.value) })} />
-</div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <Label>{fa ? "قیمت تخفیف (افغانی)" : "Discount Price (AFN)"}</Label>
+                <Input type="number" min={0} value={form.discount_price ?? ""} onChange={(e) => setForm({ ...form, discount_price: e.target.value === "" ? null : Number(e.target.value) })} />
+              </div>
+              <div>
+                <Label>{fa ? "موجودی (عدد)" : "Stock"}</Label>
+                <Input type="number" min={0} value={form.stock ?? ""} onChange={(e) => setForm({ ...form, stock: e.target.value === "" ? null : Number(e.target.value) })} />
+              </div>
+            </div>
+
             <div>
               <Label>{fa ? "تصویر محصول" : "Product image"}</Label>
               <div className="mt-2 flex items-start gap-3">
