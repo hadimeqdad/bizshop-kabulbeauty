@@ -29,6 +29,9 @@ const ProductDetail = () => {
     setTimeout(() => setAdded(false), 1400);
   };
 
+  const stock = (product as any).stock;
+  const outOfStock = stock !== null && stock !== undefined && stock <= 0;
+
   return (
     <section className="container py-8 md:py-14">
       <SEO
@@ -46,7 +49,7 @@ const ProductDetail = () => {
             "@type": "Offer",
             priceCurrency: "AFN",
             price: product.price,
-            availability: "https://schema.org/InStock",
+            availability: outOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
           },
         }}
       />
@@ -84,10 +87,21 @@ const ProductDetail = () => {
             <span className="text-sm text-muted-foreground mb-1">{t("afn")}</span>
           </div>
 
+          {stock !== null && stock !== undefined && (
+            <div className="mt-3 flex items-center gap-2">
+              <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${outOfStock ? "bg-destructive/10 text-destructive border-destructive/30" : "bg-green-500/10 text-green-600 border-green-500/30"}`}>
+                {outOfStock
+                  ? (lang === "fa" ? "ناموجود" : "Out of Stock")
+                  : (lang === "fa" ? `موجودی: ${stock} عدد` : `In Stock: ${stock}`)}
+              </span>
+            </div>
+          )}
+
           <Button
             size="lg"
             variant={added ? "secondary" : "default"}
             onClick={handleAdd}
+            disabled={outOfStock}
             className="mt-6 gap-2 w-full md:w-auto"
           >
             {added ? <><Check className="w-4 h-4" />{t("added")}</> : <><Plus className="w-4 h-4" />{t("add_to_cart")}</>}
