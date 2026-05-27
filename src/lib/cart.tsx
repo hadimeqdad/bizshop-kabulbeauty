@@ -13,6 +13,9 @@ interface CartCtx {
   total: number;
   open: boolean;
   setOpen: (v: boolean) => void;
+  coupon: { code: string; percent: number } | null;
+  setCoupon: (c: { code: string; percent: number } | null) => void;
+  discountedTotal: number;
 }
 
 const Ctx = createContext<CartCtx | null>(null);
@@ -22,6 +25,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     try { return JSON.parse(localStorage.getItem("bizshop-cart") || "[]"); } catch { return []; }
   });
   const [open, setOpen] = useState(false);
+  const [coupon, setCoupon] = useState<{ code: string; percent: number } | null>(null);
 
   useEffect(() => { localStorage.setItem("bizshop-cart", JSON.stringify(items)); }, [items]);
 
@@ -34,8 +38,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const clear = () => setItems([]);
   const count = items.reduce((s, i) => s + i.qty, 0);
   const total = items.reduce((s, i) => s + i.qty * i.product.price, 0);
+  const discountedTotal = coupon ? Math.round(total * (1 - coupon.percent / 100)) : total;
 
-  return <Ctx.Provider value={{ items, add, remove, update, clear, count, total, open, setOpen }}>{children}</Ctx.Provider>;
+  return <Ctx.Provider value={{ items, add, remove, update, clear, count, total, open, setOpen, coupon, setCoupon, discountedTotal }}>{children}</Ctx.Provider>;
 };
 
 export const useCart = () => {
