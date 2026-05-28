@@ -17,6 +17,7 @@ export interface DbProductRow {
   shade: string | null;
   sort_order: number;
   stock: number | null;
+  min_price: number | null;
 }
 
 export const rowToProduct = (r: DbProductRow): Product => ({
@@ -30,13 +31,14 @@ export const rowToProduct = (r: DbProductRow): Product => ({
   shade: r.shade ?? "150 50% 35%",
   image: r.image_url ?? undefined,
   stock: r.stock ?? undefined,
+  min_price: r.min_price ?? undefined,
   details:
     r.details_fa || r.details_en
       ? { fa: r.details_fa ?? "", en: r.details_en ?? "" }
       : undefined,
 });
 
-const CACHE_KEY = "bizshop:products:v2";
+const CACHE_KEY = "bizshop:products:v3";
 const CACHE_TTL_MS = 1000 * 60 * 10;
 
 interface CacheShape {
@@ -57,9 +59,7 @@ const readCache = (): CacheShape | null => {
 const writeCache = (data: Product[]) => {
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data }));
-  } catch {
-    /* ignore */
-  }
+  } catch {}
 };
 
 let memoryCache: Product[] | null = null;
@@ -95,7 +95,6 @@ export function useProducts() {
     } else {
       refetch(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { products, loading, refetch: () => refetch(false) };
