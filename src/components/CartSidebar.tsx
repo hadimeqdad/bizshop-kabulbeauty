@@ -43,11 +43,14 @@ const CartSidebar = () => {
   };
 
   const buildWaMessage = () => {
-    const lines = items.map(i => `• ${i.product.name[lang]} × ${i.qty} = ${(i.product.price * i.qty).toLocaleString()} ${t("afn")}`);
-    const header = fa ? "سلام بیزشاپ، می‌خواهم سفارش بدهم:" : "Hi BizShop, I'd like to order:";
-    const discount = coupon ? `\n${fa ? "کد تخفیف" : "Coupon"}: ${coupon.code} (${coupon.percent}%)` : "";
-    const footer = `${t("total")}: ${discountedTotal.toLocaleString()} ${t("afn")}${discount}`;
-    return encodeURIComponent([header, "", ...lines, "", footer].join("\n"));
+    const header = fa ? "سلام بیزشاپ 🛒 میخواهم سفارش بدهم:" : "Hi BizShop 🛒 I'd like to order:";
+    const lines = items.map((i, idx) =>
+      `${idx + 1}. ${i.product.name[lang]} — ${i.qty} عدد — ${(i.product.price * i.qty).toLocaleString()} ${t("afn")}`
+    );
+    const discountLine = coupon ? `\n🏷 ${fa ? "کد تخفیف" : "Coupon"}: ${coupon.code} (${coupon.percent}%)` : "";
+    const footer = `\n💰 ${fa ? "مجموع کل" : "Total"}: ${discountedTotal.toLocaleString()} ${t("afn")}`;
+    const message = [header, "", ...lines, discountLine, footer].join("\n");
+    return encodeURIComponent(message);
   };
 
   return (
@@ -101,7 +104,6 @@ const CartSidebar = () => {
 
             <div className="border-t border-border pt-4 space-y-3">
 
-              {/* کد تخفیف */}
               {!coupon ? (
                 <div className="space-y-1">
                   <div className="flex gap-2">
@@ -130,7 +132,6 @@ const CartSidebar = () => {
                 </div>
               )}
 
-              {/* جمع کل */}
               <div className="space-y-1">
                 {coupon && (
                   <div className="flex items-center justify-between text-sm">
@@ -145,7 +146,7 @@ const CartSidebar = () => {
               </div>
 
               <Button asChild size="lg" className="w-full gap-2" style={{ background: "linear-gradient(135deg,#25D366,#128C7E)" }}>
-                <a href={`https://wa.me/message/64F75TYQX77KI1?text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={() => clear()}>
+                <a href={`https://api.whatsapp.com/send?phone=93787628812&text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={() => clear()}>
                   <MessageCircle className="w-5 h-5" /> {t("checkout_wa")}
                 </a>
               </Button>
