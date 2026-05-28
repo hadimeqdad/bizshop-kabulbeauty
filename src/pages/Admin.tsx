@@ -49,6 +49,7 @@ interface DbProduct {
   sort_order: number;
   discount_price: number | null;
   stock: number | null;
+  min_price: number | null;
 }
 
 interface Coupon {
@@ -73,6 +74,7 @@ const emptyForm: Omit<DbProduct, "id"> = {
   sort_order: 0,
   discount_price: null,
   stock: null,
+  min_price: null,
 };
 
 const emptyCouponForm = {
@@ -94,7 +96,6 @@ const Admin = () => {
 
   const [tab, setTab] = useState<"products" | "coupons">("products");
 
-  // Products
   const [items, setItems] = useState<DbProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<DbProduct | null>(null);
@@ -104,7 +105,6 @@ const Admin = () => {
   const [uploading, setUploading] = useState(false);
   const [filter, setFilter] = useState<string>("all");
 
-  // Coupons
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [couponsLoading, setCouponsLoading] = useState(false);
   const [couponOpen, setCouponOpen] = useState(false);
@@ -200,6 +200,7 @@ const Admin = () => {
       sort_order: Number(form.sort_order),
       discount_price: form.discount_price ? Number(form.discount_price) : null,
       stock: form.stock !== null ? Number(form.stock) : null,
+      min_price: form.min_price !== null ? Number(form.min_price) : null,
     };
     const { error } = editing
       ? await supabase.from("products").update(payload).eq("id", editing.id)
@@ -270,9 +271,7 @@ const Admin = () => {
             {fa ? "دسترسی محدود" : "Access restricted"}
           </h1>
           <p className="text-muted-foreground text-sm mb-6">
-            {fa
-              ? "حساب شما نقش مدیر ندارد."
-              : "Your account is not an admin."}
+            {fa ? "حساب شما نقش مدیر ندارد." : "Your account is not an admin."}
           </p>
           <code className="block bg-muted px-3 py-2 rounded text-xs break-all mb-6">
             {session.user.id}
@@ -304,7 +303,6 @@ const Admin = () => {
         </Button>
       </div>
 
-      {/* Tabs */}
       <div className="flex gap-2 mb-6">
         <Button variant={tab === "products" ? "default" : "outline"} onClick={() => setTab("products")}>
           {fa ? "محصولات" : "Products"}
@@ -314,7 +312,6 @@ const Admin = () => {
         </Button>
       </div>
 
-      {/* Products Tab */}
       {tab === "products" && (
         <>
           <div className="flex flex-wrap gap-2 mb-4 justify-between">
@@ -389,7 +386,6 @@ const Admin = () => {
         </>
       )}
 
-      {/* Coupons Tab */}
       {tab === "coupons" && (
         <>
           <div className="flex justify-end mb-4">
@@ -503,25 +499,30 @@ const Admin = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div>
-                <Label>{fa ? "قیمت (افغانی)" : "Price (AFN)"}</Label>
+                <Label>{fa ? "قیمت (افغانی) *" : "Price (AFN) *"}</Label>
                 <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
               </div>
-              <div>
-                <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
-                <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <Label>{fa ? "قیمت تخفیف (افغانی)" : "Discount Price (AFN)"}</Label>
                 <Input type="number" min={0} value={form.discount_price ?? ""} onChange={(e) => setForm({ ...form, discount_price: e.target.value === "" ? null : Number(e.target.value) })} />
               </div>
               <div>
+                <Label>{fa ? "حداقل قیمت (افغانی)" : "Min Price (AFN)"}</Label>
+                <Input type="number" min={0} value={form.min_price ?? ""} onChange={(e) => setForm({ ...form, min_price: e.target.value === "" ? null : Number(e.target.value) })}
+                  placeholder={fa ? "کف قیمت کد تخفیف" : "Coupon floor price"} />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
                 <Label>{fa ? "موجودی (عدد)" : "Stock"}</Label>
                 <Input type="number" min={0} value={form.stock ?? ""} onChange={(e) => setForm({ ...form, stock: e.target.value === "" ? null : Number(e.target.value) })} />
+              </div>
+              <div>
+                <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
+                <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
               </div>
             </div>
 
