@@ -38,7 +38,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const clear = () => setItems([]);
   const count = items.reduce((s, i) => s + i.qty, 0);
   const total = items.reduce((s, i) => s + i.qty * i.product.price, 0);
-  const discountedTotal = coupon ? Math.round(total * (1 - coupon.percent / 100)) : total;
+
+  const discountedTotal = coupon
+    ? items.reduce((s, i) => {
+        const minPrice = (i.product as any).min_price;
+        const discounted = Math.round(i.product.price * (1 - coupon.percent / 100));
+        const finalPrice = minPrice ? Math.max(discounted, minPrice) : discounted;
+        return s + finalPrice * i.qty;
+      }, 0)
+    : total;
 
   return <Ctx.Provider value={{ items, add, remove, update, clear, count, total, open, setOpen, coupon, setCoupon, discountedTotal }}>{children}</Ctx.Provider>;
 };
