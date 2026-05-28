@@ -157,7 +157,7 @@ const CartSidebar = () => {
               </div>
 
               <Button asChild size="lg" className="w-full gap-2" style={{ background: "linear-gradient(135deg,#25D366,#128C7E)" }}>
-                <a href={`https://wa.me/message/64F75TYQX77KI1?text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={handleCheckout}>
+                <a href={`https://wa.me/93787628812?text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={handleCheckout}>
                   <MessageCircle className="w-5 h-5" /> {t("checkout_wa")}
                 </a>
               </Button>
