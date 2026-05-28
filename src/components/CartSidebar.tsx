@@ -22,7 +22,7 @@ const CartSidebar = () => {
     setCouponError("");
     const { data, error } = await supabase
       .from("coupons")
-      .select("code, discount_percent, expires_at, active")
+      .select("code, discount_percent, expires_at, active, max_uses, used_count")
       .eq("code", couponInput.trim().toUpperCase())
       .single();
 
@@ -30,6 +30,8 @@ const CartSidebar = () => {
       setCouponError(fa ? "کد تخفیف معتبر نیست" : "Invalid coupon code");
     } else if (data.expires_at && new Date(data.expires_at) < new Date()) {
       setCouponError(fa ? "کد تخفیف منقضی شده" : "Coupon has expired");
+    } else if (data.max_uses !== null && data.used_count >= data.max_uses) {
+      setCouponError(fa ? "ظرفیت استفاده از این کد تمام شده" : "Coupon usage limit reached");
     } else {
       setCoupon({ code: data.code, percent: data.discount_percent });
       setCouponInput("");
@@ -53,6 +55,13 @@ const CartSidebar = () => {
     if (couponLine) parts.push(couponLine);
     parts.push(footer);
     return encodeURIComponent(parts.join("\n"));
+  };
+
+  const handleCheckout = async () => {
+    if (coupon) {
+      await supabase.rpc("increment_coupon_usage", { coupon_code: coupon.code });
+    }
+    clear();
   };
 
   return (
@@ -148,7 +157,7 @@ const CartSidebar = () => {
               </div>
 
               <Button asChild size="lg" className="w-full gap-2" style={{ background: "linear-gradient(135deg,#25D366,#128C7E)" }}>
-                <a href={`https://api.whatsapp.com/send?phone=93787628812&text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={() => clear()}>
+                <a href={`https://wa.me/message/64F75TYQX77KI1?text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={handleCheckout}>
                   <MessageCircle className="w-5 h-5" /> {t("checkout_wa")}
                 </a>
               </Button>
