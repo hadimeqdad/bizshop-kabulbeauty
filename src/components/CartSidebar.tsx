@@ -43,14 +43,16 @@ const CartSidebar = () => {
   };
 
   const buildWaMessage = () => {
-    const header = fa ? "سلام بیزشاپ 🛒 میخواهم سفارش بدهم:" : "Hi BizShop 🛒 I'd like to order:";
+    const header = "🛒 سفارش جدید:";
     const lines = items.map((i, idx) =>
-      `${idx + 1}. ${i.product.name[lang]} — ${i.qty} عدد — ${(i.product.price * i.qty).toLocaleString()} ${t("afn")}`
+      `${idx + 1}. ${i.product.name.fa} x${i.qty} = ${(i.product.price * i.qty).toLocaleString()} افغانی`
     );
-    const discountLine = coupon ? `\n🏷 ${fa ? "کد تخفیف" : "Coupon"}: ${coupon.code} (${coupon.percent}%)` : "";
-    const footer = `\n💰 ${fa ? "مجموع کل" : "Total"}: ${discountedTotal.toLocaleString()} ${t("afn")}`;
-    const message = [header, "", ...lines, discountLine, footer].join("\n");
-    return encodeURIComponent(message);
+    const couponLine = coupon ? `تخفیف: ${coupon.code} (${coupon.percent}%)` : "";
+    const footer = `مجموع: ${discountedTotal.toLocaleString()} افغانی`;
+    const parts = [header, ...lines];
+    if (couponLine) parts.push(couponLine);
+    parts.push(footer);
+    return encodeURIComponent(parts.join("\n"));
   };
 
   return (
@@ -146,7 +148,7 @@ const CartSidebar = () => {
               </div>
 
               <Button asChild size="lg" className="w-full gap-2" style={{ background: "linear-gradient(135deg,#25D366,#128C7E)" }}>
-                <a href={`https://api.whatsapp.com/send?phone=93787628812&text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={() => clear()}>
+                <a href={`https://api.whatsapp.com/send?phone=شماره_شما&text=${buildWaMessage()}`} target="_blank" rel="noopener" onClick={() => clear()}>
                   <MessageCircle className="w-5 h-5" /> {t("checkout_wa")}
                 </a>
               </Button>
