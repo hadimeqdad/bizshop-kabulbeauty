@@ -43,7 +43,7 @@ const Home = () => {
           "@context": "https://schema.org",
           "@type": "Store",
           name: "BizShop بیزشاپ",
-        url: "https://bizshopkabul.com/",
+          url: "https://bizshopkabul.com/",
           address: { "@type": "PostalAddress", addressLocality: "Kabul", addressCountry: "AF" },
         }}
       />
@@ -160,11 +160,21 @@ const Home = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="container">
               <div className="max-w-md text-background">
-                <p className="text-xs uppercase tracking-[0.3em] text-gold mb-3">{lang === "fa" ? "پیشنهاد ویژه" : "Special Offer"}</p>
-                <h2 className="font-display text-4xl md:text-5xl mb-4 leading-tight">{t("promo_title")}</h2>
-                <p className="text-background/85 mb-6 leading-relaxed">{t("promo_sub")}</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-gold mb-3">
+                  {lang === "fa" ? "پیشنهاد ویژه" : "Special Offer"}
+                </p>
+                <h2 className="font-display text-4xl md:text-5xl mb-4 leading-tight">
+                  {lang === "fa" ? "تخفیف ویژه دمنوش بادرنجبویه" : "Special Offer on Lemon Balm Tea"}
+                </h2>
+                <p className="text-background/85 mb-6 leading-relaxed">
+                  {lang === "fa"
+                    ? "دمنوش طبیعی بادرنجبویه — مفرح، مقوی قلب و مغز و حواس. همین الان با تخفیف ویژه سفارش بدید."
+                    : "Natural lemon balm herbal tea — refreshing and beneficial. Order now with a special discount."}
+                </p>
                 <Button asChild size="lg" className="rounded-full px-7 gap-2 bg-gold text-ink hover:bg-gold/90 border-0">
-                  <Link to="/shop">{t("shop_now")} <Arrow className="w-4 h-4" /></Link>
+                  <Link to="/product/d86618e5-befa-4abd-b0f3-2fe418b096c1">
+                    {lang === "fa" ? "خرید کنید" : "Buy Now"} <Arrow className="w-4 h-4" />
+                  </Link>
                 </Button>
               </div>
             </div>
