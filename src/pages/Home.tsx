@@ -172,7 +172,7 @@ const Home = () => {
                     : "Natural lemon balm herbal tea — refreshing and beneficial. Order now with a special discount."}
                 </p>
                 <Button asChild size="lg" className="rounded-full px-7 gap-2 bg-gold text-ink hover:bg-gold/90 border-0">
-                  <Link to="/product/d86618e5-befa-4abd-b0f3-2fe418b096c1">
+                  <Link to="/product/da4cb6d1-8f1f-427a-9035-015dea72d3c8">
                     {lang === "fa" ? "خرید کنید" : "Buy Now"} <Arrow className="w-4 h-4" />
                   </Link>
                 </Button>
