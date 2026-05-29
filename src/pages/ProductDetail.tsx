@@ -31,6 +31,8 @@ const ProductDetail = () => {
 
   const stock = (product as any).stock;
   const outOfStock = stock !== null && stock !== undefined && stock <= 0;
+  const discountPrice = (product as any).discount_price;
+  const hasDiscount = discountPrice !== null && discountPrice !== undefined && discountPrice < product.price;
 
   return (
     <section className="container py-8 md:py-14">
@@ -48,7 +50,7 @@ const ProductDetail = () => {
           offers: {
             "@type": "Offer",
             priceCurrency: "AFN",
-            price: product.price,
+            price: hasDiscount ? discountPrice : product.price,
             availability: outOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
           },
         }}
@@ -80,11 +82,26 @@ const ProductDetail = () => {
             <span className="text-[10px] uppercase tracking-widest text-primary bg-secondary px-2 py-0.5 rounded-full border border-border w-fit">
               {t(`cat_${product.category}` as any)}
             </span>
+            {hasDiscount && (
+              <span className="text-[10px] uppercase tracking-widest text-white bg-red-500 px-2 py-0.5 rounded-full w-fit">
+                {lang === "fa" ? "تخفیف ویژه" : "Special Offer"}
+              </span>
+            )}
           </div>
 
-          <div className="mt-6 flex items-end gap-2">
-            <span className="font-display text-4xl text-primary">{product.price.toLocaleString()}</span>
-            <span className="text-sm text-muted-foreground mb-1">{t("afn")}</span>
+          <div className="mt-6 flex items-end gap-3">
+            {hasDiscount ? (
+              <>
+                <span className="font-display text-4xl text-red-500">{discountPrice.toLocaleString()}</span>
+                <span className="text-sm text-muted-foreground mb-1">{t("afn")}</span>
+                <span className="font-display text-2xl text-muted-foreground line-through mb-0.5">{product.price.toLocaleString()}</span>
+              </>
+            ) : (
+              <>
+                <span className="font-display text-4xl text-primary">{product.price.toLocaleString()}</span>
+                <span className="text-sm text-muted-foreground mb-1">{t("afn")}</span>
+              </>
+            )}
           </div>
 
           {stock !== null && stock !== undefined && (
