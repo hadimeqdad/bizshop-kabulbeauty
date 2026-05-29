@@ -37,12 +37,23 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const update = (id: string, qty: number) => setItems(prev => qty <= 0 ? prev.filter(i => i.product.id !== id) : prev.map(i => i.product.id === id ? { ...i, qty } : i));
   const clear = () => setItems([]);
   const count = items.reduce((s, i) => s + i.qty, 0);
-  const total = items.reduce((s, i) => s + i.qty * i.product.price, 0);
+
+  // قیمت هر محصول با در نظر گرفتن تخفیف محصول
+  const getItemPrice = (product: Product) => {
+    const discountPrice = (product as any).discount_price;
+    if (discountPrice !== null && discountPrice !== undefined && discountPrice < product.price) {
+      return discountPrice;
+    }
+    return product.price;
+  };
+
+  const total = items.reduce((s, i) => s + i.qty * getItemPrice(i.product), 0);
 
   const discountedTotal = coupon
     ? items.reduce((s, i) => {
+        const basePrice = getItemPrice(i.product);
         const minPrice = (i.product as any).min_price;
-        const discounted = Math.round(i.product.price * (1 - coupon.percent / 100));
+        const discounted = Math.round(basePrice * (1 - coupon.percent / 100));
         const finalPrice = minPrice ? Math.max(discounted, minPrice) : discounted;
         return s + finalPrice * i.qty;
       }, 0)
