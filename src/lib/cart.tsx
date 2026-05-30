@@ -35,10 +35,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   });
   const remove = (id: string) => setItems(prev => prev.filter(i => i.product.id !== id));
   const update = (id: string, qty: number) => setItems(prev => qty <= 0 ? prev.filter(i => i.product.id !== id) : prev.map(i => i.product.id === id ? { ...i, qty } : i));
-  const clear = () => setItems([]);
+  const clear = () => {
+    setItems([]);
+    setCoupon(null);
+  };
   const count = items.reduce((s, i) => s + i.qty, 0);
 
-  // قیمت هر محصول با در نظر گرفتن تخفیف محصول
   const getItemPrice = (product: Product) => {
     const discountPrice = (product as any).discount_price;
     if (discountPrice !== null && discountPrice !== undefined && discountPrice < product.price) {
