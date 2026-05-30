@@ -43,21 +43,21 @@ const CartSidebar = () => {
     setCoupon(null);
     setCouponError("");
   };
-  
-const buildWaMessage = () => {
-  const header = "🛒 سفارش جدید:";
-  const lines = items.map((i, idx) =>
-    `${idx + 1}. ${i.product.name.fa} x${i.qty} = ${(i.product.price * i.qty).toLocaleString()} افغانی`
-  );
-  const couponLine = coupon ? `تخفیف: ${coupon.code} (${coupon.percent}%)` : "";
-  const footer = `مجموع: ${discountedTotal.toLocaleString()} افغانی`;
-  const referral = `\n🎁 دوستت رو معرفی کن و ۱۰٪ تخفیف بگیر!\nbizshopkabul.com/referral`;
-  const parts = [header, ...lines];
-  if (couponLine) parts.push(couponLine);
-  parts.push(footer);
-  parts.push(referral);
-  return encodeURIComponent(parts.join("\n"));
-};
+
+  const buildWaMessage = () => {
+    const header = "🛒 سفارش جدید:";
+    const lines = items.map((i, idx) =>
+      `${idx + 1}. ${i.product.name.fa} x${i.qty} = ${(i.product.price * i.qty).toLocaleString()} افغانی`
+    );
+    const couponLine = coupon ? `تخفیف: ${coupon.code} (${coupon.percent}%)` : "";
+    const footer = `مجموع: ${discountedTotal.toLocaleString()} افغانی`;
+    const referral = `\n🎁 دوستت رو معرفی کن و ۱۰٪ تخفیف بگیر!\nbizshopkabul.com/referral`;
+    const parts = [header, ...lines];
+    if (couponLine) parts.push(couponLine);
+    parts.push(footer);
+    parts.push(referral);
+    return encodeURIComponent(parts.join("\n"));
+  };
 
   const handleCheckout = async () => {
     if (coupon) {
@@ -116,7 +116,6 @@ const buildWaMessage = () => {
             </div>
 
             <div className="border-t border-border pt-4 space-y-3">
-
               {!coupon ? (
                 <div className="space-y-1">
                   <div className="flex gap-2">
