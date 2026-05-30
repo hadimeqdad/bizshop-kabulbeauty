@@ -29,6 +29,12 @@ const Referral = () => {
       setError(fa ? "لطفاً اسم و شماره رو وارد کنید" : "Please enter name and phone");
       return;
     }
+
+    if (phone.trim().length < 9) {
+      setError(fa ? "شماره موبایل معتبر نیست" : "Invalid phone number");
+      return;
+    }
+
     setLoading(true);
     setError("");
 
@@ -58,12 +64,12 @@ const Referral = () => {
       return;
     }
 
-    // در جدول coupons هم ذخیره کن
+    // در جدول coupons با max_uses=10 ذخیره کن
     await supabase.from("coupons").insert({
       code: referralCode,
       discount_percent: 10,
       active: true,
-      max_uses: 100,
+      max_uses: 10,
       used_count: 0,
     });
 
@@ -137,8 +143,13 @@ const Referral = () => {
           </Button>
           <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground">
             {fa
-              ? "این کد رو به دوستت بده — با این کد ۱۰٪ تخفیف میگیره و تو هم برای خرید بعدیت ۱۰٪ تخفیف خواهی داشت!"
-              : "Share this code with your friend — they get 10% off and so do you on your next purchase!"}
+              ? "این کد رو به دوستت بده — با این کد ۱۰٪ تخفیف میگیره. این کد فقط ۱۰ بار قابل استفاده‌ست!"
+              : "Share this code with your friend — they get 10% off. This code can be used 10 times only!"}
+          </div>
+          <div className="bg-gold/10 border border-gold/30 rounded-lg p-3 text-sm text-primary font-medium">
+            {fa
+              ? "⚠️ توجه: کد معرف روی خرید خودت کار نمیکنه!"
+              : "⚠️ Note: Referral code doesn't work on your own purchases!"}
           </div>
         </div>
       )}
