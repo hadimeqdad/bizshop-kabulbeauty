@@ -69,7 +69,6 @@ const CartSidebar = () => {
   const verifyPhone = async () => {
     if (!phoneInput.trim() || !pendingCoupon) return;
 
-    // چک شماره افغانستان
     const phone = phoneInput.trim();
     const afghanPhone = /^(070|071|072|073|074|075|076|077|078|079)\d{7}$/;
     if (!afghanPhone.test(phone)) {
@@ -99,7 +98,7 @@ const CartSidebar = () => {
     // چک کن کد خودش نباشه
     const { data: referral } = await supabase
       .from("referrals")
-      .select("phone")
+      .select("phone, name")
       .eq("referral_code", pendingCoupon.code)
       .single();
 
@@ -134,6 +133,24 @@ const CartSidebar = () => {
       .from("coupon_uses")
       .insert({ phone, coupon_code: pendingCoupon.code });
 
+    // یک کد تخفیف جدید برای صاحب کد بساز
+    if (referral) {
+      const { data: newCode } = await supabase
+        .rpc("generate_referral_reward", {
+          referrer_phone: referral.phone,
+          referral_code: pendingCoupon.code
+        });
+
+      if (newCode && referral.phone) {
+        // شماره صاحب کد را به فرمت واتساپ تبدیل کن
+        const waPhone = referral.phone.replace(/^0/, "93");
+        const message = encodeURIComponent(
+          `🎉 ${referral.name ? referral.name + " عزیز،" : "سلام!"}\n\nیک نفر با کد معرف تو خرید کرد!\nکد تخفیف ۱۰٪ برای خرید بعدیت:\n\n🎁 ${newCode}\n\nbizshopkabul.com`
+        );
+        window.open(`https://wa.me/${waPhone}?text=${message}`, "_blank");
+      }
+    }
+
     setCoupon(pendingCoupon);
     setCouponInput("");
     setPhoneInput("");
@@ -157,11 +174,11 @@ const CartSidebar = () => {
     );
     const couponLine = coupon ? `تخفیف: ${coupon.code} (${coupon.percent}%)` : "";
     const footer = `مجموع: ${discountedTotal.toLocaleString()} افغانی`;
-    const referral = `\n🎁 دوستت رو معرفی کن و ۱۰٪ تخفیف بگیر!\nbizshopkabul.com/referral`;
+    const referralMsg = `\n🎁 دوستت رو معرفی کن و ۱۰٪ تخفیف بگیر!\nbizshopkabul.com/referral`;
     const parts = [header, ...lines];
     if (couponLine) parts.push(couponLine);
     parts.push(footer);
-    parts.push(referral);
+    parts.push(referralMsg);
     return encodeURIComponent(parts.join("\n"));
   };
 
