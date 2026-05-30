@@ -89,7 +89,7 @@ const Header = () => {
       </div>
 
       {mobile && (
-        <div className="md:hidden fixed inset-0 z-50 bg-background animate-fade-up">
+        <div className="md:hidden fixed inset-0 z-[100] bg-background animate-fade-up">
           <div className="container flex items-center justify-between h-16">
             <span className="font-display text-2xl text-primary">{t("brand")}</span>
             <Button variant="ghost" size="icon" onClick={() => setMobile(false)}><X className="w-5 h-5" /></Button>
