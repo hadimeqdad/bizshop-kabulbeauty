@@ -71,7 +71,7 @@ const CartSidebar = () => {
 
     // چک شماره افغانستان
     const phone = phoneInput.trim();
-    const afghanPhone = /^(07\d{8}|\+937\d{8}|937\d{8})$/;
+    const afghanPhone = /^(070|071|072|073|074|075|076|077|078|079)\d{7}$/;
     if (!afghanPhone.test(phone)) {
       setCouponError(fa ? "شماره موبایل معتبر افغانستان وارد کنید (مثال: 0701234567)" : "Enter a valid Afghan phone number (e.g. 0701234567)");
       return;
@@ -80,7 +80,7 @@ const CartSidebar = () => {
     setCouponLoading(true);
     setCouponError("");
 
-    // دوباره چک کن کد هنوز در Supabase هست
+    // چک کن کد هنوز معتبره
     const { data: couponCheck } = await supabase
       .from("coupons")
       .select("code, discount_percent, active")
@@ -96,6 +96,7 @@ const CartSidebar = () => {
       return;
     }
 
+    // چک کن کد خودش نباشه
     const { data: referral } = await supabase
       .from("referrals")
       .select("phone")
@@ -107,13 +108,37 @@ const CartSidebar = () => {
       setShowPhone(false);
       setPendingCoupon(null);
       setPhoneInput("");
-    } else {
-      setCoupon(pendingCoupon);
-      setCouponInput("");
-      setPhoneInput("");
+      setCouponLoading(false);
+      return;
+    }
+
+    // چک کن این شماره قبلاً از این کد استفاده کرده یا نه
+    const { data: prevUse } = await supabase
+      .from("coupon_uses")
+      .select("id")
+      .eq("phone", phone)
+      .eq("coupon_code", pendingCoupon.code)
+      .single();
+
+    if (prevUse) {
+      setCouponError(fa ? "شما قبلاً از این کد تخفیف استفاده کرده‌اید" : "You have already used this coupon");
       setShowPhone(false);
       setPendingCoupon(null);
+      setPhoneInput("");
+      setCouponLoading(false);
+      return;
     }
+
+    // ذخیره استفاده در Supabase
+    await supabase
+      .from("coupon_uses")
+      .insert({ phone, coupon_code: pendingCoupon.code });
+
+    setCoupon(pendingCoupon);
+    setCouponInput("");
+    setPhoneInput("");
+    setShowPhone(false);
+    setPendingCoupon(null);
     setCouponLoading(false);
   };
 
