@@ -85,7 +85,7 @@ const emptyCouponForm = {
 };
 
 const CATEGORIES: Category[] = ["medicinal", "healthcare", "cosmetics", "food"];
-const BRANDS = ["Dr.Biz", "Setin", "Biene Star", "Dynamin"];
+const BRANDS = ["Dr.Biz", "Setin", "Biene Star", "Dynamin", "Gatio", "Luxury Coin", "Vitabella", "Exonic"];
 
 const Admin = () => {
   const { lang } = useLang();
