@@ -68,7 +68,17 @@ const CartSidebar = () => {
 
   const verifyPhone = async () => {
     if (!phoneInput.trim() || !pendingCoupon) return;
+
+    // چک شماره افغانستان
+    const phone = phoneInput.trim();
+    const afghanPhone = /^(07\d{8}|\+937\d{8}|937\d{8})$/;
+    if (!afghanPhone.test(phone)) {
+      setCouponError(fa ? "شماره موبایل معتبر افغانستان وارد کنید (مثال: 0701234567)" : "Enter a valid Afghan phone number (e.g. 0701234567)");
+      return;
+    }
+
     setCouponLoading(true);
+    setCouponError("");
 
     // دوباره چک کن کد هنوز در Supabase هست
     const { data: couponCheck } = await supabase
@@ -92,7 +102,7 @@ const CartSidebar = () => {
       .eq("referral_code", pendingCoupon.code)
       .single();
 
-    if (referral && referral.phone === phoneInput.trim()) {
+    if (referral && referral.phone === phone) {
       setCouponError(fa ? "این کد متعلق به شماست و قابل استفاده نیست!" : "This is your own referral code!");
       setShowPhone(false);
       setPendingCoupon(null);
@@ -213,9 +223,9 @@ const CartSidebar = () => {
                       </p>
                       <div className="flex gap-2">
                         <Input
-                          placeholder={fa ? "شماره موبایل" : "Phone number"}
+                          placeholder={fa ? "مثال: 0701234567" : "e.g. 0701234567"}
                           value={phoneInput}
-                          onChange={e => setPhoneInput(e.target.value)}
+                          onChange={e => { setPhoneInput(e.target.value); setCouponError(""); }}
                           className="h-9 text-sm"
                           onKeyDown={e => e.key === "Enter" && verifyPhone()}
                         />
@@ -223,7 +233,7 @@ const CartSidebar = () => {
                           {fa ? "تأیید" : "Verify"}
                         </Button>
                       </div>
-                      <button onClick={() => { setShowPhone(false); setPendingCoupon(null); setPhoneInput(""); }} className="text-xs text-muted-foreground hover:text-primary">
+                      <button onClick={() => { setShowPhone(false); setPendingCoupon(null); setPhoneInput(""); setCouponError(""); }} className="text-xs text-muted-foreground hover:text-primary">
                         {fa ? "انصراف" : "Cancel"}
                       </button>
                       {couponError && <p className="text-xs text-destructive">{couponError}</p>}
