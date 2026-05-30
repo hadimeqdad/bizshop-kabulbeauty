@@ -19,6 +19,8 @@ const Header = () => {
     { to: "/about", label: t("nav_about") },
     { to: "/contact", label: t("nav_contact") },
     { to: "/referral", label: lang === "fa" ? "معرفی دوست 🎁" : "Refer a Friend 🎁" },
+  ];
+
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) navigate(`/shop?q=${encodeURIComponent(query.trim())}`);
