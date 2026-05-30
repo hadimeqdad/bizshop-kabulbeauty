@@ -48,7 +48,6 @@ const CartSidebar = () => {
       return;
     }
 
-    // چک کن که کد معرف هست یا نه
     const { data: referral } = await supabase
       .from("referrals")
       .select("phone")
@@ -56,7 +55,6 @@ const CartSidebar = () => {
       .single();
 
     if (referral) {
-      // کد معرف هست — شماره موبایل بخواد
       setPendingCoupon({ code: data.code, percent: data.discount_percent });
       setShowPhone(true);
       setCouponLoading(false);
@@ -71,6 +69,22 @@ const CartSidebar = () => {
   const verifyPhone = async () => {
     if (!phoneInput.trim() || !pendingCoupon) return;
     setCouponLoading(true);
+
+    // دوباره چک کن کد هنوز در Supabase هست
+    const { data: couponCheck } = await supabase
+      .from("coupons")
+      .select("code, discount_percent, active")
+      .eq("code", pendingCoupon.code)
+      .single();
+
+    if (!couponCheck || !couponCheck.active) {
+      setCouponError(fa ? "کد تخفیف دیگر معتبر نیست" : "Coupon is no longer valid");
+      setShowPhone(false);
+      setPendingCoupon(null);
+      setPhoneInput("");
+      setCouponLoading(false);
+      return;
+    }
 
     const { data: referral } = await supabase
       .from("referrals")
