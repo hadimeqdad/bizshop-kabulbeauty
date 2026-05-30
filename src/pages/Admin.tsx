@@ -71,6 +71,13 @@ interface Referral {
   created_at: string;
 }
 
+interface ReferralReward {
+  id: string;
+  code: string;
+  active: boolean;
+  buyer_phone: string;
+}
+
 const emptyForm: Omit<DbProduct, "id"> = {
   name_fa: "",
   name_en: "",
@@ -125,6 +132,7 @@ const Admin = () => {
 
   const [referrals, setReferrals] = useState<Referral[]>([]);
   const [referralsLoading, setReferralsLoading] = useState(false);
+  const [referralRewards, setReferralRewards] = useState<Record<string, ReferralReward[]>>({});
 
   useEffect(() => {
     if (!authLoading && !session) navigate("/auth", { replace: true });
@@ -156,8 +164,50 @@ const Admin = () => {
       .select("*")
       .order("created_at", { ascending: false });
     if (error) toast({ title: "Error", description: error.message, variant: "destructive" });
-    else setReferrals((data ?? []) as Referral[]);
+    else {
+      setReferrals((data ?? []) as Referral[]);
+      await loadReferralRewards(data ?? []);
+    }
     setReferralsLoading(false);
+  };
+
+  const loadReferralRewards = async (refs: Referral[]) => {
+    const { data: uses } = await supabase
+      .from("coupon_uses")
+      .select("coupon_code, phone")
+      .order("created_at", { ascending: false });
+
+    if (!uses) return;
+
+    const rewardMap: Record<string, ReferralReward[]> = {};
+
+    for (const ref of refs) {
+      const usesForThisRef = uses.filter(u => u.coupon_code === ref.referral_code);
+      const rewards: ReferralReward[] = [];
+
+      for (const use of usesForThisRef) {
+        const { data: rewardCoupon } = await supabase
+          .from("coupons")
+          .select("id, code, active")
+          .eq("code", use.coupon_code)
+          .single();
+
+        if (rewardCoupon) {
+          rewards.push({
+            id: rewardCoupon.id,
+            code: rewardCoupon.code,
+            active: rewardCoupon.active,
+            buyer_phone: use.phone,
+          });
+        }
+      }
+
+      if (rewards.length > 0) {
+        rewardMap[ref.referral_code] = rewards;
+      }
+    }
+
+    setReferralRewards(rewardMap);
   };
 
   useEffect(() => {
@@ -279,6 +329,14 @@ const Admin = () => {
     const { error } = await supabase.from("referrals").delete().eq("id", r.id);
     if (error) toast({ title: "Error", description: error.message, variant: "destructive" });
     else { toast({ title: fa ? "حذف شد" : "Deleted" }); loadReferrals(); }
+  };
+
+  const sendRewardWhatsApp = (r: Referral, rewardCode: string) => {
+    const waPhone = r.phone.replace(/^0/, "93");
+    const msg = encodeURIComponent(
+      `🎉 ${r.name} عزیز!\n\nیک نفر با کد معرف تو خرید کرد!\nکد تخفیف ۱۰٪ برای خرید بعدیت:\n\n🎁 ${rewardCode}\n\nbizshopkabul.com`
+    );
+    window.open(`https://wa.me/${waPhone}?text=${msg}`, "_blank");
   };
 
   const handleSignOut = async () => {
@@ -486,198 +544,220 @@ const Admin = () => {
       )}
 
       {tab === "referrals" && (
-        <div className="bg-card border border-border rounded-lg overflow-hidden">
-          {referralsLoading ? (
-            <div className="p-12 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto" /></div>
-          ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>{fa ? "اسم" : "Name"}</TableHead>
-                  <TableHead>{fa ? "شماره" : "Phone"}</TableHead>
-                  <TableHead>{fa ? "کد معرف" : "Referral Code"}</TableHead>
-                  <TableHead>{fa ? "استفاده شده" : "Used"}</TableHead>
-                  <TableHead>{fa ? "تاریخ" : "Date"}</TableHead>
-                  <TableHead className="text-end">{fa ? "عملیات" : "Actions"}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {referrals.map((r) => (
-                  <TableRow key={r.id}>
-                    <TableCell className="font-medium">{r.name}</TableCell>
-                    <TableCell className="text-sm">{r.phone}</TableCell>
-                    <TableCell className="font-mono font-bold">{r.referral_code}</TableCell>
-                    <TableCell className="text-sm">{r.total_uses} {fa ? "بار" : "times"}</TableCell>
-                    <TableCell className="text-sm">{new Date(r.created_at).toLocaleDateString()}</TableCell>
-                    <TableCell>
-                      <Button size="icon" variant="ghost" onClick={() => handleDeleteReferral(r)} className="text-destructive">
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-                {referrals.length === 0 && (
+        <>
+          <div className="flex justify-end mb-4">
+            <Button onClick={() => loadReferrals()} variant="outline" className="gap-2">
+              <Users className="w-4 h-4" /> {fa ? "بروزرسانی" : "Refresh"}
+            </Button>
+          </div>
+          <div className="bg-card border border-border rounded-lg overflow-hidden">
+            {referralsLoading ? (
+              <div className="p-12 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto" /></div>
+            ) : (
+              <Table>
+                <TableHeader>
                   <TableRow>
-                    <TableCell colSpan={6} className="text-center py-12 text-muted-foreground">
-                      {fa ? "معرفی یافت نشد" : "No referrals"}
-                    </TableCell>
+                    <TableHead>{fa ? "اسم" : "Name"}</TableHead>
+                    <TableHead>{fa ? "شماره" : "Phone"}</TableHead>
+                    <TableHead>{fa ? "کد معرف" : "Referral Code"}</TableHead>
+                    <TableHead>{fa ? "استفاده شده" : "Used"}</TableHead>
+                    <TableHead>{fa ? "جوایز" : "Rewards"}</TableHead>
+                    <TableHead>{fa ? "تاریخ" : "Date"}</TableHead>
+                    <TableHead className="text-end">{fa ? "عملیات" : "Actions"}</TableHead>
                   </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          )}
-        </div>
+                </TableHeader>
+                <TableBody>
+                  {referrals.map((r) => {
+                    const rewards = referralRewards[r.referral_code] || [];
+                    return (
+                      <TableRow key={r.id}>
+                        <TableCell className="font-medium">{r.name}</TableCell>
+                        <TableCell className="text-sm">{r.phone}</TableCell>
+                        <TableCell className="font-mono font-bold">{r.referral_code}</TableCell>
+                        <TableCell className="text-sm">{r.total_uses} {fa ? "بار" : "times"}</TableCell>
+                        <TableCell>
+                          {rewards.length === 0 ? (
+                            <span className="text-xs text-muted-foreground">{fa ? "جایزه‌ای نیست" : "No rewards"}</span>
+                          ) : (
+                            <div className="flex flex-col gap-1">
+                              {rewards.map((reward) => (
+                                <div key={reward.id} className="flex items-center gap-2">
+                                  <span className="font-mono text-xs bg-green-500/10 text-green-600 px-2 py-0.5 rounded">
+                                    {reward.code}
+                                  </span>
+                                  <button
+                                    onClick={() => sendRewardWhatsApp(r, reward.code)}
+                                    className="text-xs text-green-600 hover:underline"
+                                  >
+                                    📲 {fa ? "ارسال واتساپ" : "Send WhatsApp"}
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </TableCell>
+                        <TableCell className="text-sm">
+                          {new Date(r.created_at).toLocaleDateString()}
+                        </TableCell>
+                        <TableCell>
+                          <Button size="icon" variant="ghost" onClick={() => handleDeleteReferral(r)} className="text-destructive">
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                  {referrals.length === 0 && (
+                    <TableRow>
+                      <TableCell colSpan={7} className="text-center py-12 text-muted-foreground">
+                        {fa ? "معرفی یافت نشد" : "No referrals"}
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            )}
+          </div>
+        </>
       )}
 
+      {/* Product Dialog */}
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="font-display text-2xl">
-              {editing ? (fa ? "ویرایش محصول" : "Edit Product") : (fa ? "محصول جدید" : "New Product")}
-            </DialogTitle>
+            <DialogTitle>{editing ? (fa ? "ویرایش محصول" : "Edit Product") : (fa ? "محصول جدید" : "New Product")}</DialogTitle>
           </DialogHeader>
-
-          <div className="grid gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div>
-                <Label>{fa ? "نام (فارسی) *" : "Name (Persian) *"}</Label>
-                <Input value={form.name_fa} onChange={(e) => setForm({ ...form, name_fa: e.target.value })} />
+          <div className="grid gap-4 py-2">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <Label>{fa ? "نام فارسی" : "Persian Name"} *</Label>
+                <Input value={form.name_fa} onChange={e => setForm(f => ({ ...f, name_fa: e.target.value }))} />
               </div>
-              <div>
-                <Label>{fa ? "نام (انگلیسی) *" : "Name (English) *"}</Label>
-                <Input value={form.name_en} onChange={(e) => setForm({ ...form, name_en: e.target.value })} />
+              <div className="space-y-1">
+                <Label>{fa ? "نام انگلیسی" : "English Name"} *</Label>
+                <Input value={form.name_en} onChange={e => setForm(f => ({ ...f, name_en: e.target.value }))} />
               </div>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1">
                 <Label>{fa ? "دسته‌بندی" : "Category"}</Label>
-                <Select value={form.category} onValueChange={(v) => setForm({ ...form, category: v, subcategory: null })}>
+                <Select value={form.category} onValueChange={v => setForm(f => ({ ...f, category: v, subcategory: null }))}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    {CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                    {CATEGORIES.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>
-              <div>
-                <Label>{fa ? "زیرشاخه" : "Subcategory"}</Label>
-                <Select value={form.subcategory ?? "_none"} onValueChange={(v) => setForm({ ...form, subcategory: v === "_none" ? null : v })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
+              <div className="space-y-1">
+                <Label>{fa ? "زیردسته" : "Subcategory"}</Label>
+                <Select value={form.subcategory ?? ""} onValueChange={v => setForm(f => ({ ...f, subcategory: v || null }))}>
+                  <SelectTrigger><SelectValue placeholder={fa ? "انتخاب کنید" : "Select"} /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="_none">{fa ? "ندارد" : "None"}</SelectItem>
-                    {subList.map((s) => <SelectItem key={s.key} value={s.key}>{s.name[lang]}</SelectItem>)}
+                    {subList.map(s => <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>
-              <div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1">
                 <Label>{fa ? "برند" : "Brand"}</Label>
-                <Select value={form.brand} onValueChange={(v) => setForm({ ...form, brand: v })}>
+                <Select value={form.brand} onValueChange={v => setForm(f => ({ ...f, brand: v }))}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    {BRANDS.map((b) => <SelectItem key={b} value={b}>{b}</SelectItem>)}
+                    {BRANDS.map(b => <SelectItem key={b} value={b}>{b}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div>
-                <Label>{fa ? "قیمت (افغانی) *" : "Price (AFN) *"}</Label>
-                <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
-              </div>
-              <div>
-                <Label>{fa ? "قیمت تخفیف (افغانی)" : "Discount Price (AFN)"}</Label>
-                <Input type="number" min={0} value={form.discount_price ?? ""} onChange={(e) => setForm({ ...form, discount_price: e.target.value === "" ? null : Number(e.target.value) })} />
-              </div>
-              <div>
-                <Label>{fa ? "حداقل قیمت (افغانی)" : "Min Price (AFN)"}</Label>
-                <Input type="number" min={0} value={form.min_price ?? ""} onChange={(e) => setForm({ ...form, min_price: e.target.value === "" ? null : Number(e.target.value) })} placeholder={fa ? "کف قیمت کد تخفیف" : "Coupon floor price"} />
+              <div className="space-y-1">
+                <Label>{fa ? "قیمت (افغانی)" : "Price (AFN)"} *</Label>
+                <Input type="number" value={form.price} onChange={e => setForm(f => ({ ...f, price: Number(e.target.value) }))} />
               </div>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div>
-                <Label>{fa ? "موجودی (عدد)" : "Stock"}</Label>
-                <Input type="number" min={0} value={form.stock ?? ""} onChange={(e) => setForm({ ...form, stock: e.target.value === "" ? null : Number(e.target.value) })} />
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <Label>{fa ? "قیمت تخفیف‌دار" : "Discount Price"}</Label>
+                <Input type="number" value={form.discount_price ?? ""} onChange={e => setForm(f => ({ ...f, discount_price: e.target.value ? Number(e.target.value) : null }))} />
               </div>
-              <div>
-                <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
-                <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
-              </div>
-            </div>
-
-            <div>
-              <Label>{fa ? "تصویر محصول" : "Product image"}</Label>
-              <div className="mt-2 flex items-start gap-3">
-                <div className="w-24 h-24 rounded border border-border bg-muted overflow-hidden shrink-0">
-                  {form.image_url && <img src={form.image_url} alt="" className="w-full h-full object-cover" />}
-                </div>
-                <div className="flex-1 space-y-2">
-                  <label className="inline-flex items-center gap-2 cursor-pointer text-sm border border-border rounded px-3 py-2 hover:bg-muted">
-                    {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-                    {uploading ? (fa ? "در حال آپلود..." : "Uploading...") : (fa ? "انتخاب فایل" : "Choose file")}
-                    <input type="file" accept="image/*" className="hidden" disabled={uploading}
-                      onChange={(e) => { const f = e.target.files?.[0]; if (f) handleUpload(f); e.target.value = ""; }} />
-                  </label>
-                  {form.image_url && (
-                    <button type="button" onClick={() => setForm({ ...form, image_url: null })} className="text-xs text-destructive hover:underline block">
-                      {fa ? "حذف عکس" : "Remove image"}
-                    </button>
-                  )}
-                </div>
+              <div className="space-y-1">
+                <Label>{fa ? "حداقل قیمت" : "Min Price"}</Label>
+                <Input type="number" value={form.min_price ?? ""} onChange={e => setForm(f => ({ ...f, min_price: e.target.value ? Number(e.target.value) : null }))} />
               </div>
             </div>
-
-            <div>
-              <Label>{fa ? "توضیحات (فارسی)" : "Details (Persian)"}</Label>
-              <Textarea rows={5} value={form.details_fa ?? ""} onChange={(e) => setForm({ ...form, details_fa: e.target.value })} />
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <Label>{fa ? "موجودی" : "Stock"}</Label>
+                <Input type="number" value={form.stock ?? ""} onChange={e => setForm(f => ({ ...f, stock: e.target.value ? Number(e.target.value) : null }))} />
+              </div>
+              <div className="space-y-1">
+                <Label>{fa ? "ترتیب نمایش" : "Sort Order"}</Label>
+                <Input type="number" value={form.sort_order} onChange={e => setForm(f => ({ ...f, sort_order: Number(e.target.value) }))} />
+              </div>
             </div>
-            <div>
-              <Label>{fa ? "توضیحات (انگلیسی)" : "Details (English)"}</Label>
-              <Textarea rows={5} value={form.details_en ?? ""} onChange={(e) => setForm({ ...form, details_en: e.target.value })} />
+            <div className="space-y-1">
+              <Label>{fa ? "رنگ (HSL)" : "Color (HSL)"}</Label>
+              <Input value={form.shade ?? ""} onChange={e => setForm(f => ({ ...f, shade: e.target.value }))} placeholder="150 50% 35%" />
+            </div>
+            <div className="space-y-1">
+              <Label>{fa ? "توضیحات فارسی" : "Persian Details"}</Label>
+              <Textarea value={form.details_fa ?? ""} onChange={e => setForm(f => ({ ...f, details_fa: e.target.value }))} rows={3} />
+            </div>
+            <div className="space-y-1">
+              <Label>{fa ? "توضیحات انگلیسی" : "English Details"}</Label>
+              <Textarea value={form.details_en ?? ""} onChange={e => setForm(f => ({ ...f, details_en: e.target.value }))} rows={3} />
+            </div>
+            <div className="space-y-2">
+              <Label>{fa ? "تصویر محصول" : "Product Image"}</Label>
+              {form.image_url && (
+                <img src={form.image_url} alt="" className="w-24 h-24 object-cover rounded border" />
+              )}
+              <div className="flex items-center gap-2">
+                <Button type="button" variant="outline" size="sm" className="gap-2" disabled={uploading}
+                  onClick={() => document.getElementById("img-upload")?.click()}>
+                  {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                  {fa ? "آپلود تصویر" : "Upload Image"}
+                </Button>
+                <input id="img-upload" type="file" accept="image/*" className="hidden"
+                  onChange={e => { if (e.target.files?.[0]) handleUpload(e.target.files[0]); }} />
+              </div>
             </div>
           </div>
-
           <DialogFooter>
             <Button variant="outline" onClick={() => setOpen(false)}>{fa ? "انصراف" : "Cancel"}</Button>
             <Button onClick={handleSave} disabled={saving}>
-              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : fa ? "ذخیره" : "Save"}
+              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : (fa ? "ذخیره" : "Save")}
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
+      {/* Coupon Dialog */}
       <Dialog open={couponOpen} onOpenChange={setCouponOpen}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle className="font-display text-2xl">
-              {editingCoupon ? (fa ? "ویرایش کد تخفیف" : "Edit Coupon") : (fa ? "کد تخفیف جدید" : "New Coupon")}
-            </DialogTitle>
+            <DialogTitle>{editingCoupon ? (fa ? "ویرایش کد" : "Edit Coupon") : (fa ? "کد تخفیف جدید" : "New Coupon")}</DialogTitle>
           </DialogHeader>
-
-          <div className="grid gap-4">
-            <div>
-              <Label>{fa ? "کد تخفیف *" : "Coupon Code *"}</Label>
-              <Input value={couponForm.code} onChange={(e) => setCouponForm({ ...couponForm, code: e.target.value.toUpperCase() })} placeholder="WELCOME15" className="font-mono" />
+          <div className="grid gap-4 py-2">
+            <div className="space-y-1">
+              <Label>{fa ? "کد تخفیف" : "Coupon Code"} *</Label>
+              <Input value={couponForm.code} onChange={e => setCouponForm(f => ({ ...f, code: e.target.value.toUpperCase() }))} placeholder="SAVE10" />
             </div>
-            <div>
-              <Label>{fa ? "درصد تخفیف *" : "Discount Percent *"}</Label>
-              <Input type="number" min={1} max={100} value={couponForm.discount_percent} onChange={(e) => setCouponForm({ ...couponForm, discount_percent: Number(e.target.value) })} />
+            <div className="space-y-1">
+              <Label>{fa ? "درصد تخفیف" : "Discount %"} *</Label>
+              <Input type="number" min={1} max={100} value={couponForm.discount_percent} onChange={e => setCouponForm(f => ({ ...f, discount_percent: Number(e.target.value) }))} />
             </div>
-            <div>
-              <Label>{fa ? "تاریخ انقضا (اختیاری)" : "Expiry Date (optional)"}</Label>
-              <Input type="date" value={couponForm.expires_at} onChange={(e) => setCouponForm({ ...couponForm, expires_at: e.target.value })} />
+            <div className="space-y-1">
+              <Label>{fa ? "تاریخ انقضا" : "Expiry Date"}</Label>
+              <Input type="date" value={couponForm.expires_at} onChange={e => setCouponForm(f => ({ ...f, expires_at: e.target.value }))} />
             </div>
-            <div className="flex items-center gap-3">
-              <input type="checkbox" id="active" checked={couponForm.active} onChange={(e) => setCouponForm({ ...couponForm, active: e.target.checked })} className="w-4 h-4" />
+            <div className="flex items-center gap-2">
+              <input type="checkbox" id="active" checked={couponForm.active} onChange={e => setCouponForm(f => ({ ...f, active: e.target.checked }))} />
               <Label htmlFor="active">{fa ? "فعال" : "Active"}</Label>
             </div>
           </div>
-
           <DialogFooter>
             <Button variant="outline" onClick={() => setCouponOpen(false)}>{fa ? "انصراف" : "Cancel"}</Button>
             <Button onClick={handleSaveCoupon} disabled={couponSaving}>
-              {couponSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : fa ? "ذخیره" : "Save"}
+              {couponSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : (fa ? "ذخیره" : "Save")}
             </Button>
           </DialogFooter>
         </DialogContent>
