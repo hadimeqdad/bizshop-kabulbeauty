@@ -13,13 +13,17 @@ const CartSidebar = () => {
   const fa = lang === "fa";
 
   const [couponInput, setCouponInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
   const [couponLoading, setCouponLoading] = useState(false);
   const [couponError, setCouponError] = useState("");
+  const [showPhone, setShowPhone] = useState(false);
+  const [pendingCoupon, setPendingCoupon] = useState<{code: string; percent: number} | null>(null);
 
   const applyCoupon = async () => {
     if (!couponInput.trim()) return;
     setCouponLoading(true);
     setCouponError("");
+
     const { data, error } = await supabase
       .from("coupons")
       .select("code, discount_percent, expires_at, active, max_uses, used_count")
@@ -28,13 +32,63 @@ const CartSidebar = () => {
 
     if (error || !data || !data.active) {
       setCouponError(fa ? "کد تخفیف معتبر نیست" : "Invalid coupon code");
-    } else if (data.expires_at && new Date(data.expires_at) < new Date()) {
+      setCouponLoading(false);
+      return;
+    }
+
+    if (data.expires_at && new Date(data.expires_at) < new Date()) {
       setCouponError(fa ? "کد تخفیف منقضی شده" : "Coupon has expired");
-    } else if (data.max_uses !== null && data.used_count >= data.max_uses) {
+      setCouponLoading(false);
+      return;
+    }
+
+    if (data.max_uses !== null && data.used_count >= data.max_uses) {
       setCouponError(fa ? "ظرفیت استفاده از این کد تمام شده" : "Coupon usage limit reached");
+      setCouponLoading(false);
+      return;
+    }
+
+    // چک کن که کد معرف هست یا نه
+    const { data: referral } = await supabase
+      .from("referrals")
+      .select("phone")
+      .eq("referral_code", couponInput.trim().toUpperCase())
+      .single();
+
+    if (referral) {
+      // کد معرف هست — شماره موبایل بخواد
+      setPendingCoupon({ code: data.code, percent: data.discount_percent });
+      setShowPhone(true);
+      setCouponLoading(false);
+      return;
+    }
+
+    setCoupon({ code: data.code, percent: data.discount_percent });
+    setCouponInput("");
+    setCouponLoading(false);
+  };
+
+  const verifyPhone = async () => {
+    if (!phoneInput.trim() || !pendingCoupon) return;
+    setCouponLoading(true);
+
+    const { data: referral } = await supabase
+      .from("referrals")
+      .select("phone")
+      .eq("referral_code", pendingCoupon.code)
+      .single();
+
+    if (referral && referral.phone === phoneInput.trim()) {
+      setCouponError(fa ? "این کد متعلق به شماست و قابل استفاده نیست!" : "This is your own referral code!");
+      setShowPhone(false);
+      setPendingCoupon(null);
+      setPhoneInput("");
     } else {
-      setCoupon({ code: data.code, percent: data.discount_percent });
+      setCoupon(pendingCoupon);
       setCouponInput("");
+      setPhoneInput("");
+      setShowPhone(false);
+      setPendingCoupon(null);
     }
     setCouponLoading(false);
   };
@@ -42,6 +96,9 @@ const CartSidebar = () => {
   const removeCoupon = () => {
     setCoupon(null);
     setCouponError("");
+    setShowPhone(false);
+    setPendingCoupon(null);
+    setPhoneInput("");
   };
 
   const buildWaMessage = () => {
@@ -117,21 +174,47 @@ const CartSidebar = () => {
 
             <div className="border-t border-border pt-4 space-y-3">
               {!coupon ? (
-                <div className="space-y-1">
-                  <div className="flex gap-2">
-                    <Input
-                      placeholder={fa ? "کد تخفیف" : "Coupon code"}
-                      value={couponInput}
-                      onChange={e => { setCouponInput(e.target.value); setCouponError(""); }}
-                      className="h-9 text-sm"
-                      onKeyDown={e => e.key === "Enter" && applyCoupon()}
-                    />
-                    <Button size="sm" variant="outline" onClick={applyCoupon} disabled={couponLoading} className="gap-1 shrink-0">
-                      <Tag className="w-3.5 h-3.5" />
-                      {fa ? "اعمال" : "Apply"}
-                    </Button>
-                  </div>
-                  {couponError && <p className="text-xs text-destructive">{couponError}</p>}
+                <div className="space-y-2">
+                  {!showPhone ? (
+                    <div className="space-y-1">
+                      <div className="flex gap-2">
+                        <Input
+                          placeholder={fa ? "کد تخفیف" : "Coupon code"}
+                          value={couponInput}
+                          onChange={e => { setCouponInput(e.target.value); setCouponError(""); }}
+                          className="h-9 text-sm"
+                          onKeyDown={e => e.key === "Enter" && applyCoupon()}
+                        />
+                        <Button size="sm" variant="outline" onClick={applyCoupon} disabled={couponLoading} className="gap-1 shrink-0">
+                          <Tag className="w-3.5 h-3.5" />
+                          {fa ? "اعمال" : "Apply"}
+                        </Button>
+                      </div>
+                      {couponError && <p className="text-xs text-destructive">{couponError}</p>}
+                    </div>
+                  ) : (
+                    <div className="space-y-2 bg-secondary/40 rounded-lg p-3">
+                      <p className="text-xs text-muted-foreground">
+                        {fa ? "برای تأیید کد معرف، شماره موبایلت رو بنویس:" : "Enter your phone to verify referral code:"}
+                      </p>
+                      <div className="flex gap-2">
+                        <Input
+                          placeholder={fa ? "شماره موبایل" : "Phone number"}
+                          value={phoneInput}
+                          onChange={e => setPhoneInput(e.target.value)}
+                          className="h-9 text-sm"
+                          onKeyDown={e => e.key === "Enter" && verifyPhone()}
+                        />
+                        <Button size="sm" onClick={verifyPhone} disabled={couponLoading} className="shrink-0">
+                          {fa ? "تأیید" : "Verify"}
+                        </Button>
+                      </div>
+                      <button onClick={() => { setShowPhone(false); setPendingCoupon(null); setPhoneInput(""); }} className="text-xs text-muted-foreground hover:text-primary">
+                        {fa ? "انصراف" : "Cancel"}
+                      </button>
+                      {couponError && <p className="text-xs text-destructive">{couponError}</p>}
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="flex items-center justify-between bg-green-500/10 border border-green-500/30 rounded px-3 py-2">
