@@ -28,7 +28,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Pencil, Trash2, Plus, LogOut, Upload, Loader2, Tag } from "lucide-react";
+import { Pencil, Trash2, Plus, LogOut, Upload, Loader2, Tag, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLang } from "@/lib/i18n";
 import { SUBCATEGORIES } from "@/data/subcategories";
@@ -58,6 +58,17 @@ interface Coupon {
   discount_percent: number;
   expires_at: string | null;
   active: boolean;
+  max_uses: number | null;
+  used_count: number;
+}
+
+interface Referral {
+  id: string;
+  name: string;
+  phone: string;
+  referral_code: string;
+  total_uses: number;
+  created_at: string;
 }
 
 const emptyForm: Omit<DbProduct, "id"> = {
@@ -94,7 +105,7 @@ const Admin = () => {
   const { toast } = useToast();
   const { session, isAdmin, loading: authLoading } = useAdmin();
 
-  const [tab, setTab] = useState<"products" | "coupons">("products");
+  const [tab, setTab] = useState<"products" | "coupons" | "referrals">("products");
 
   const [items, setItems] = useState<DbProduct[]>([]);
   const [loading, setLoading] = useState(true);
@@ -111,6 +122,9 @@ const Admin = () => {
   const [editingCoupon, setEditingCoupon] = useState<Coupon | null>(null);
   const [couponForm, setCouponForm] = useState(emptyCouponForm);
   const [couponSaving, setCouponSaving] = useState(false);
+
+  const [referrals, setReferrals] = useState<Referral[]>([]);
+  const [referralsLoading, setReferralsLoading] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !session) navigate("/auth", { replace: true });
@@ -135,8 +149,19 @@ const Admin = () => {
     setCouponsLoading(false);
   };
 
+  const loadReferrals = async () => {
+    setReferralsLoading(true);
+    const { data, error } = await supabase
+      .from("referrals")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) toast({ title: "Error", description: error.message, variant: "destructive" });
+    else setReferrals((data ?? []) as Referral[]);
+    setReferralsLoading(false);
+  };
+
   useEffect(() => {
-    if (session) { load(); loadCoupons(); }
+    if (session) { load(); loadCoupons(); loadReferrals(); }
   }, [session]);
 
   const openNew = () => {
@@ -248,6 +273,14 @@ const Admin = () => {
     else { toast({ title: fa ? "حذف شد" : "Deleted" }); loadCoupons(); }
   };
 
+  const handleDeleteReferral = async (r: Referral) => {
+    if (!confirm(fa ? `حذف معرف "${r.name}"؟` : `Delete referral "${r.name}"?`)) return;
+    await supabase.from("coupons").delete().eq("code", r.referral_code);
+    const { error } = await supabase.from("referrals").delete().eq("id", r.id);
+    if (error) toast({ title: "Error", description: error.message, variant: "destructive" });
+    else { toast({ title: fa ? "حذف شد" : "Deleted" }); loadReferrals(); }
+  };
+
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     navigate("/auth", { replace: true });
@@ -303,12 +336,15 @@ const Admin = () => {
         </Button>
       </div>
 
-      <div className="flex gap-2 mb-6">
+      <div className="flex gap-2 mb-6 flex-wrap">
         <Button variant={tab === "products" ? "default" : "outline"} onClick={() => setTab("products")}>
           {fa ? "محصولات" : "Products"}
         </Button>
         <Button variant={tab === "coupons" ? "default" : "outline"} onClick={() => setTab("coupons")} className="gap-2">
           <Tag className="w-4 h-4" /> {fa ? "کدهای تخفیف" : "Coupons"}
+        </Button>
+        <Button variant={tab === "referrals" ? "default" : "outline"} onClick={() => setTab("referrals")} className="gap-2">
+          <Users className="w-4 h-4" /> {fa ? "معرف‌ها" : "Referrals"}
         </Button>
       </div>
 
@@ -403,6 +439,7 @@ const Admin = () => {
                   <TableRow>
                     <TableHead>{fa ? "کد" : "Code"}</TableHead>
                     <TableHead>{fa ? "تخفیف" : "Discount"}</TableHead>
+                    <TableHead>{fa ? "استفاده" : "Used"}</TableHead>
                     <TableHead>{fa ? "انقضا" : "Expires"}</TableHead>
                     <TableHead>{fa ? "وضعیت" : "Status"}</TableHead>
                     <TableHead className="text-end">{fa ? "عملیات" : "Actions"}</TableHead>
@@ -413,6 +450,7 @@ const Admin = () => {
                     <TableRow key={c.id}>
                       <TableCell className="font-mono font-bold">{c.code}</TableCell>
                       <TableCell>{c.discount_percent}%</TableCell>
+                      <TableCell className="text-sm">{c.used_count} / {c.max_uses ?? "∞"}</TableCell>
                       <TableCell className="text-sm">
                         {c.expires_at ? new Date(c.expires_at).toLocaleDateString() : (fa ? "بدون انقضا" : "No expiry")}
                       </TableCell>
@@ -435,7 +473,7 @@ const Admin = () => {
                   ))}
                   {coupons.length === 0 && (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-center py-12 text-muted-foreground">
+                      <TableCell colSpan={6} className="text-center py-12 text-muted-foreground">
                         {fa ? "کد تخفیفی یافت نشد" : "No coupons"}
                       </TableCell>
                     </TableRow>
@@ -447,183 +485,27 @@ const Admin = () => {
         </>
       )}
 
-      {/* Product Dialog */}
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="font-display text-2xl">
-              {editing ? (fa ? "ویرایش محصول" : "Edit Product") : (fa ? "محصول جدید" : "New Product")}
-            </DialogTitle>
-          </DialogHeader>
-
-          <div className="grid gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div>
-                <Label>{fa ? "نام (فارسی) *" : "Name (Persian) *"}</Label>
-                <Input value={form.name_fa} onChange={(e) => setForm({ ...form, name_fa: e.target.value })} />
-              </div>
-              <div>
-                <Label>{fa ? "نام (انگلیسی) *" : "Name (English) *"}</Label>
-                <Input value={form.name_en} onChange={(e) => setForm({ ...form, name_en: e.target.value })} />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div>
-                <Label>{fa ? "دسته‌بندی" : "Category"}</Label>
-                <Select value={form.category} onValueChange={(v) => setForm({ ...form, category: v, subcategory: null })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
-                    {CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Label>{fa ? "زیرشاخه" : "Subcategory"}</Label>
-                <Select value={form.subcategory ?? "_none"} onValueChange={(v) => setForm({ ...form, subcategory: v === "_none" ? null : v })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="_none">{fa ? "ندارد" : "None"}</SelectItem>
-                    {subList.map((s) => <SelectItem key={s.key} value={s.key}>{s.name[lang]}</SelectItem>)}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Label>{fa ? "برند" : "Brand"}</Label>
-                <Select value={form.brand} onValueChange={(v) => setForm({ ...form, brand: v })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
-                    {BRANDS.map((b) => <SelectItem key={b} value={b}>{b}</SelectItem>)}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div>
-                <Label>{fa ? "قیمت (افغانی) *" : "Price (AFN) *"}</Label>
-                <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
-              </div>
-              <div>
-                <Label>{fa ? "قیمت تخفیف (افغانی)" : "Discount Price (AFN)"}</Label>
-                <Input type="number" min={0} value={form.discount_price ?? ""} onChange={(e) => setForm({ ...form, discount_price: e.target.value === "" ? null : Number(e.target.value) })} />
-              </div>
-              <div>
-                <Label>{fa ? "حداقل قیمت (افغانی)" : "Min Price (AFN)"}</Label>
-                <Input type="number" min={0} value={form.min_price ?? ""} onChange={(e) => setForm({ ...form, min_price: e.target.value === "" ? null : Number(e.target.value) })}
-                  placeholder={fa ? "کف قیمت کد تخفیف" : "Coupon floor price"} />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div>
-                <Label>{fa ? "موجودی (عدد)" : "Stock"}</Label>
-                <Input type="number" min={0} value={form.stock ?? ""} onChange={(e) => setForm({ ...form, stock: e.target.value === "" ? null : Number(e.target.value) })} />
-              </div>
-              <div>
-                <Label>{fa ? "ترتیب نمایش" : "Sort order"}</Label>
-                <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
-              </div>
-            </div>
-
-            <div>
-              <Label>{fa ? "تصویر محصول" : "Product image"}</Label>
-              <div className="mt-2 flex items-start gap-3">
-                <div className="w-24 h-24 rounded border border-border bg-muted overflow-hidden shrink-0">
-                  {form.image_url && <img src={form.image_url} alt="" className="w-full h-full object-cover" />}
-                </div>
-                <div className="flex-1 space-y-2">
-                  <label className="inline-flex items-center gap-2 cursor-pointer text-sm border border-border rounded px-3 py-2 hover:bg-muted">
-                    {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-                    {uploading ? (fa ? "در حال آپلود..." : "Uploading...") : (fa ? "انتخاب فایل" : "Choose file")}
-                    <input type="file" accept="image/*" className="hidden" disabled={uploading}
-                      onChange={(e) => { const f = e.target.files?.[0]; if (f) handleUpload(f); e.target.value = ""; }} />
-                  </label>
-                  {form.image_url && (
-                    <button type="button" onClick={() => setForm({ ...form, image_url: null })} className="text-xs text-destructive hover:underline block">
-                      {fa ? "حذف عکس" : "Remove image"}
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <Label>{fa ? "توضیحات (فارسی)" : "Details (Persian)"}</Label>
-              <Textarea rows={5} value={form.details_fa ?? ""} onChange={(e) => setForm({ ...form, details_fa: e.target.value })} />
-            </div>
-            <div>
-              <Label>{fa ? "توضیحات (انگلیسی)" : "Details (English)"}</Label>
-              <Textarea rows={5} value={form.details_en ?? ""} onChange={(e) => setForm({ ...form, details_en: e.target.value })} />
-            </div>
-          </div>
-
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setOpen(false)}>{fa ? "انصراف" : "Cancel"}</Button>
-            <Button onClick={handleSave} disabled={saving}>
-              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : fa ? "ذخیره" : "Save"}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Coupon Dialog */}
-      <Dialog open={couponOpen} onOpenChange={setCouponOpen}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle className="font-display text-2xl">
-              {editingCoupon ? (fa ? "ویرایش کد تخفیف" : "Edit Coupon") : (fa ? "کد تخفیف جدید" : "New Coupon")}
-            </DialogTitle>
-          </DialogHeader>
-
-          <div className="grid gap-4">
-            <div>
-              <Label>{fa ? "کد تخفیف *" : "Coupon Code *"}</Label>
-              <Input
-                value={couponForm.code}
-                onChange={(e) => setCouponForm({ ...couponForm, code: e.target.value.toUpperCase() })}
-                placeholder="WELCOME15"
-                className="font-mono"
-              />
-            </div>
-            <div>
-              <Label>{fa ? "درصد تخفیف *" : "Discount Percent *"}</Label>
-              <Input
-                type="number" min={1} max={100}
-                value={couponForm.discount_percent}
-                onChange={(e) => setCouponForm({ ...couponForm, discount_percent: Number(e.target.value) })}
-              />
-            </div>
-            <div>
-              <Label>{fa ? "تاریخ انقضا (اختیاری)" : "Expiry Date (optional)"}</Label>
-              <Input
-                type="date"
-                value={couponForm.expires_at}
-                onChange={(e) => setCouponForm({ ...couponForm, expires_at: e.target.value })}
-              />
-            </div>
-            <div className="flex items-center gap-3">
-              <input
-                type="checkbox"
-                id="active"
-                checked={couponForm.active}
-                onChange={(e) => setCouponForm({ ...couponForm, active: e.target.checked })}
-                className="w-4 h-4"
-              />
-              <Label htmlFor="active">{fa ? "فعال" : "Active"}</Label>
-            </div>
-          </div>
-
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setCouponOpen(false)}>{fa ? "انصراف" : "Cancel"}</Button>
-            <Button onClick={handleSaveCoupon} disabled={couponSaving}>
-              {couponSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : fa ? "ذخیره" : "Save"}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </section>
-  );
-};
-
-export default Admin;
+      {tab === "referrals" && (
+        <div className="bg-card border border-border rounded-lg overflow-hidden">
+          {referralsLoading ? (
+            <div className="p-12 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto" /></div>
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>{fa ? "اسم" : "Name"}</TableHead>
+                  <TableHead>{fa ? "شماره" : "Phone"}</TableHead>
+                  <TableHead>{fa ? "کد معرف" : "Referral Code"}</TableHead>
+                  <TableHead>{fa ? "استفاده شده" : "Used"}</TableHead>
+                  <TableHead>{fa ? "تاریخ" : "Date"}</TableHead>
+                  <TableHead className="text-end">{fa ? "عملیات" : "Actions"}</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {referrals.map((r) => (
+                  <TableRow key={r.id}>
+                    <TableCell className="font-medium">{r.name}</TableCell>
+                    <TableCell className="text-sm">{r.phone}</TableCell>
+                    <TableCell className="font-mono font-bold">{r.referral_code}</TableCell>
+                    <TableCell className="text-sm">{r.total_uses} {fa ? "بار" : "times"}</TableCell>
+                    <TableCell className="text-sm">{n
