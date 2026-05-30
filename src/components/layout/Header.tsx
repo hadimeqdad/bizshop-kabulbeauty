@@ -18,7 +18,7 @@ const Header = () => {
     { to: "/shop", label: t("nav_shop") },
     { to: "/about", label: t("nav_about") },
     { to: "/contact", label: t("nav_contact") },
-  ];
+  { to: "/referral", label: lang === "fa" ? "معرفی دوست 🎁" : "Refer a Friend 🎁" },
 
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault();
