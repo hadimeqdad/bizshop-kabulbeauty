@@ -18,11 +18,23 @@ const About = () => {
   ];
   return (
     <>
-      <SEO
-        title="درباره بیزشاپ — فروشگاه محصولات سلامت در کابل"
-        description="بیزشاپ کابل، نماینده رسمی محصولات دکتر بیز، ستین، داینامین و بیینه استار در افغانستان"
-        keywords="درباره بیزشاپ, دکتر بیز کابل, فروشگاه سلامتی افغانستان"
-      />
+     <SEO
+  title="درباره بیزشاپ کابل | نماینده رسمی دکتر بیز در افغانستان"
+  description="بیزشاپ کابل نماینده رسمی برندهای دکتر بیز، ستین، داینامین و بینه‌استار در افغانستان. محصولات ۱۰۰٪ اصل با تحویل سریع در کابل."
+  keywords="درباره بیزشاپ، دکتر بیز افغانستان، نماینده رسمی دکتر بیز کابل، فروشگاه سلامتی کابل"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "بیزشاپ کابل",
+    url: "https://bizshopkabul.com/about",
+    description: "نماینده رسمی برندهای دکتر بیز، ستین، داینامین و بینه‌استار در افغانستان",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "کابل",
+      addressCountry: "AF",
+    },
+  }}
+/>
       <section className="container py-16 md:py-24 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div className="animate-fade-up">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">{t("brand")}</p>
