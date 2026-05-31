@@ -72,7 +72,6 @@ const Shop = () => {
     description: "خرید آنلاین محصولات دکتر بیز در کابل افغانستان",
   }}
 />
-      />
       <section className="border-b border-border bg-secondary/40">
         <div className="container py-12 md:py-16 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">{t("featured_sub")}</p>
