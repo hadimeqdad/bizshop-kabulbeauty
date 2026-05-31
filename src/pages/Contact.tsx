@@ -32,10 +32,22 @@ const Contact = () => {
   return (
     <>
       <SEO
-        title="تماس با بیزشاپ — کابل افغانستان"
-        description="آدرس و راه‌های ارتباطی بیزشاپ کابل: واتساپ، نقشه و فرم تماس برای خرید محصولات دکتر بیز"
-        keywords="تماس بیزشاپ, آدرس فروشگاه کابل, واتساپ بیزشاپ"
-      />
+  title="تماس با بیزشاپ کابل | آدرس، واتساپ و نقشه"
+  description="با بیزشاپ کابل تماس بگیرید — آدرس فروشگاه در کابل، واتساپ و فرم تماس. نماینده رسمی دکتر بیز، ستین، داینامین و بینه‌استار در افغانستان."
+  keywords="تماس بیزشاپ کابل، آدرس فروشگاه کابل، واتساپ بیزشاپ، خرید محصولات دکتر بیز کابل"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "بیزشاپ کابل",
+    url: "https://bizshopkabul.com/contact",
+    telephone: "+93",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "کابل",
+      addressCountry: "AF",
+    },
+  }}
+/>
       <section className="border-b border-border/60 bg-muted/30">
         <div className="container py-14 md:py-20 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">{t("brand")}</p>
