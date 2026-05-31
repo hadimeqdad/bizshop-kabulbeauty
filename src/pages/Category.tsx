@@ -52,10 +52,17 @@ const CategoryPage = () => {
   return (
     <>
       <SEO
-        title={`${t(`cat_${category}` as any)} — بیزشاپ کابل`}
-        description={`خرید محصولات ${t(`cat_${category}` as any)} برندهای دکتر بیز، ستین، داینامین و بیینه استار در بیزشاپ کابل افغانستان`}
-        keywords={`${t(`cat_${category}` as any)}, بیزشاپ, دکتر بیز کابل, خرید آنلاین افغانستان`}
-      />
+  title={`خرید ${t(`cat_${category}` as any)} در کابل | بیزشاپ افغانستان`}
+  description={`خرید آنلاین محصولات ${t(`cat_${category}` as any)} در کابل افغانستان. برندهای دکتر بیز، ستین، داینامین و بینه‌استار. تحویل سریع در کابل.`}
+  keywords={`خرید ${t(`cat_${category}` as any)} کابل، ${t(`cat_${category}` as any)} افغانستان، دکتر بیز، بیزشاپ کابل، خرید آنلاین افغانستان`}
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${t(`cat_${category}` as any)} — بیزشاپ کابل`,
+    url: `https://bizshopkabul.com/category/${category}`,
+    description: `خرید آنلاین محصولات ${t(`cat_${category}` as any)} در کابل افغانستان`,
+  }}
+/>
       {loading && <div className="container py-8"><ProductsLoader /></div>}
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink">
