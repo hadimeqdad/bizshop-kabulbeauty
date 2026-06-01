@@ -11,9 +11,12 @@ const ProductCard = ({ product }: { product: Product }) => {
   const { add } = useCart();
   const [added, setAdded] = useState(false);
 
+  const outOfStock = product.stock !== null && product.stock !== undefined && product.stock <= 0;
+
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    if (outOfStock) return;
     add(product);
     setAdded(true);
     setTimeout(() => setAdded(false), 1400);
@@ -31,10 +34,10 @@ const ProductCard = ({ product }: { product: Product }) => {
               src={product.image}
               alt={product.name[lang]}
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-smooth group-hover:scale-105"
+              className={`absolute inset-0 w-full h-full object-cover transition-smooth group-hover:scale-105 ${outOfStock ? "opacity-50 grayscale" : ""}`}
             />
           ) : (
-            <div className="absolute inset-0 grid place-items-center transition-smooth group-hover:scale-105">
+            <div className={`absolute inset-0 grid place-items-center transition-smooth group-hover:scale-105 ${outOfStock ? "opacity-50 grayscale" : ""}`}>
               <div className="relative w-1/2 h-3/4">
                 <div
                   className="absolute top-[12%] left-1/2 -translate-x-1/2 w-1/3 h-[12%] rounded-t-sm"
@@ -54,6 +57,13 @@ const ProductCard = ({ product }: { product: Product }) => {
           <div className="absolute top-3 right-3 rtl:right-auto rtl:left-3 text-[10px] uppercase tracking-widest text-primary bg-background/90 backdrop-blur px-2 py-0.5 rounded-full border border-border">
             {t(`cat_${product.category}` as any)}
           </div>
+          {outOfStock && (
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full">
+                ناموجود
+              </span>
+            </div>
+          )}
         </div>
       </Link>
       <div className="p-3 md:p-4 flex flex-col gap-1 flex-1">
@@ -66,30 +76,33 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="mt-auto pt-2">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-semibold text-foreground">
-  {product.discount_price ? (
-  <>
-    <span className="line-through text-muted-foreground mr-1">{product.price.toLocaleString()}</span>
-    <span className="text-red-500">{product.discount_price.toLocaleString()}</span>
-  </>
-) : (
-  product.price.toLocaleString()
-)}
-</span>
+              {product.discount_price ? (
+                <>
+                  <span className="line-through text-muted-foreground mr-1">{product.price.toLocaleString()}</span>
+                  <span className="text-red-500">{product.discount_price.toLocaleString()}</span>
+                </>
+              ) : (
+                product.price.toLocaleString()
+              )}
+            </span>
             <Button
               size="sm"
-              variant={added ? "secondary" : "default"}
+              variant={added ? "secondary" : outOfStock ? "outline" : "default"}
               onClick={handleAdd}
+              disabled={outOfStock}
               className="h-7 px-2 text-xs gap-1"
             >
-              {added ? <><Check className="w-3 h-3" />{t("added")}</> : <><Plus className="w-3 h-3" />{t("add_to_cart")}</>}
+              {outOfStock ? "ناموجود" : added ? <><Check className="w-3 h-3" />{t("added")}</> : <><Plus className="w-3 h-3" />{t("add_to_cart")}</>}
             </Button>
           </div>
-          <a
-            href={`whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name[lang]} را سفارش بدم`}
-            className="w-full h-8 flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold rounded"
-          >
-            📲 سفارش از واتساپ
-          </a>
+          {!outOfStock && (
+            <a
+              href={`whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name[lang]} را سفارش بدم`}
+              className="w-full h-8 flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold rounded"
+            >
+              📲 سفارش از واتساپ
+            </a>
+          )}
         </div>
       </div>
     </article>
