@@ -74,7 +74,11 @@ const ProductCard = ({ product }: { product: Product }) => {
           </h3>
         </Link>
         <div className="mt-auto pt-2">
-          {!outOfStock && (
+          {outOfStock ? (
+            <div className="w-full h-8 flex items-center justify-center text-xs text-muted-foreground border border-border rounded">
+              ⏳ موقتاً ناموجود
+            </div>
+          ) : (
             <>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-semibold text-foreground">
