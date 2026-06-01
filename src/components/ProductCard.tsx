@@ -74,34 +74,35 @@ const ProductCard = ({ product }: { product: Product }) => {
           </h3>
         </Link>
         <div className="mt-auto pt-2">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-semibold text-foreground">
-              {product.discount_price ? (
-                <>
-                  <span className="line-through text-muted-foreground mr-1">{product.price.toLocaleString()}</span>
-                  <span className="text-red-500">{product.discount_price.toLocaleString()}</span>
-                </>
-              ) : (
-                product.price.toLocaleString()
-              )}
-            </span>
-            <Button
-              size="sm"
-              variant={added ? "secondary" : outOfStock ? "outline" : "default"}
-              onClick={handleAdd}
-              disabled={outOfStock}
-              className="h-7 px-2 text-xs gap-1"
-            >
-              {outOfStock ? "ناموجود" : added ? <><Check className="w-3 h-3" />{t("added")}</> : <><Plus className="w-3 h-3" />{t("add_to_cart")}</>}
-            </Button>
-          </div>
           {!outOfStock && (
-            <a
-              href={`whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name[lang]} را سفارش بدم`}
-              className="w-full h-8 flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold rounded"
-            >
-              📲 سفارش از واتساپ
-            </a>
+            <>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-semibold text-foreground">
+                  {product.discount_price ? (
+                    <>
+                      <span className="line-through text-muted-foreground mr-1">{product.price.toLocaleString()}</span>
+                      <span className="text-red-500">{product.discount_price.toLocaleString()}</span>
+                    </>
+                  ) : (
+                    product.price.toLocaleString()
+                  )}
+                </span>
+                <Button
+                  size="sm"
+                  variant={added ? "secondary" : "default"}
+                  onClick={handleAdd}
+                  className="h-7 px-2 text-xs gap-1"
+                >
+                  {added ? <><Check className="w-3 h-3" />{t("added")}</> : <><Plus className="w-3 h-3" />{t("add_to_cart")}</>}
+                </Button>
+              </div>
+              <a
+                href={`whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name[lang]} را سفارش بدم`}
+                className="w-full h-8 flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold rounded"
+              >
+                📲 سفارش از واتساپ
+              </a>
+            </>
           )}
         </div>
       </div>
