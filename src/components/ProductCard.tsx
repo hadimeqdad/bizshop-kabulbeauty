@@ -101,7 +101,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="mt-auto pt-2">
           {outOfStock ? (
             <div className="w-full h-8 flex items-center justify-center text-xs text-muted-foreground border border-border rounded">
-              ⏳ موقتاً ناموجود
+              ⏳ موجودی به اتمام رسید
             </div>
           ) : (
             <>
