@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import ProductsLoader from "@/components/ProductsLoader";
 import SEO from "@/components/SEO";
 
+declare const fbq: Function;
+
 const ProductDetail = () => {
   const { id } = useParams();
   const { lang, t, dir } = useLang();
@@ -19,6 +21,18 @@ const ProductDetail = () => {
 
   useEffect(() => { window.scrollTo(0, 0); }, [id]);
 
+  useEffect(() => {
+    if (product) {
+      fbq('track', 'ViewContent', {
+        content_name: product.name['fa'],
+        content_ids: [product.id],
+        content_type: 'product',
+        value: product.price,
+        currency: 'AFN'
+      });
+    }
+  }, [product]);
+
   if (loading) return <div className="container py-8"><ProductsLoader /></div>;
 
   if (!product) return <Navigate to="/shop" replace />;
@@ -27,6 +41,13 @@ const ProductDetail = () => {
     add(product);
     setAdded(true);
     setTimeout(() => setAdded(false), 1400);
+    fbq('track', 'AddToCart', {
+      content_name: product.name['fa'],
+      content_ids: [product.id],
+      content_type: 'product',
+      value: product.price,
+      currency: 'AFN'
+    });
   };
 
   const stock = (product as any).stock;
