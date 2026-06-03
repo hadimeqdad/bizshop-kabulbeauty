@@ -5,6 +5,7 @@ import SEO from "@/components/SEO";
 import { ArrowRight, ArrowLeft, Leaf, ShieldCheck, Truck, MessageCircle } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
+import { useEffect } from "react";
 import hero from "@/assets/hero.jpg";
 import promo from "@/assets/IMG_20260220_110843.jpg";
 import catMedicinal from "@/assets/1000122016.webp";
@@ -12,11 +13,17 @@ import catHealthcare from "@/assets/1000122013.webp";
 import catCosmetics from "@/assets/cat-cosmetics.jpg";
 import catFood from "@/assets/1000122015.webp";
 
+declare const fbq: Function;
+
 const Home = () => {
   const { t, lang, dir } = useLang();
   const { products } = useProducts();
   const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
   const featured = products.slice(0, 8);
+
+  useEffect(() => {
+    fbq('track', 'PageView');
+  }, []);
 
   const cats = [
     { key: "medicinal", img: catMedicinal, icon: "" },
