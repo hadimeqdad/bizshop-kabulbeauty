@@ -4,14 +4,13 @@ import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
 import { Plus, Check } from "lucide-react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { lang, t } = useLang();
-  const { add } = useCart();
+  const { add, setOpen } = useCart();
   const [added, setAdded] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const navigate = useNavigate();
 
   const outOfStock = product.stock !== null && product.stock !== undefined && product.stock <= 0;
 
@@ -35,7 +34,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             <p className="text-sm text-gray-500 mb-4">{product.name[lang]}</p>
             <div className="flex flex-col gap-2">
               <button
-                onClick={() => { setShowPopup(false); navigate("/cart"); }}
+                onClick={() => { setShowPopup(false); setOpen(true); }}
                 className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg text-sm"
               >
                 🛒 مشاهده سبد خرید
