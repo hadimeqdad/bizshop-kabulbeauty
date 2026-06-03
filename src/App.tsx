@@ -16,6 +16,7 @@ import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import DbAdmin from "./pages/DbAdmin";
 import Referral from "./pages/Referral";
+import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/referral" element={<Referral />} />
                 <Route path="/db-admin" element={<DbAdmin />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Layout>
