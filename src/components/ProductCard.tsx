@@ -4,12 +4,14 @@ import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
 import { Plus, Check } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { lang, t } = useLang();
   const { add } = useCart();
   const [added, setAdded] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const navigate = useNavigate();
 
   const outOfStock = product.stock !== null && product.stock !== undefined && product.stock <= 0;
 
@@ -19,11 +21,35 @@ const ProductCard = ({ product }: { product: Product }) => {
     if (outOfStock) return;
     add(product);
     setAdded(true);
+    setShowPopup(true);
     setTimeout(() => setAdded(false), 1400);
   };
 
   return (
-    <article className="group flex flex-col bg-card border border-border rounded-md overflow-hidden hover:shadow-soft transition-smooth">
+    <article className="group flex flex-col bg-card border border-border rounded-md overflow-hidden hover:shadow-soft transition-smooth relative">
+      {showPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setShowPopup(false)}>
+          <div className="bg-white rounded-xl p-6 mx-4 max-w-sm w-full shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
+            <div className="text-4xl mb-3">✅</div>
+            <h3 className="font-bold text-lg text-gray-800 mb-1">محصول اضافه شد!</h3>
+            <p className="text-sm text-gray-500 mb-4">{product.name[lang]}</p>
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={() => { setShowPopup(false); navigate("/cart"); }}
+                className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg text-sm"
+              >
+                🛒 مشاهده سبد خرید
+              </button>
+              <button
+                onClick={() => setShowPopup(false)}
+                className="w-full border border-gray-300 text-gray-600 py-2 rounded-lg text-sm"
+              >
+                ادامه خرید
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <Link to={`/product/${product.id}`} className="block">
         <div
           className="relative aspect-square overflow-hidden"
