@@ -2,7 +2,7 @@ import { Product } from "@/data/products";
 import { useLang } from "@/lib/i18n";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
-import { Plus, Check } from "lucide-react";
+import { Plus, Check, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -27,25 +27,26 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <article className="group flex flex-col bg-card border border-border rounded-md overflow-hidden hover:shadow-soft transition-smooth relative">
       {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setShowPopup(false)}>
-          <div className="bg-white rounded-xl p-6 mx-4 max-w-sm w-full shadow-2xl text-center" onClick={(e) => e.stopPropagation()}>
-            <div className="text-4xl mb-3">✅</div>
-            <h3 className="font-bold text-lg text-gray-800 mb-1">محصول اضافه شد!</h3>
-            <p className="text-sm text-gray-500 mb-4">{product.name[lang]}</p>
-            <div className="flex flex-col gap-2">
-              <button
-                onClick={() => { setShowPopup(false); setOpen(true); }}
-                className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg text-sm"
-              >
-                🛒 مشاهده سبد خرید
-              </button>
-              <button
-                onClick={() => setShowPopup(false)}
-                className="w-full border border-gray-300 text-gray-600 py-2 rounded-lg text-sm"
-              >
-                ادامه خرید
-              </button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowPopup(false)}>
+          <div className="bg-white rounded-2xl p-8 mx-4 w-full max-w-sm flex flex-col items-center gap-4 shadow-xl" onClick={e => e.stopPropagation()}>
+            <div className="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center">
+              <Check className="w-9 h-9 text-white" />
             </div>
+            <h2 className="text-xl font-bold text-gray-800">محصول اضافه شد!</h2>
+            <p className="text-gray-500 text-sm text-center">{product.name['fa']}</p>
+            <button
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2"
+              onClick={() => { setShowPopup(false); setOpen(true); }}
+            >
+              <ShoppingCart className="w-5 h-5" />
+              مشاهده سبد خرید
+            </button>
+            <button
+              className="w-full border border-gray-200 text-gray-700 font-medium py-3 rounded-xl hover:bg-gray-50"
+              onClick={() => setShowPopup(false)}
+            >
+              ادامه خرید
+            </button>
           </div>
         </div>
       )}
