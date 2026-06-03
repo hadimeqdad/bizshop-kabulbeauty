@@ -1,9 +1,9 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
 import { useProducts } from "@/hooks/useProducts";
 import { useLang } from "@/lib/i18n";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Plus, Check } from "lucide-react";
+import { ChevronLeft, Plus, Check, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import ProductsLoader from "@/components/ProductsLoader";
 import SEO from "@/components/SEO";
@@ -15,7 +15,9 @@ const ProductDetail = () => {
   const { lang, t, dir } = useLang();
   const { add } = useCart();
   const [added, setAdded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { products, loading } = useProducts();
+  const navigate = useNavigate();
 
   const product = products.find(p => p.id === id);
 
@@ -40,6 +42,7 @@ const ProductDetail = () => {
   const handleAdd = () => {
     add(product);
     setAdded(true);
+    setShowModal(true);
     setTimeout(() => setAdded(false), 1400);
     fbq('track', 'AddToCart', {
       content_name: product.name['fa'],
@@ -76,6 +79,32 @@ const ProductDetail = () => {
           },
         }}
       />
+
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowModal(false)}>
+          <div className="bg-white rounded-2xl p-8 mx-4 w-full max-w-sm flex flex-col items-center gap-4 shadow-xl" onClick={e => e.stopPropagation()}>
+            <div className="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center">
+              <Check className="w-9 h-9 text-white" />
+            </div>
+            <h2 className="text-xl font-bold text-gray-800">محصول اضافه شد!</h2>
+            <p className="text-gray-500 text-sm text-center">{product.name['fa']}</p>
+            <button
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2"
+              onClick={() => { setShowModal(false); navigate('/cart'); }}
+            >
+              <ShoppingCart className="w-5 h-5" />
+              مشاهده سبد خرید
+            </button>
+            <button
+              className="w-full border border-gray-200 text-gray-700 font-medium py-3 rounded-xl hover:bg-gray-50"
+              onClick={() => setShowModal(false)}
+            >
+              ادامه خرید
+            </button>
+          </div>
+        </div>
+      )}
+
       <Link to="/shop" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6">
         <ChevronLeft className={`w-4 h-4 ${dir === "rtl" ? "rotate-180" : ""}`} />
         {t("nav_shop")}
