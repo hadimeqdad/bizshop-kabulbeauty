@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Search, X } from "lucide-react";
 import SEO from "@/components/SEO";
 
+declare const fbq: Function;
+
 const cats: ("all" | Category)[] = ["all", "medicinal", "healthcare", "cosmetics", "food"];
 
 const Shop = () => {
@@ -23,7 +25,13 @@ const Shop = () => {
   const [sub, setSub] = useState<string>(initialSub);
   const [query, setQuery] = useState("");
 
-  // Sync URL
+  useEffect(() => {
+    fbq('track', 'ViewContent', {
+      content_type: 'product_group',
+      content_name: 'Shop Page',
+    });
+  }, []);
+
   useEffect(() => {
     const next = new URLSearchParams(params);
     if (active === "all") next.delete("cat"); else next.set("cat", active);
@@ -31,19 +39,16 @@ const Shop = () => {
     setParams(next, { replace: true });
   }, [active, sub]);
 
-  // Reset sub when category changes away from its parent
   useEffect(() => {
     if (active === "all") { setSub("all"); return; }
     if (sub !== "all" && !getSubcategory(active as Category, sub)) setSub("all");
   }, [active]);
 
-  // Listen to external URL changes (e.g. coming from Category page)
   useEffect(() => {
     const c = (params.get("cat") as Category | null) ?? "all";
     const s = params.get("sub") ?? "all";
     if (c !== active) setActive(c);
     if (s !== sub) setSub(s);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.toString()]);
 
   const subList = active !== "all" ? SUBCATEGORIES[active as Category] ?? [] : [];
@@ -78,7 +83,6 @@ const Shop = () => {
           <h1 className="font-display text-4xl md:text-6xl text-primary">{t("shop_title")}</h1>
           <p className="text-muted-foreground mt-3 max-w-md mx-auto">{t("shop_sub")}</p>
 
-          {/* Search */}
           <div className="mt-6 max-w-md mx-auto relative">
             <Search className="absolute top-1/2 -translate-y-1/2 left-3 rtl:left-auto rtl:right-3 w-4 h-4 text-muted-foreground" />
             <Input
@@ -101,7 +105,6 @@ const Shop = () => {
       </section>
 
       <section className="container py-8 md:py-12">
-        {/* Category filter */}
         <div className="flex flex-wrap gap-2 justify-center mb-4">
           {cats.map(c => (
             <Button
@@ -116,7 +119,6 @@ const Shop = () => {
           ))}
         </div>
 
-        {/* Subcategory filter */}
         {subList.length > 0 && (
           <div className="mb-8 md:mb-10">
             <div className="flex items-center gap-3 mb-3 justify-center">
