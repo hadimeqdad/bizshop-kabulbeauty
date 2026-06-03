@@ -1,4 +1,4 @@
-import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { useProducts } from "@/hooks/useProducts";
 import { useLang } from "@/lib/i18n";
 import { useCart } from "@/lib/cart";
@@ -13,11 +13,10 @@ declare const fbq: Function;
 const ProductDetail = () => {
   const { id } = useParams();
   const { lang, t, dir } = useLang();
-  const { add } = useCart();
+  const { add, setOpen } = useCart();
   const [added, setAdded] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { products, loading } = useProducts();
-  const navigate = useNavigate();
 
   const product = products.find(p => p.id === id);
 
@@ -90,7 +89,7 @@ const ProductDetail = () => {
             <p className="text-gray-500 text-sm text-center">{product.name['fa']}</p>
             <button
               className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2"
-              onClick={() => { setShowModal(false); navigate('/cart'); }}
+              onClick={() => { setShowModal(false); setOpen(true); }}
             >
               <ShoppingCart className="w-5 h-5" />
               مشاهده سبد خرید
