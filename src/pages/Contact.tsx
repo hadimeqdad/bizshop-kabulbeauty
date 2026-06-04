@@ -32,22 +32,22 @@ const Contact = () => {
   return (
     <>
       <SEO
-  title="تماس با بیزشاپ کابل | آدرس، واتساپ و نقشه"
-  description="با بیزشاپ کابل تماس بگیرید — آدرس فروشگاه در کابل، واتساپ و فرم تماس. نماینده رسمی دکتر بیز، ستین، داینامین و بینه‌استار در افغانستان."
-  keywords="تماس بیزشاپ کابل، آدرس فروشگاه کابل، واتساپ بیزشاپ، خرید محصولات دکتر بیز کابل"
-  jsonLd={{
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "بیزشاپ کابل",
-    url: "https://bizshopkabul.com/contact",
-    telephone: "+93",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "کابل",
-      addressCountry: "AF",
-    },
-  }}
-/>
+        title="تماس با بیزشاپ کابل | آدرس، واتساپ و نقشه"
+        description="با بیزشاپ کابل تماس بگیرید — آدرس فروشگاه در کابل، واتساپ و فرم تماس. نماینده رسمی دکتر بیز، ستین، داینامین و بینه‌استار در افغانستان."
+        keywords="تماس بیزشاپ کابل، آدرس فروشگاه کابل، واتساپ بیزشاپ، خرید محصولات دکتر بیز کابل"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "بیزشاپ کابل",
+          url: "https://bizshopkabul.com/contact",
+          telephone: "+93",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "کابل",
+            addressCountry: "AF",
+          },
+        }}
+      />
       <section className="border-b border-border/60 bg-muted/30">
         <div className="container py-14 md:py-20 text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">{t("brand")}</p>
@@ -59,11 +59,16 @@ const Contact = () => {
       <section className="container py-16 grid lg:grid-cols-2 gap-10">
         <div className="space-y-6">
           <div className="grid sm:grid-cols-2 gap-4">
-            <div className="border border-border rounded-sm p-5 bg-card">
+            <a
+              href="https://maps.google.com/?q=34.509287,69.138115"
+              target="_blank"
+              rel="noopener"
+              className="border border-border rounded-sm p-5 bg-card hover:bg-muted transition-smooth block"
+            >
               <MapPin className="w-5 h-5 text-accent mb-2" />
               <h3 className="font-display text-lg text-primary mb-1">{t("visit")}</h3>
               <p className="text-sm text-muted-foreground">{t("address")}</p>
-            </div>
+            </a>
             <a href="https://wa.me/message/64F75TYQX77KI1" target="_blank" rel="noopener" className="border border-border rounded-sm p-5 bg-card hover:bg-muted transition-smooth block">
               <MessageCircle className="w-5 h-5 text-accent mb-2" />
               <h3 className="font-display text-lg text-primary mb-1">{t("whatsapp")}</h3>
@@ -74,7 +79,7 @@ const Contact = () => {
           <div className="aspect-[4/3] overflow-hidden rounded-sm border border-border shadow-soft">
             <iframe
               title="BizShop Kabul Location"
-              src="https://www.google.com/maps?q=G3F6%2BX5J%20Kabul%20100513&output=embed"
+              src="https://www.google.com/maps?q=34.509287,69.138115&output=embed"
               className="w-full h-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
