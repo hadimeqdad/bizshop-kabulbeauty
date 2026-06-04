@@ -43,7 +43,7 @@ const dict: Dict = {
   contact_title: { fa: "با ما در تماس باشید", en: "Get in Touch" },
   contact_sub: { fa: "آماده پاسخ‌گویی به سوالات شما هستیم", en: "We're here to answer your questions" },
   visit: { fa: "از ما دیدن کنید", en: "Visit Us" },
-  address: { fa: "G3F6+X5J، کابل، ۱۰۰۵۱۳", en: "G3F6+X5J, Kabul 100513" },
+  address: { fa: "G45Q+M52، کابل، ۱۰۰۳۱۱", en: "G45Q+M52, Kabul 100311" },
   whatsapp: { fa: "واتساپ", en: "WhatsApp" },
   send_msg: { fa: "ارسال پیام", en: "Send Message" },
   name: { fa: "نام", en: "Name" },
