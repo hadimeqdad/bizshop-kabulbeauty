@@ -20,10 +20,15 @@ const Footer = () => {
 
         <div>
           <h4 className="text-sm uppercase tracking-widest text-gold mb-3">{t("visit")}</h4>
-          <p className="text-sm text-background/70 flex items-start gap-2">
+          <a
+            href="https://maps.google.com/?q=34.509287,69.138115"
+            target="_blank"
+            rel="noopener"
+            className="text-sm text-background/70 flex items-start gap-2 hover:text-gold transition-smooth"
+          >
             <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{t("address")}</span>
-          </p>
+          </a>
           <a href={WA} target="_blank" rel="noopener" className="mt-3 inline-flex items-center gap-2 text-sm text-gold hover:text-background transition-smooth">
             <Send className="w-4 h-4" /> {t("whatsapp")}
           </a>
