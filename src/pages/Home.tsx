@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useLang } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
-import { ArrowRight, ArrowLeft, Leaf, ShieldCheck, Truck, MessageCircle } from "lucide-react";
+import { ArrowRight, ArrowLeft, Leaf, ShieldCheck, Truck, MessageCircle, MapPin } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import { useEffect } from "react";
@@ -43,9 +43,9 @@ const Home = () => {
   return (
     <>
       <SEO
-  title="بیزشاپ کابل | خرید آنلاین دمنوش، محصولات آرایشی و بهداشتی در افغانستان"
-  description="بیزشاپ کابل — خرید آنلاین دمنوش، قهوه، محصولات آرایشی، بهداشتی و درمانی. برندهای دکتر بیز، ستین، داینامین و بینه‌استار. تحویل سریع در کابل افغانستان."
-  keywords="خرید دمنوش کابل، محصولات آرایشی افغانستان، مواد غذایی کابل، فروشگاه آنلاین کابل، دکتر بیز، بیزشاپ، خرید بهداشتی کابل"
+        title="بیزشاپ کابل | خرید آنلاین دمنوش، محصولات آرایشی و بهداشتی در افغانستان"
+        description="بیزشاپ کابل — خرید آنلاین دمنوش، قهوه، محصولات آرایشی، بهداشتی و درمانی. برندهای دکتر بیز، ستین، داینامین و بینه‌استار. تحویل سریع در کابل افغانستان."
+        keywords="خرید دمنوش کابل، محصولات آرایشی افغانستان، مواد غذایی کابل، فروشگاه آنلاین کابل، دکتر بیز، بیزشاپ، خرید بهداشتی کابل"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Store",
@@ -54,6 +54,7 @@ const Home = () => {
           address: { "@type": "PostalAddress", addressLocality: "Kabul", addressCountry: "AF" },
         }}
       />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink">
         <div className="absolute inset-0">
@@ -185,6 +186,47 @@ const Home = () => {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="container pb-20">
+        <div className="text-center mb-8">
+          <p className="text-xs uppercase tracking-[0.3em] text-accent mb-2">{t("visit")}</p>
+          <h2 className="font-display text-3xl md:text-5xl text-primary">{t("contact_title")}</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 items-center">
+          <div className="aspect-[4/3] overflow-hidden rounded-md border border-border shadow-soft">
+            <iframe
+              title="BizShop Kabul Location"
+              src="https://www.google.com/maps?q=34.509287,69.138115&output=embed"
+              className="w-full h-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+          <div className="space-y-5">
+            <a
+              href="https://maps.google.com/?q=34.509287,69.138115"
+              target="_blank"
+              rel="noopener"
+              className="group flex items-center gap-4 p-4 rounded-md border border-border bg-card hover:bg-muted transition-smooth"
+            >
+              <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground grid place-items-center shrink-0">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="font-semibold text-sm text-primary">{t("visit")}</div>
+                <div className="text-sm text-muted-foreground">{t("address")}</div>
+              </div>
+            </a>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 text-sm text-accent hover:text-primary transition-smooth"
+            >
+              {lang === "fa" ? "صفحه تماس با ما" : "Contact Page"} <Arrow className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
