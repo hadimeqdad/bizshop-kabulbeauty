@@ -2,15 +2,14 @@ import { Product } from "@/data/products";
 import { useLang } from "@/lib/i18n";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
-import { Plus, Check, ShoppingCart } from "lucide-react";
+import { Check } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const { lang, t } = useLang();
-  const { add, setOpen } = useCart();
+  const { add } = useCart();
   const [added, setAdded] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
 
   const outOfStock = product.stock !== null && product.stock !== undefined && product.stock <= 0;
 
@@ -18,38 +17,14 @@ const ProductCard = ({ product }: { product: Product }) => {
     e.preventDefault();
     e.stopPropagation();
     if (outOfStock) return;
-    add(product);
-    setAdded(true);
-    setShowPopup(true);
-    setTimeout(() => setAdded(false), 1400);
+    window.open(
+      `whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name['fa']} را سفارش بدم - قیمت: ${product.discount_price || product.price} افغانی`,
+      "_blank"
+    );
   };
 
   return (
     <article className="group flex flex-col bg-card border border-border rounded-md overflow-hidden hover:shadow-soft transition-smooth relative">
-      {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowPopup(false)}>
-          <div className="bg-white rounded-2xl p-8 mx-4 w-full max-w-sm flex flex-col items-center gap-4 shadow-xl" onClick={e => e.stopPropagation()}>
-            <div className="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center">
-              <Check className="w-9 h-9 text-white" />
-            </div>
-            <h2 className="text-xl font-bold text-gray-800">محصول اضافه شد!</h2>
-            <p className="text-gray-500 text-sm text-center">{product.name['fa']}</p>
-            <button
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2"
-              onClick={() => { setShowPopup(false); setOpen(true); }}
-            >
-              <ShoppingCart className="w-5 h-5" />
-              مشاهده سبد خرید
-            </button>
-            <button
-              className="w-full border border-gray-200 text-gray-700 font-medium py-3 rounded-xl hover:bg-gray-50"
-              onClick={() => setShowPopup(false)}
-            >
-              ادامه خرید
-            </button>
-          </div>
-        </div>
-      )}
       <Link to={`/product/${product.id}`} className="block">
         <div
           className="relative aspect-square overflow-hidden"
@@ -105,34 +80,26 @@ const ProductCard = ({ product }: { product: Product }) => {
               ⏳ موجودی به اتمام رسید
             </div>
           ) : (
-            <>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-semibold text-foreground">
-                  {product.discount_price ? (
-                    <>
-                      <span className="line-through text-muted-foreground mr-1">{product.price.toLocaleString()}</span>
-                      <span className="text-red-500">{product.discount_price.toLocaleString()}</span>
-                    </>
-                  ) : (
-                    product.price.toLocaleString()
-                  )}
-                </span>
-                <Button
-                  size="sm"
-                  variant={added ? "secondary" : "default"}
-                  onClick={handleAdd}
-                  className="h-7 px-2 text-xs gap-1"
-                >
-                  {added ? <><Check className="w-3 h-3" />{t("added")}</> : <><Plus className="w-3 h-3" />{t("add_to_cart")}</>}
-                </Button>
-              </div>
-              <a
-                href={`whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name[lang]} را سفارش بدم`}
-                className="w-full h-8 flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold rounded"
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-semibold text-foreground">
+                {product.discount_price ? (
+                  <>
+                    <span className="line-through text-muted-foreground mr-1">{product.price.toLocaleString()}</span>
+                    <span className="text-red-500">{product.discount_price.toLocaleString()}</span>
+                  </>
+                ) : (
+                  product.price.toLocaleString()
+                )}
+              </span>
+              <Button
+                size="sm"
+                variant="default"
+                onClick={handleAdd}
+                className="h-7 px-2 text-xs gap-1 bg-green-500 hover:bg-green-600"
               >
                 📲 سفارش از واتساپ
-              </a>
-            </>
+              </Button>
+            </div>
           )}
         </div>
       </div>
