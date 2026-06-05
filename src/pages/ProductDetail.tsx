@@ -162,15 +162,25 @@ const ProductDetail = () => {
             </div>
           )}
 
-          <Button
-            size="lg"
-            variant="default"
-            onClick={handleAdd}
-            disabled={outOfStock}
-            className="mt-6 gap-2 w-full md:w-auto bg-green-500 hover:bg-green-600"
-          >
-            📲 سفارش از واتساپ
-          </Button>
+          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            <Button
+              size="lg"
+              variant="default"
+              onClick={handleAdd}
+              disabled={outOfStock}
+              className="gap-2 w-full sm:w-auto bg-green-500 hover:bg-green-600"
+            >
+              📲 سفارش از واتساپ
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => document.getElementById("reviews-section")?.scrollIntoView({ behavior: "smooth" })}
+              className="gap-2 w-full sm:w-auto"
+            >
+              💬 نظرات مشتریان
+            </Button>
+          </div>
 
           {product.details && (
             <div className="mt-10 prose prose-sm max-w-none">
@@ -183,10 +193,9 @@ const ProductDetail = () => {
       </div>
 
       {/* بخش نظرات */}
-      <div className="mt-16 border-t border-border pt-10">
+      <div id="reviews-section" className="mt-16 border-t border-border pt-10">
         <h2 className="font-display text-2xl text-primary mb-8">نظرات مشتریان</h2>
 
-        {/* نمایش نظرات تایید شده */}
         {reviews.length > 0 ? (
           <div className="space-y-4 mb-10">
             {reviews.map((review) => (
@@ -206,10 +215,9 @@ const ProductDetail = () => {
           <p className="text-sm text-muted-foreground mb-8">هنوز نظری ثبت نشده.</p>
         )}
 
-        {/* فرم ثبت نظر */}
         {submitted ? (
           <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 text-green-600 text-sm">
-            ✅ نظر شما ثبت شد و بعد از تایید نمایش داده می‌شود.
+            ✅ نظر شما ثبت شد و ظرف ۲ ساعت نمایش داده می‌شود.
           </div>
         ) : (
           <div className="bg-secondary/40 border border-border rounded-lg p-6 space-y-4">
