@@ -173,4 +173,73 @@ const ProductDetail = () => {
           </Button>
 
           {product.details && (
-            <
+            <div className="mt-10 prose prose-sm max-w-none">
+              <pre className="whitespace-pre-wrap font-sans text-[15px] leading-7 text-foreground/90 bg-secondary/40 border border-border rounded-lg p-5">
+{product.details[lang]}
+              </pre>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* بخش نظرات */}
+      <div className="mt-16 border-t border-border pt-10">
+        <h2 className="font-display text-2xl text-primary mb-8">نظرات مشتریان</h2>
+
+        {/* نمایش نظرات تایید شده */}
+        {reviews.length > 0 ? (
+          <div className="space-y-4 mb-10">
+            {reviews.map((review) => (
+              <div key={review.id} className="bg-secondary/40 border border-border rounded-lg p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-medium text-sm">{review.name}</span>
+                  <StarRating value={review.rating} />
+                </div>
+                <p className="text-sm text-foreground/80">{review.comment}</p>
+                <span className="text-xs text-muted-foreground mt-2 block">
+                  {new Date(review.created_at).toLocaleDateString("fa-IR")}
+                </span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground mb-8">هنوز نظری ثبت نشده.</p>
+        )}
+
+        {/* فرم ثبت نظر */}
+        {submitted ? (
+          <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 text-green-600 text-sm">
+            ✅ نظر شما ثبت شد و بعد از تایید نمایش داده می‌شود.
+          </div>
+        ) : (
+          <div className="bg-secondary/40 border border-border rounded-lg p-6 space-y-4">
+            <h3 className="font-medium">نظر خود را بنویسید</h3>
+            <input
+              type="text"
+              placeholder="نام شما"
+              value={reviewName}
+              onChange={(e) => setReviewName(e.target.value)}
+              className="w-full bg-background border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+            />
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">امتیاز:</p>
+              <StarRating value={reviewRating} onChange={setReviewRating} />
+            </div>
+            <textarea
+              placeholder="نظر شما..."
+              value={reviewComment}
+              onChange={(e) => setReviewComment(e.target.value)}
+              rows={3}
+              className="w-full bg-background border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary resize-none"
+            />
+            <Button onClick={handleSubmitReview} disabled={sending} className="w-full md:w-auto">
+              {sending ? "در حال ارسال..." : "ارسال نظر"}
+            </Button>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default ProductDetail;
