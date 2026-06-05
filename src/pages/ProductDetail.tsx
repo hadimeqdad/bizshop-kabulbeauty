@@ -3,12 +3,25 @@ import { useProducts } from "@/hooks/useProducts";
 import { useLang } from "@/lib/i18n";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import ProductsLoader from "@/components/ProductsLoader";
 import SEO from "@/components/SEO";
+import { useReviews } from "@/hooks/useReviews";
 
 declare const fbq: Function;
+
+const StarRating = ({ value, onChange }: { value: number; onChange?: (v: number) => void }) => (
+  <div className="flex gap-1">
+    {[1, 2, 3, 4, 5].map((s) => (
+      <Star
+        key={s}
+        className={`w-5 h-5 cursor-pointer ${s <= value ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground"}`}
+        onClick={() => onChange?.(s)}
+      />
+    ))}
+  </div>
+);
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -18,6 +31,12 @@ const ProductDetail = () => {
   const { products, loading } = useProducts();
 
   const product = products.find(p => p.id === id);
+  const { reviews, submitted, submitReview } = useReviews(id || "");
+
+  const [reviewName, setReviewName] = useState("");
+  const [reviewRating, setReviewRating] = useState(5);
+  const [reviewComment, setReviewComment] = useState("");
+  const [sending, setSending] = useState(false);
 
   useEffect(() => { window.scrollTo(0, 0); }, [id]);
 
@@ -34,7 +53,6 @@ const ProductDetail = () => {
   }, [product]);
 
   if (loading) return <div className="container py-8"><ProductsLoader /></div>;
-
   if (!product) return <Navigate to="/shop" replace />;
 
   const handleAdd = () => {
@@ -49,6 +67,13 @@ const ProductDetail = () => {
       `whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name['fa']} را سفارش بدم - قیمت: ${discountPrice || product.price} افغانی`,
       "_blank"
     );
+  };
+
+  const handleSubmitReview = async () => {
+    if (!reviewName || !reviewComment) return;
+    setSending(true);
+    await submitReview(reviewName, reviewRating, reviewComment);
+    setSending(false);
   };
 
   const stock = (product as any).stock;
@@ -148,16 +173,4 @@ const ProductDetail = () => {
           </Button>
 
           {product.details && (
-            <div className="mt-10 prose prose-sm max-w-none">
-              <pre className="whitespace-pre-wrap font-sans text-[15px] leading-7 text-foreground/90 bg-secondary/40 border border-border rounded-lg p-5">
-{product.details[lang]}
-              </pre>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default ProductDetail;
+            <
