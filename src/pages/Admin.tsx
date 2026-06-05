@@ -28,7 +28,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Pencil, Trash2, Plus, LogOut, Upload, Loader2, Tag, Users } from "lucide-react";
+import { Pencil, Trash2, Plus, LogOut, Upload, Loader2, Tag, Users, MessageSquare, Check, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLang } from "@/lib/i18n";
 import { SUBCATEGORIES } from "@/data/subcategories";
@@ -78,6 +78,16 @@ interface ReferralReward {
   buyer_phone: string;
 }
 
+interface Review {
+  id: string;
+  product_id: string;
+  name: string;
+  rating: number;
+  comment: string;
+  approved: boolean;
+  created_at: string;
+}
+
 const emptyForm: Omit<DbProduct, "id"> = {
   name_fa: "",
   name_en: "",
@@ -112,7 +122,7 @@ const Admin = () => {
   const { toast } = useToast();
   const { session, isAdmin, loading: authLoading } = useAdmin();
 
-  const [tab, setTab] = useState<"products" | "coupons" | "referrals">("products");
+  const [tab, setTab] = useState<"products" | "coupons" | "referrals" | "reviews">("products");
 
   const [items, setItems] = useState<DbProduct[]>([]);
   const [loading, setLoading] = useState(true);
@@ -133,6 +143,9 @@ const Admin = () => {
   const [referrals, setReferrals] = useState<Referral[]>([]);
   const [referralsLoading, setReferralsLoading] = useState(false);
   const [referralRewards, setReferralRewards] = useState<Record<string, ReferralReward[]>>({});
+
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [reviewsLoading, setReviewsLoading] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !session) navigate("/auth", { replace: true });
@@ -210,8 +223,35 @@ const Admin = () => {
     setReferralRewards(rewardMap);
   };
 
+  const loadReviews = async () => {
+    setReviewsLoading(true);
+    const { data, error } = await supabase
+      .from("reviews")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (error) toast({ title: "Error", description: error.message, variant: "destructive" });
+    else setReviews((data ?? []) as Review[]);
+    setReviewsLoading(false);
+  };
+
+  const handleApproveReview = async (id: string, approved: boolean) => {
+    const { error } = await supabase.from("reviews").update({ approved }).eq("id", id);
+    if (error) toast({ title: "Error", description: error.message, variant: "destructive" });
+    else {
+      toast({ title: approved ? "تایید شد ✅" : "رد شد ❌" });
+      loadReviews();
+    }
+  };
+
+  const handleDeleteReview = async (id: string) => {
+    if (!confirm("این نظر حذف شود؟")) return;
+    const { error } = await supabase.from("reviews").delete().eq("id", id);
+    if (error) toast({ title: "Error", description: error.message, variant: "destructive" });
+    else { toast({ title: "حذف شد" }); loadReviews(); }
+  };
+
   useEffect(() => {
-    if (session) { load(); loadCoupons(); loadReferrals(); }
+    if (session) { load(); loadCoupons(); loadReferrals(); loadReviews(); }
   }, [session]);
 
   const openNew = () => {
@@ -377,6 +417,7 @@ const Admin = () => {
 
   const filtered = filter === "all" ? items : items.filter((i) => i.category === filter);
   const subList = form.category ? SUBCATEGORIES[form.category as Category] ?? [] : [];
+  const pendingReviews = reviews.filter(r => !r.approved);
 
   return (
     <section className="container py-8 md:py-12">
@@ -403,6 +444,14 @@ const Admin = () => {
         </Button>
         <Button variant={tab === "referrals" ? "default" : "outline"} onClick={() => setTab("referrals")} className="gap-2">
           <Users className="w-4 h-4" /> {fa ? "معرف‌ها" : "Referrals"}
+        </Button>
+        <Button variant={tab === "reviews" ? "default" : "outline"} onClick={() => setTab("reviews")} className="gap-2 relative">
+          <MessageSquare className="w-4 h-4" /> {fa ? "نظرات" : "Reviews"}
+          {pendingReviews.length > 0 && (
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+              {pendingReviews.length}
+            </span>
+          )}
         </Button>
       </div>
 
@@ -611,6 +660,75 @@ const Admin = () => {
                     <TableRow>
                       <TableCell colSpan={7} className="text-center py-12 text-muted-foreground">
                         {fa ? "معرفی یافت نشد" : "No referrals"}
+                      </TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            )}
+          </div>
+        </>
+      )}
+
+      {tab === "reviews" && (
+        <>
+          <div className="flex justify-end mb-4">
+            <Button onClick={loadReviews} variant="outline" className="gap-2">
+              <MessageSquare className="w-4 h-4" /> {fa ? "بروزرسانی" : "Refresh"}
+            </Button>
+          </div>
+          <div className="bg-card border border-border rounded-lg overflow-hidden">
+            {reviewsLoading ? (
+              <div className="p-12 text-center"><Loader2 className="w-6 h-6 animate-spin mx-auto" /></div>
+            ) : (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{fa ? "نام" : "Name"}</TableHead>
+                    <TableHead>{fa ? "امتیاز" : "Rating"}</TableHead>
+                    <TableHead>{fa ? "نظر" : "Comment"}</TableHead>
+                    <TableHead>{fa ? "وضعیت" : "Status"}</TableHead>
+                    <TableHead>{fa ? "تاریخ" : "Date"}</TableHead>
+                    <TableHead className="text-end">{fa ? "عملیات" : "Actions"}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {reviews.map((r) => (
+                    <TableRow key={r.id} className={!r.approved ? "bg-yellow-500/5" : ""}>
+                      <TableCell className="font-medium">{r.name}</TableCell>
+                      <TableCell>{"⭐".repeat(r.rating)}</TableCell>
+                      <TableCell className="text-sm max-w-[200px] truncate">{r.comment}</TableCell>
+                      <TableCell>
+                        <span className={`text-xs px-2 py-0.5 rounded-full border ${r.approved ? "bg-green-500/10 text-green-600 border-green-500/30" : "bg-yellow-500/10 text-yellow-600 border-yellow-500/30"}`}>
+                          {r.approved ? (fa ? "تایید شده" : "Approved") : (fa ? "در انتظار" : "Pending")}
+                        </span>
+                      </TableCell>
+                      <TableCell className="text-sm">
+                        {new Date(r.created_at).toLocaleDateString("fa-IR")}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex gap-1 justify-end">
+                          {!r.approved && (
+                            <Button size="icon" variant="ghost" onClick={() => handleApproveReview(r.id, true)} className="text-green-600">
+                              <Check className="w-4 h-4" />
+                            </Button>
+                          )}
+                          {r.approved && (
+                            <Button size="icon" variant="ghost" onClick={() => handleApproveReview(r.id, false)} className="text-yellow-600">
+                              <X className="w-4 h-4" />
+                            </Button>
+                          )}
+                          <Button size="icon" variant="ghost" onClick={() => handleDeleteReview(r.id)} className="text-destructive">
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  {reviews.length === 0 && (
+                    <TableRow>
+                      <TableCell colSpan={6} className="text-center py-12 text-muted-foreground">
+                        {fa ? "نظری یافت نشد" : "No reviews"}
                       </TableCell>
                     </TableRow>
                   )}
