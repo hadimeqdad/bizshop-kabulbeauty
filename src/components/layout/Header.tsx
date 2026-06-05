@@ -32,9 +32,7 @@ const Header = () => {
       <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between gap-4 h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <div className="w-12 h-12 rounded-xl overflow-hidden shadow-soft">
-  <img src="/biz-icon.png" alt="BIZ" className="w-full h-full object-contain" />
-</div>
+            <img src="/biz-icon.png" alt="BIZ" className="w-14 h-14 object-contain" />
             <div className="leading-none">
               <div className="font-display text-xl md:text-2xl text-primary">{t("brand")}</div>
               <div className="text-[10px] tracking-[0.25em] text-accent uppercase hidden sm:block">
