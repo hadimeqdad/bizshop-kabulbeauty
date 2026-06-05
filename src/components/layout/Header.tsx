@@ -31,7 +31,7 @@ const Header = () => {
     <>
       <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between gap-4 h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-2 group shrink-0">
+          <Link to="/" className="flex items-center gap-1 group shrink-0">
             <img src="/biz-icon.png" alt="BIZ" className="w-20 h-20 object-contain" />
             <div className="leading-none">
               <div className="font-display text-xl md:text-2xl text-primary">{t("brand")}</div>
