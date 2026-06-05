@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { ShoppingBag, Menu, Globe, X, Search, Leaf } from "lucide-react";
+import { ShoppingBag, Menu, Globe, X, Search } from "lucide-react";
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { useCart } from "@/lib/cart";
@@ -32,8 +32,8 @@ const Header = () => {
       <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between gap-4 h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <div className="w-9 h-9 rounded-md bg-primary text-primary-foreground grid place-items-center shadow-soft">
-              <Leaf className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-md overflow-hidden shadow-soft">
+              <img src="/biz-icon.png" alt="BIZ" className="w-full h-full object-cover" />
             </div>
             <div className="leading-none">
               <div className="font-display text-xl md:text-2xl text-primary">{t("brand")}</div>
