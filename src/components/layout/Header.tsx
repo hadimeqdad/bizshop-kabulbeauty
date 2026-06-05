@@ -32,9 +32,9 @@ const Header = () => {
       <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between gap-4 h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <div className="w-9 h-9 rounded-md overflow-hidden shadow-soft">
-              <img src="/biz-icon.png" alt="BIZ" className="w-full h-full object-cover" />
-            </div>
+            <div className="w-12 h-12 rounded-xl overflow-hidden shadow-soft">
+  <img src="/biz-icon.png" alt="BIZ" className="w-full h-full object-contain" />
+</div>
             <div className="leading-none">
               <div className="font-display text-xl md:text-2xl text-primary">{t("brand")}</div>
               <div className="text-[10px] tracking-[0.25em] text-accent uppercase hidden sm:block">
@@ -42,7 +42,7 @@ const Header = () => {
               </div>
             </div>
           </Link>
-
+            
           {/* Desktop search */}
           <form onSubmit={submitSearch} className="hidden lg:flex flex-1 max-w-md relative">
             <Search className="absolute top-1/2 -translate-y-1/2 left-3 rtl:left-auto rtl:right-3 w-4 h-4 text-muted-foreground pointer-events-none" />
