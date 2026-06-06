@@ -44,8 +44,12 @@ export const useReviews = (productId: string) => {
       comment,
       approved: false,
     });
-    if (!error) setSubmitted(true);
-    return !error;
+    if (error) {
+  console.error("Review insert error:", error);
+  return false;
+}
+setSubmitted(true);
+return true;
   };
 
   return { reviews, loading, submitted, submitReview };
