@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
 export interface Review {
@@ -13,10 +13,11 @@ export interface Review {
 
 export const useReviews = (productId: string) => {
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!productId) return;
     fetchReviews();
   }, [productId]);
 
@@ -37,20 +38,23 @@ export const useReviews = (productId: string) => {
     rating: number,
     comment: string
   ) => {
-    const { error } = await supabase.from("reviews").insert({
-      product_id: productId,
-      name,
-      rating,
-      comment,
-      approved: false,
-    });
-    if (error) {
-  console.error("Review insert error:", error);
-  return false;
-}
-setSubmitted(true);
-return true;
+    const { data, error } = await supabase
+      .from("reviews")
+      .insert([{
+        product_id: productId,
+        name: name,
+        rating: rating,
+        comment: comment,
+        approved: false,
+      }])
+      .select();
+
+    console.log("insert result:", data, error);
+
+    if (!error) {
+      setSubmitted(true);
+    }
   };
 
-  return { reviews, loading, submitted, submitReview };
+  return { reviews, submitted, submitReview, loading };
 };
