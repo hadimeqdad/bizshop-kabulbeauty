@@ -54,8 +54,7 @@ const ProductDetail = () => {
 
   if (loading) return <div className="container py-8"><ProductsLoader /></div>;
   if (!product) return <Navigate to="/shop" replace />;
-
-  const handleAdd = () => {
+const handleAdd = () => {
     fbq('track', 'AddToCart', {
       content_name: product.name['fa'],
       content_ids: [product.id],
@@ -63,10 +62,12 @@ const ProductDetail = () => {
       value: product.price,
       currency: 'AFN'
     });
-    window.open(
-      `whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name['fa']} را سفارش بدم - قیمت: ${discountPrice || product.price} افغانی`,
-      "_blank"
-    );
+    setTimeout(() => {
+      window.open(
+        `whatsapp://send?phone=93787628812&text=سلام، میخواستم ${product.name['fa']} را سفارش بدم - قیمت: ${discountPrice || product.price} افغانی`,
+        "_blank"
+      );
+    }, 300);
   };
 
   const handleSubmitReview = async () => {
